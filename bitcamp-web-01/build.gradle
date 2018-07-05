@@ -1,0 +1,24 @@
+plugins {
+    // 자바 관련 빌드 명령 플러그인 추가
+    id 'java'
+
+    // 이클립스 관련 빌드 명령 플로그인 추가 
+    //id 'eclipse'
+    id 'eclipse-wtp' //= eclise + wtp 
+    
+    // web archive 관련 빌드 명령을 추가해야 한다.
+    id 'war'
+}
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    //compile 'com.google.guava:guava:23.0'
+    
+    // Use JUnit test framework
+    //testCompile 'junit:junit:4.12'
+}
+
+// 의존 라이브러리를 다운로드 받을 때 접속할 서버 정보 등록
+repositories {
+    jcenter()
+}
