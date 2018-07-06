@@ -2,15 +2,14 @@ package bitcamp.pms.servlet.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import bitcamp.pms.dao.MemberDao;
 
 @SuppressWarnings("serial")
 @WebServlet("/member/delete")
@@ -35,7 +34,7 @@ public class MemberDeleteServlet extends HttpServlet {
         
         try {
                 
-            if (delete(request.getParameter("id")) == 0) {
+            if (MemberDao.delete(request.getParameter("id")) == 0) {
                 out.println("<p>해당 회원이 없습니다.</p>");
             } else {
                 out.println("<p>삭제하였습니다.</p>");
@@ -49,20 +48,7 @@ public class MemberDeleteServlet extends HttpServlet {
         out.println("</html>");
     }
     
-    private int delete(String id) throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        try (
-            Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://13.125.81.120:3306/studydb",
-                    "study", "1111");
-            PreparedStatement stmt = con.prepareStatement(
-                "delete from pms2_member where mid=?");) {
-            
-            stmt.setString(1, id);
-            
-            return stmt.executeUpdate();
-        } 
-    }
+    
 }
 
 

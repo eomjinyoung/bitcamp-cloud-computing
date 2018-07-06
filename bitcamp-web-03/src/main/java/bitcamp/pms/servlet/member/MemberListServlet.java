@@ -2,11 +2,7 @@ package bitcamp.pms.servlet.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 
 @SuppressWarnings("serial")
@@ -43,7 +40,7 @@ public class MemberListServlet extends HttpServlet {
         out.println("</tr>");
 
         try {
-            ArrayList<Member> list = selectList();
+            List<Member> list = MemberDao.selectList();
             for (Member member : list) {
                 out.println("<tr>");
                 out.printf("    <td><a href='view?id=%s'>%s</a></td><td>%s</td>\n",
@@ -64,26 +61,6 @@ public class MemberListServlet extends HttpServlet {
         out.println("</html>");
     }
     
-    private ArrayList<Member> selectList() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://13.125.81.120:3306/studydb",
-                "study", "1111");
-            PreparedStatement stmt = con.prepareStatement(
-                "select mid, email from pms2_member");
-            ResultSet rs = stmt.executeQuery();) {
-            
-            ArrayList<Member> list = new ArrayList<>();
-            while (rs.next()) {
-                Member member = new Member();
-                member.setId(rs.getString("mid"));
-                member.setEmail(rs.getString("email"));
-                list.add(member);
-            }
-            return list;
-        }
-    }
 
 }
 
