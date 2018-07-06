@@ -37,23 +37,15 @@ public class MemberUpdateServlet extends HttpServlet {
         out.println("<h1>회원 변경 결과</h1>");
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            try (
-                Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://13.125.81.120:3306/studydb",
-                    "study", "1111");
-                PreparedStatement stmt = con.prepareStatement(
-                    "update pms2_member set email=?, pwd=password(?) where mid=?");) {
-                
-                stmt.setString(1, request.getParameter("email"));
-                stmt.setString(2, request.getParameter("password"));
-                stmt.setString(3, request.getParameter("id"));
-                
-                if (stmt.executeUpdate() == 0) {
-                    out.println("<p>해당 회원이 존재하지 않습니다.</p>");
-                } else {
-                    out.println("<p>변경하였습니다.</p>");
-                }
+            Member member = new Member();
+            member.setId(request.getParameter("id"));
+            member.setEmail(request.getParameter("email"));
+            member.setPassword(request.getParameter("password"));
+            
+            if (update(member) == 0) {
+                out.println("<p>해당 회원이 존재하지 않습니다.</p>");
+            } else {
+                out.println("<p>변경하였습니다.</p>");
             }
             
         } catch (Exception e) {
@@ -65,7 +57,20 @@ public class MemberUpdateServlet extends HttpServlet {
     }
     
     private int update(Member member) throws Exception {
-        return 0;
+        Class.forName("com.mysql.jdbc.Driver");
+        try (
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://13.125.81.120:3306/studydb",
+                "study", "1111");
+            PreparedStatement stmt = con.prepareStatement(
+                "update pms2_member set email=?, pwd=password(?) where mid=?");) {
+            
+            stmt.setString(1, member.getEmail());
+            stmt.setString(2, member.getPassword());
+            stmt.setString(3, member.getId());
+            
+            return stmt.executeUpdate();
+        }
     }
 }
 

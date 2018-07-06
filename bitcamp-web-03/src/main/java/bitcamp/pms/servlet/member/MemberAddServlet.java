@@ -38,22 +38,15 @@ public class MemberAddServlet extends HttpServlet {
         out.println("<h1>회원 등록 결과</h1>");
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            try (
-                Connection con = DriverManager.getConnection(
-                        "jdbc:mysql://13.125.81.120:3306/studydb",
-                        "study", "1111");
-                PreparedStatement stmt = con.prepareStatement(
-                    "insert into pms2_member(mid,email,pwd) values(?,?,password(?))");) {
-                
-                stmt.setString(1, request.getParameter("id"));
-                stmt.setString(2, request.getParameter("email"));
-                stmt.setString(3, request.getParameter("password"));
+            Member member = new Member();
+            member.setId(request.getParameter("id"));
+            member.setEmail(request.getParameter("email"));
+            member.setPassword(request.getParameter("password"));
             
-                stmt.executeUpdate();
-                
-                out.println("<p>등록 성공!</p>");
-            }
+            insert(member);
+            
+            out.println("<p>등록 성공!</p>");
+            
         } catch (Exception e) {
             out.println("<p>등록 실패!</p>");
             e.printStackTrace(out);
@@ -63,7 +56,20 @@ public class MemberAddServlet extends HttpServlet {
     }
     
     private void insert(Member member) throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+        try (
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://13.125.81.120:3306/studydb",
+                    "study", "1111");
+            PreparedStatement stmt = con.prepareStatement(
+                "insert into pms2_member(mid,email,pwd) values(?,?,password(?))");) {
+            
+            stmt.setString(1, member.getId());
+            stmt.setString(2, member.getEmail());
+            stmt.setString(3, member.getPassword());
         
+            stmt.executeUpdate();
+        }
     }
 }
 
