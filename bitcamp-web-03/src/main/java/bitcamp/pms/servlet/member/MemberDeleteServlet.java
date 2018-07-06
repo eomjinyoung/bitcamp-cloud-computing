@@ -60,7 +60,7 @@ public class MemberDeleteServlet extends HttpServlet {
     }
     
     private int delete(String id) throws Exception {
-        
+        return 0;
     }
 }
 

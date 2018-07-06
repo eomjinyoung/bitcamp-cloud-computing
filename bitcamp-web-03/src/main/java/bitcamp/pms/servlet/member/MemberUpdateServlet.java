@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bitcamp.pms.domain.Member;
+
 @SuppressWarnings("serial")
 @WebServlet("/member/update")
 public class MemberUpdateServlet extends HttpServlet {
@@ -63,7 +65,7 @@ public class MemberUpdateServlet extends HttpServlet {
     }
     
     private int update(Member member) throws Exception {
-        
+        return 0;
     }
 }
 
