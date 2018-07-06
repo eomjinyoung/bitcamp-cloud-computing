@@ -40,7 +40,10 @@ public class MemberListServlet extends HttpServlet {
         out.println("</tr>");
 
         try {
-            List<Member> list = MemberDao.selectList();
+            MemberDao memberDao = 
+               (MemberDao) getServletContext().getAttribute("memberDao");
+            
+            List<Member> list = memberDao.selectList();
             for (Member member : list) {
                 out.println("<tr>");
                 out.printf("    <td><a href='view?id=%s'>%s</a></td><td>%s</td>\n",

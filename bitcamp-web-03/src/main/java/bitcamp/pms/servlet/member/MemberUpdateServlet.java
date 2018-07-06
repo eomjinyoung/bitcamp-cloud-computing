@@ -40,7 +40,10 @@ public class MemberUpdateServlet extends HttpServlet {
             member.setEmail(request.getParameter("email"));
             member.setPassword(request.getParameter("password"));
             
-            if (MemberDao.update(member) == 0) {
+            MemberDao memberDao = 
+                    (MemberDao) getServletContext().getAttribute("memberDao");
+                 
+            if (memberDao.update(member) == 0) {
                 out.println("<p>해당 회원이 존재하지 않습니다.</p>");
             } else {
                 out.println("<p>변경하였습니다.</p>");

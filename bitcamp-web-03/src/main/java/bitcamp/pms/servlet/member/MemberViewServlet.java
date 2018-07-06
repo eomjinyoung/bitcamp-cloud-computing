@@ -35,7 +35,10 @@ public class MemberViewServlet extends HttpServlet {
         out.println("<h1>멤버 보기</h1>");
         
         try {
-            Member member = MemberDao.selectOne(id);
+            MemberDao memberDao = 
+                    (MemberDao) getServletContext().getAttribute("memberDao");
+                 
+            Member member = memberDao.selectOne(id);
                 
             if (member == null) {
                 out.println("<p>유효하지 않은 멤버 아이디입니다.</p>");
