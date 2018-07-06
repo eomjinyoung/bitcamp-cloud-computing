@@ -78,6 +78,10 @@ public class MemberViewServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
+    
+    private Member selectOne(String id) throws Exception {
+        
+    }
 }
 
 

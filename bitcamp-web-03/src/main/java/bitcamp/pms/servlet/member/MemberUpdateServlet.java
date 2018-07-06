@@ -61,6 +61,10 @@ public class MemberUpdateServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
+    
+    private int update(Member member) throws Exception {
+        
+    }
 }
 
 

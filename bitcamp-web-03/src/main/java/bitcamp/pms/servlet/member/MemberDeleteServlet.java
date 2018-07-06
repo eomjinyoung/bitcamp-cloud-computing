@@ -58,6 +58,10 @@ public class MemberDeleteServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
+    
+    private int delete(String id) throws Exception {
+        
+    }
 }
 
 
