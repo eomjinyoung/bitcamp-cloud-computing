@@ -39,7 +39,7 @@ public class MemberListServlet extends HttpServlet {
             request.setAttribute("error", e);
             RequestDispatcher rd = 
                     request.getRequestDispatcher("/error.jsp");
-            rd.include(request, response);
+            rd.forward(request, response);
         }
     }
     

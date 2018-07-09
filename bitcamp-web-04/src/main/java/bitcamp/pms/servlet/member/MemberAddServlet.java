@@ -1,8 +1,8 @@
 package bitcamp.pms.servlet.member;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,21 +19,6 @@ public class MemberAddServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-        
-        out.println("<title>회원 등록</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>회원 등록 결과</h1>");
         
         try {
             Member member = new Member();
@@ -45,16 +30,14 @@ public class MemberAddServlet extends HttpServlet {
                     (MemberDao) getServletContext().getAttribute("memberDao");
                  
             memberDao.insert(member);
-            
-            out.println("<p>등록 성공!</p>");
+            response.sendRedirect("list");
             
         } catch (Exception e) {
-            out.println("<p>등록 실패!</p>");
-            e.printStackTrace(out);
+            request.setAttribute("error", e);
+            RequestDispatcher rd = 
+                    request.getRequestDispatcher("/error.jsp");
+            rd.forward(request, response);
         }
-        out.println("</body>");
-        out.println("</html>");
-        response.sendRedirect("list");
     }
     
     
