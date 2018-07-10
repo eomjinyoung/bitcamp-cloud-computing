@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+  <select id="selectList" resultType="bitcamp.pms.domain.Member">
+    select mid id, email from pms2_member
+  </select>
+  
+  <select id="selectOne" 
+          resultType="bitcamp.pms.domain.Member" 
+          parameterType="java.lang.String">
+    select mid id, email 
+    from pms2_member
+    where mid=#{value}
+  </select>
+  
+  <update id="update" parameterType="bitcamp.pms.domain.Member">
+    update pms2_member set 
+        email=#{email}, 
+        pwd=password(#{password}) 
+    where mid=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="java.lang.String">
+    delete from pms2_member 
+    where mid=#{value}
+  </delete>
+  
+  <insert id="insert" parameterType="bitcamp.pms.domain.Member">
+    insert into pms2_member(mid,email,pwd) 
+    values(#{id},#{email},password(#{password}))
+  </insert>
+
+</mapper>
+
+
+
+

@@ -18,3 +18,6 @@
 - JSP 기술을 사용하여 출력을 단순화하는 방법
 - MVC 아키텍처의 개념 
 
+## web-05 : Persistence Framework 도입 
+- DAO에 mybatis 프레임워크를 적용하여 코드와 SQL문을 분리한다.
+- 반복적으로 작성했던 JDBC 코드를 캡슐화한다.
