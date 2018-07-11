@@ -21,3 +21,7 @@
 ## web-05 : Persistence Framework 도입 
 - DAO에 mybatis 프레임워크를 적용하여 코드와 SQL문을 분리한다.
 - 반복적으로 작성했던 JDBC 코드를 캡슐화한다.
+
+## web-06 : Front Controller 도입
+- 서블릿들이 공통으로 수행하는 작업을 프론트 컨트롤러에게 맡긴다.
+- 나머지 서블릿들은 "Page Controller"로 부른다.
