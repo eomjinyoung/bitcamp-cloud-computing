@@ -25,3 +25,6 @@
 ## web-06 : Front Controller 도입
 - 서블릿들이 공통으로 수행하는 작업을 프론트 컨트롤러에게 맡긴다.
 - 나머지 서블릿들은 "Page Controller"로 부른다.
+
+## web-07 : Page Controller를 POJO로 변환
+- 프론트 컨트롤러가 도입되면 페이지 컨트롤러는 일반 자바 객체로 만들어도 된다.
