@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import bitcamp.pms.annotation.Autowired;
 import bitcamp.pms.annotation.Repository;
 import bitcamp.pms.domain.Member;
 
@@ -20,6 +21,11 @@ public class MemberDao {
         this.sqlSessionFactory = sqlSessionFactory;
     }
     
+    @Autowired
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
     public List<Member> selectList(Map<String,Object> params) throws Exception {
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             return sqlSession.selectList("member.selectList", params);
