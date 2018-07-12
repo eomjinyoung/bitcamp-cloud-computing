@@ -3,10 +3,12 @@ package bitcamp.pms.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bitcamp.pms.annotation.Controller;
 import bitcamp.pms.annotation.RequestMapping;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 
+@Controller("/member/update")
 public class MemberUpdateController {
     
     MemberDao memberDao;

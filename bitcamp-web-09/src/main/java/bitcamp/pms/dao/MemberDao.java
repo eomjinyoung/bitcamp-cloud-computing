@@ -6,8 +6,10 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import bitcamp.pms.annotation.Repository;
 import bitcamp.pms.domain.Member;
 
+@Repository
 public class MemberDao {
     
     SqlSessionFactory sqlSessionFactory;
