@@ -13,26 +13,45 @@
                             expression="bitcamp.pms.test.*"/>
   </context:component-scan>
   
+  <!-- 
+    Object builder = new SqlSessionFactoryBuilder();
+    iocContainer.put("sqlSessionFactoryBuilder", builder);
+   -->
+  <!-- 
   <bean id="sqlSessionFactoryBuilder"
-        class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
+        class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/> 
+  -->
   
   <!-- Object factory = sqlSessionFactoryBuilder.build();
        iocContainer.put("sqlSessionFactory", factory);
    -->
+  <!-- 
   <bean id="sqlSessionFactory"
         factory-bean="sqlSessionFactoryBuilder"
         factory-method="build">
     <constructor-arg ref="inputStream" />
-  </bean>
+  </bean> 
+  -->
   
   <!-- Object obj = Resources.getResourceAsStream("bitcamp...");
        iocContainer.put("inputStream", obj);
    -->
+  <!-- 
   <bean id="inputStream"
         class="org.apache.ibatis.io.Resources"
         factory-method="getResourceAsStream">
     <constructor-arg value="bitcamp/pms/config/mybatis-config.xml"/>
-  </bean>
+  </bean> 
+  -->
+  
+  <!-- 공장에서 SqlSessionFactory 만들기 
+       => 실행 원리!
+          - class 속성에 지정된 클래스가 FactoryBean 구현체라면,
+          - 그 객체를 만들어 저장하는 것이 아니라
+          - 그 객체의 getObject()를 호출하면 그 리턴 값을 저장한다. 
+  -->
+  <bean id="sqlSessionFactory"
+        class="bitcamp.pms.factory.SqlSessionFactoryBean"/>
 
          
 </beans>
