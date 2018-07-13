@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import bitcamp.pms.annotation.Autowired;
-import bitcamp.pms.annotation.Repository;
 import bitcamp.pms.domain.Member;
 
 @Repository

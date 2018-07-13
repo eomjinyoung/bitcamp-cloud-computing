@@ -9,12 +9,27 @@
 - 이때 추가한 의존 라이브러리가 자동으로 다운로드 될 것이다.
 - 웹 프로젝트를 리프래시 하여 라이브러리 정보를 갱신한다. 
 
-## 회원 관리 서블릿 만들기
-- servlet-api 의존 라이브러리 추가하기
-  - mvnrepository.com에서 sevlet-api 라이브러리 검색
-  - build.gradle에 라이브러리 등록
-  - 'gradle eclipse' 실행하여 .classpath 파일 갱신
-  - 이클립스 프로젝트 refresh
-- mysql jdbc driver 의존 라이브러리 추가하기  
-- bitcamp.pms.servlet.member 패키지 생성
-- MemberListServlet, MemberViewServlet, MemberAddServlet, MemberUpdateServlet, MemberDeleteServlet 클래스 생성
+## ContextLoaderListener에서 Spring IoC 컨테이너 준비하기
+- 기존의 ApplicationContext 대신에 Spring IoC 컨테이너 객체를 생성한다.
+- bitcamp/pms/config/application-context.xml 파일을 생성한다.
+
+## DispatcherServlet에서 Spring IoC 컨테이너를 사용하기
+- 기존의 ApplicationContext 대신에 Spring IoC 컨테이너에 들어 있는 페이지 컨트롤러를 찾아 실행한다.
+
+## ApplicationContext 클래스 제거한다.
+
+## 우리가 작성한 애노테이션 제거한다.
+- @Component 애노테이션 제거
+- @Controller 애노테이션 제거
+- @Repository 애노테이션 제거
+- @Autoworied 애노테이션 제거
+
+## DAO와 페이지 컨트롤러에서 사용한 애노테이션 패키지를 변경한다.
+- 스프링 애노테이션으로 변경한다.
+
+
+
+
+
+
+

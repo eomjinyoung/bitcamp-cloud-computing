@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.pms.annotation.RequestMapping;
-import bitcamp.pms.context.ApplicationContext;
 
 @SuppressWarnings("serial")
 @WebServlet("/app/*")

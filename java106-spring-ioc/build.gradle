@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'eclipse'
+}
+
+// 소스 파일에서 사용하는 문자표(characterset)를 지정한다.
+// 지정하지 않으면 기본으로 ISO-8859-1 이라 간주된다.
+//compileJava.options.encoding = "UTF-8"
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+
+// run 작업에서 실행할 자바 클래스명 지정
+mainClassName = 'App'
+
+// 다운로드 서버에서 받을 라이브러리를 지정한다.
+dependencies {
+    // Spring IoC 컨테이너 라이브러리
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.0.6.RELEASE'
+    
+    
+    // Mybatis 라이브러리
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    
+    // mybatis를 spring과 연동시키는 라이브러리
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.2'
+    
+    // Mariadb JDBC 라이브러리
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.5'
+    
+    // DB 커넥션풀 라이브러리
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+    
+    // AOP 관련 라이브러리
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.1'
+    
+    
+    compile 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
+}
+
+// 의존 라이브러리를 다운로드 받을 서버의 정보를 설정한다.
+repositories {
+    jcenter()
+}

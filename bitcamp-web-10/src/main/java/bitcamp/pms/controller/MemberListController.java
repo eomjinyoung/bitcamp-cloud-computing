@@ -6,8 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bitcamp.pms.annotation.Autowired;
-import bitcamp.pms.annotation.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import bitcamp.pms.annotation.RequestMapping;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
