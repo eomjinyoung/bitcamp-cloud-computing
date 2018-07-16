@@ -20,19 +20,18 @@
 - 웹프로젝트를 리프래시 한다. 
 - application-context.xml 스프링 설정 파일에 DataSource를 설정한다.
 - Spring에서 DataSource를 설정할 때는 "spring-jdbc"라이브러리를 추가해야 한다.
+- 트랜잭션 관리자도  Spring에 등록한다.
 
+## DAO 구현체를 자동 생성하는 MapperScannerConfigurer 등록하기
+- Mybatis에서 제공하는 DAO 구현체 자동 생성기를 등록하면 개발자가 DAO 클래스를 직접 작성할 필요가 없다.
+- 대신 개발자는 DAO 인터페이스만 만들면 된다.
 
-## ApplicationContext 클래스 제거한다.
-
-## 우리가 작성한 애노테이션 제거한다.
-- @Component 애노테이션 제거
-- @Controller 애노테이션 제거
-- @Repository 애노테이션 제거
-- @Autoworied 애노테이션 제거
-
-## DAO와 페이지 컨트롤러에서 사용한 애노테이션 패키지를 변경한다.
-- 스프링 애노테이션으로 변경한다.
-
+## 기존의 DAO 클래스를 인터페이스로 변경하기
+- 기존에 작성된 DAO 클래스를 인터페이스로 변경한다.
+- 단 인터페이스명과 SQL 맵퍼의 namespace가 같게 해야 한다.
+- 인터페이스의 메서드명과 SQL의 id도 같아야 한다.
+- 인터페이스의 메서드 파라미터는 한 개여야 한다. 
+- 물론 메서드의 파라미터는 SQL의 parameterType가 같아야 한다.
 
 
 

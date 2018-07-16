@@ -52,9 +52,11 @@
   -->
   <bean id="sqlSessionFactory"
         class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="configLocation" 
-              value="bitcamp/pms/config/mybatis-config.xml"/>
-    <property name="dataSource" ref="dataSource"/>          
+    <property name="dataSource" ref="dataSource"/>  
+    <property name="mapperLocations" 
+              value="classpath*:bitcamp/pms/sql/**/*.xml" />  
+    <property name="typeAliasesPackage" 
+              value="bitcamp.pms.domain"/>               
   </bean>
 
   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -62,6 +64,20 @@
     <property name="url" value="${jdbc.url}" />
     <property name="username" value="${jdbc.username}" />
     <property name="password" value="${jdbc.password}" />
+  </bean>
+  
+  <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  
+  <!-- DAO 인터페이스로부터 구현체를 자동 생성하는 객체 등록 
+       => DAO 구현체가 사용할 SQL 맵퍼 파일은 namespace 값으로 찾는다
+       => 따라서 인터페이스 명과 SQL 맵퍼의 namespace 값은 같아야 한다.
+       => 또한 인터페이스의 메서드명과 SQL id는 같아야 한다.  
+  -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" 
+              value="bitcamp.pms.dao" />
   </bean>
   
   <!-- .properties 파일을 읽어서 그 데이터를 보관할 객체를 등록한다. -->
