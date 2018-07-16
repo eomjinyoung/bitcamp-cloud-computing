@@ -49,3 +49,15 @@
 
 ## web-12 : Spring WebMVC의 ContextLoaderListener 사용하기
 - 기존에 직접 만든 ContextLoaderListener 대신에 Spring WebMVC에서 제공하는 클래스를 사용한다.
+
+## web-13 : Spring WebMVC의 DispatcherServlet 사용하기
+- 기존에 직접 만든 DispatcherServlet 대신에 Spring WebMVC에서 제공하는 클래스를 사용한다.
+
+
+
+
+
+
+
+
+
