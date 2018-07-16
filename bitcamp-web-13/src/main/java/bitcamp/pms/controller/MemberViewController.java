@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 
-@Controller("/member/view")
+@Controller
 public class MemberViewController {
 
     MemberDao memberDao;
@@ -26,7 +26,7 @@ public class MemberViewController {
         this.memberDao = memberDao;
     }
     
-    @RequestMapping
+    @RequestMapping("/member/view")
     public String view(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {

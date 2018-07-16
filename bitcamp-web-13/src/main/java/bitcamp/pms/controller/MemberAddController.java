@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
 
-@Controller("/member/add")
+@Controller
 public class MemberAddController {
     
     MemberDao memberDao;
@@ -26,7 +26,7 @@ public class MemberAddController {
         this.memberDao = memberDao;
     }
 
-    @RequestMapping
+    @RequestMapping("/member/add")
     public String add(
             HttpServletRequest request, 
             HttpServletResponse response) throws Exception {
