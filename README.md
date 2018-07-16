@@ -46,3 +46,6 @@
 - DB 커넥션풀은 Mybatis 대신에 Spring에서 관리한다.
 - 트랜잭션을 다룰 수 있도록 트랜잭션 관리자를 설정한다.
 - Proxy 패턴을 사용한 DAO 자동 생성 기능을 이용한다.
+
+## web-12 : Spring WebMVC의 ContextLoaderListener 사용하기
+- 기존에 직접 만든 ContextLoaderListener 대신에 Spring WebMVC에서 제공하는 클래스를 사용한다.
