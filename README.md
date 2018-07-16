@@ -40,3 +40,9 @@
 
 ## web-10 : Spring IoC 컨테이너 도입
 - 기존 직접 만든 IoC 컨테이너 대신에 스프링 컨테이너를 사용한다.
+
+## web-11 : Spring + Mybatis 연동하기
+- 기존에 직접 만든 SqlSessionFactoryBean 대신에 Mybatis가 제공하는 SqlSessionFactoryBean을 사용한다.
+- DB 커넥션풀은 Mybatis 대신에 Spring에서 관리한다.
+- 트랜잭션을 다룰 수 있도록 트랜잭션 관리자를 설정한다.
+- Proxy 패턴을 사용한 DAO 자동 생성 기능을 이용한다.
