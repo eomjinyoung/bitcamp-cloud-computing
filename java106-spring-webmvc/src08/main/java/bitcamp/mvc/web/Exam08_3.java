@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/exam08_3") 
 // Model(또는 Map) 객체에 저장하는 데이터 중에서 HttpSession 객체에도 저장해야 한다면,
 // 다음 애노테이션으로 해당 값의 이름을 지정하라!
-@SessionAttributes({"name", "age", "working"})
+@SessionAttributes({"age", "working"})
 // 의미?
 // => name, age, working 라는 이름으로 Model(또는 Map) 객체에 저장하는 값들을 
 //    ServletRequest 뿐만아니라 HttpSession에도 저장하라는 뜻이다! 
