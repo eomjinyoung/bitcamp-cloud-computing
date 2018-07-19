@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>Exam05_7의 실행 결과</h1>
-이름: ${requestScope.name}<br>
+이름: ${requestScope.name}<br>
 나이: ${requestScope.age}<br> 
 
 </body>

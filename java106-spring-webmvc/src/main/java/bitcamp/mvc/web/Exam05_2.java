@@ -53,7 +53,7 @@ public class Exam05_2 {
     public String m4(
             @RequestParam(required=false) String name, 
             @RequestParam(required=false) int age) {
-        return String.format("m3(): name=%s, age=%d", name, age);
+        return String.format("m4(): name=%s, age=%d", name, age);
     }
     
     // 클라이언트가 값을 보내지 않으면 기본 값을 넣도록 지정할 수 있다.
@@ -62,7 +62,7 @@ public class Exam05_2 {
     public String m5(
             String name, 
             @RequestParam(defaultValue="20") int age) {
-        return String.format("m3(): name=%s, age=%d", name, age);
+        return String.format("m5(): name=%s, age=%d", name, age);
     }
     
     

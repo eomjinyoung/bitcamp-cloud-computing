@@ -3,6 +3,8 @@ package bitcamp.mvc.web;
 
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller 
 @RequestMapping("/exam05_7") 
 public class Exam05_7 {
+    
+    @GetMapping(value="m0")
+    public String m0(ServletRequest request) {
+        request.setAttribute("name", "홍길동");
+        request.setAttribute("age", 20);
+        return "/exam05_7.jsp";
+    }
     
     // View 컴포넌트(JSP)에게 전달할 데이터가 있다면 
     // 프론트 컨트롤러에게 Map 또는 Model 객체를 요구하라.

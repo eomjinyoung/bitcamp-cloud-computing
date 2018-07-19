@@ -49,7 +49,7 @@ public class Exam05_4 {
     // 그리고 요청이 들어올 때 마다 이 메서드를 먼저 실행하도록 설정해야 한다.
     //      @InitBinder 애노테이션을 붙여라
     //
-    @InitBinder // 이렇게 표시를 해야만 프론트 컨트롤러가 요청 핸들러를 호출하기 전에 먼저 이 메서드를 호출한다.
+    //@InitBinder // 이렇게 표시를 해야만 프론트 컨트롤러가 요청 핸들러를 호출하기 전에 먼저 이 메서드를 호출한다.
     public void initBinder(WebDataBinder binder) {
         
         // 이 메서드는 요청이 들어올 때 마다 파라미터 값을 준비하기 위해 
@@ -70,7 +70,7 @@ public class Exam05_4 {
         
         // java.lang.String ===> bitcamp.mvc.vo.Member 객체로 변환시켜주는 프로퍼티 에디터 등록
         binder.registerCustomEditor(
-                bitcamp.mvc.vo.Member.class, /* 요청 핸들러의 파라미터 타입 */ 
+                bitcamp.mvc.vo.Member.class, 
                 new PropertyEditorSupport() {
                     @Override
                     public void setAsText(String text) throws IllegalArgumentException {

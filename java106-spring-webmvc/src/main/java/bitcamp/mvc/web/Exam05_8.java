@@ -23,7 +23,8 @@ public class Exam05_8 {
     @ResponseBody
     public String m1(HttpServletResponse response) {
         try {
-            Cookie c1 = new Cookie("name", 
+            Cookie c1 = new Cookie("name",
+                //"홍길동");
                 URLEncoder.encode("홍길동", "UTF-8"));
             
             Cookie c2 = new Cookie("age", "20"); 
@@ -53,6 +54,20 @@ public class Exam05_8 {
             throw new RuntimeException(e);
         }
     }
+    
+    @GetMapping(value="m3", produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public String m3(
+            @CookieValue(value="name", defaultValue="") String name, 
+            @CookieValue(value="age", defaultValue="0") int age) {
+        try {    
+            System.out.println(name);
+            return String.format("m2(): name=%s, age=%d", name, age);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     
 }
 
