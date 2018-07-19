@@ -1,10 +1,9 @@
 package bitcamp.pms.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.pms.dao.MemberDao;
@@ -26,15 +25,13 @@ public class MemberViewController {
         this.memberDao = memberDao;
     }
     
-    @RequestMapping("/member/view")
+    @RequestMapping("/member/view/{id}")
     public String view(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
-
-        String id = request.getParameter("id");
+            @PathVariable String id,
+            Model model) throws Exception {
         
         Member member = memberDao.selectOne(id);
-        request.setAttribute("member", member);
+        model.addAttribute("member", member);
         return "member/view";
     }
     

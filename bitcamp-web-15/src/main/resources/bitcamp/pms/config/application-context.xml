@@ -17,7 +17,7 @@
   </context:component-scan>
 
   <!-- Spring WebMVC 관련 애노테이션을 처리할 객체들을 등록한다. -->
-  <mvc:annotation-driven/>
+  <mvc:annotation-driven enable-matrix-variables="true"/>
   
   <!-- 공장에서 SqlSessionFactory 만들기 
        => 실행 원리!

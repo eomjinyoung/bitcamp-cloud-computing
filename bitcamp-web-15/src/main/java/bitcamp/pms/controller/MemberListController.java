@@ -3,12 +3,11 @@ package bitcamp.pms.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bitcamp.pms.dao.MemberDao;
 import bitcamp.pms.domain.Member;
@@ -31,21 +30,20 @@ public class MemberListController {
     
     @RequestMapping("/member/list")
     public String list(
-            HttpServletRequest request, 
-            HttpServletResponse response) throws Exception {
+            @RequestParam(defaultValue="1") int page, 
+            @RequestParam(defaultValue="3") int size,
+            Model model) throws Exception {
+        
+        if (page < 1) page = 1;
+        if (size < 1 || size > 20) size = 3;
         
         // DB에서 가져올 데이터의 페이지 정보
         HashMap<String,Object> params = new HashMap<>();
-        if (request.getParameter("page") != null &&
-            request.getParameter("size") != null) {
-            int page = Integer.parseInt(request.getParameter("page"));
-            int size = Integer.parseInt(request.getParameter("size"));
-            params.put("startIndex", (page - 1) * size);
-            params.put("pageSize", size);
-        }
+        params.put("startIndex", (page - 1) * size);
+        params.put("pageSize", size);
         
         List<Member> list = memberDao.selectList(params);
-        request.setAttribute("list", list);
+        model.addAttribute("list", list);
         
         return "member/list";
             
