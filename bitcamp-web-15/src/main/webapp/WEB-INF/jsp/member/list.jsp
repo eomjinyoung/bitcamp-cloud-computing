@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>멤버 목록5</h1>
-<p><a href='add'>새회원</a></p>
+<p><a href='form'>새회원</a></p>
 <table border='1'>
 <tr>
     <th>아이디</th><th>이메일</th>
