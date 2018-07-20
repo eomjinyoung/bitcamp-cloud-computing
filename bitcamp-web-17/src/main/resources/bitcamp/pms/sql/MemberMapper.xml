@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.pms.dao.MemberDao">
+
+  <!-- 컬럼명과 객체의 프로퍼티 명을 연결한다. -->
+  <resultMap type="Member" id="MemberMap">
+    <id column="mid" property="id"/>
+    <result column="email" property="email"/>
+    <result column="pwd" property="password"/>
+  </resultMap>
+
+  <select id="selectList" resultMap="MemberMap"
+          parameterType="map">
+    select mid, email 
+    from pms2_member
+    <if test="startIndex != null and pageSize != null">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="selectOne" 
+          resultMap="MemberMap" 
+          parameterType="string">
+    select mid, email 
+    from pms2_member
+    where mid=#{value}
+  </select>
+  
+  <update id="update" parameterType="Member">
+    update pms2_member set 
+        email=#{email}, 
+        pwd=password(#{password}) 
+    where mid=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="string">
+    delete from pms2_member 
+    where mid=#{value}
+  </delete>
+  
+  <insert id="insert" parameterType="Member">
+    insert into pms2_member(mid,email,pwd) 
+    values(#{id},#{email},password(#{password}))
+  </insert>
+  
+  <select id="countAll" resultType="int">
+    select count(*) from pms2_member
+  </select>
+
+</mapper>
+
+
+
+
