@@ -1,4 +1,5 @@
-## ## web-14 : JSP 경로를 /WEB-INF/ 폴더 아래로 옮긴다.
+## ## web-14 : InternalResourceViewResolver 사용하기
+- JSP 경로를 /WEB-INF/ 폴더 아래로 옮긴다.
 - /WEB-INF 폴더 아래로 JSP를 옮기면 클라이언트에서 직접 요청할 수 없다. 
 - 이렇게 하면 JSP를 실행하기 위해 반드시 페이지 컨트롤러를 경유하도록 제한할 수 있다.
 
