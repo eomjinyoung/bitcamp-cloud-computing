@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>함수 레퍼런스  - 파라미터로 함수 전달하기 II</h1>
+
+<script>
+"use strict"
+
+function plus(a, b) {console.log(a + b)}
+function minus(a, b) {console.log(a - b)}
+function multiple(a, b) {console.log(a * b)}
+function divide(a, b) {console.log(a / b)}
+
+function caller(a) { 
+    // 함수를 받아서 호출한다.
+    a(100, 200);
+}
+
+caller(plus); 
+caller(minus);
+caller(multiple);
+caller(divide);
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>반복문 - for 문과 배열</h1>
+
+<script>
+var arr = ["홍길동", 100, 100, 96];
+
+var sum = 0;
+for (var i = 1; i <= 3; i++)
+    sum += arr[i];
+    
+arr.push(sum); // 배열 맨 끝에 값 추가
+arr.push(sum / 3); // 배열 맨 끝에 값 추가
+
+for (var i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

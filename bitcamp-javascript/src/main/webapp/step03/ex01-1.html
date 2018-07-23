@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>함수 정의 - 정의와 호출</h1>
+
+<script>
+"use strict"
+// 문법
+// => function 함수명(파라미터, ...) {}
+// => 자바스크립트는 동적 타입이기 때문에 리턴 타입을 선언하지 않는다.
+// => 파라미터를 선언할 때 var을 붙이지 않는다.
+function f1() {
+    console.log("f1()...")
+}
+
+function f2() {
+    return "f2()...";
+}
+
+function f3(a, b) {
+    console.log(a, b, "=", a + b);
+}
+
+function f4(a, b) {
+    return a + b;
+}
+
+f1();
+
+var r = f2();
+console.log(r);
+
+f3(100, 200);
+
+var r = f4(100, 200);
+console.log(r);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

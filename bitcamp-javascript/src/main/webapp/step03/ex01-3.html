@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>함수 정의 - 함수 호이스팅(hoisting)</h1>
+
+<script>
+"use strict"
+// 함수도 변수처럼 hoisting으로 처리된다.
+// 즉 script 태그를 실행하기 전에 함수 정의가 있다면 먼저 실행된다.
+//
+
+f1(); // 실행 오류!
+
+// 함수 호이스팅은 각 script 태그 마다 따로 수행된다.
+// 따라서 f1() 함수는 다음 script 태그에 존재하기 때문에 
+// 이 태그에서 호이스팅 될 수 없다.
+</script>
+
+<script>
+function f1() { 
+    console.log("f1()...")
+}
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

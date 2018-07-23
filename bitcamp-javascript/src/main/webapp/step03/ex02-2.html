@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>익명 함수  - 함수 호이스팅</h1>
+
+<script>
+"use strict"
+
+// 익명 함수는 r-value 이기 때문에 호이스팅 대상이 아니다.
+// 
+
+// 변수 선언과 함수 정의만 호이스팅 된다. 
+// => 익명 함수는 = 연산자 오른쪽에 위치하기 때문에 호이스팅되지 않는다.
+f1(); // 실행 오류!
+
+// 다음 문장에서 호이스팅 대상은 f1 변수 선언이다.
+var f1 = function() {
+    console.log("f1()...")
+};
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

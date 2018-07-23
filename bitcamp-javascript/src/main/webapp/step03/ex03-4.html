@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>함수 레퍼런스  - 함수를 리턴하기</h1>
+
+<script>
+"use strict"
+
+// 정확하게 표현하면 함수를 리턴하는 것이 아니라 함수의 주소를 리턴한다.
+function f1(op) {
+    switch (op) {
+    case "+":
+        return function plus(a, b) {console.log(a + b)};
+    case "-":
+        return function minus(a, b) {console.log(a - b)}
+    case "*":
+        return function multiple(a, b) {console.log(a * b)}
+    case "/":
+        return function divide(a, b) {console.log(a / b)}
+    default:
+        return function error() {console.log("지원하지 않는 연산자입니다.")}
+    }
+}
+
+var a = f1("*"); // f1()은 내부에서 생성한 함수의 주소를 리턴한다.
+                 // f1()의 내부에서 만든 함수를 "클로저(closure)"라 부른다.
+
+a(5, 7); // 변수에 함수 주소가 저장되어 있다면, 언제든 함수처럼 호출할 수 있다.
+</script>
+
+<script>
+var x = f1("+"); // 메서드가 호출될 때 마다 해당 함수를 만들어서 주소를 리턴한다.
+var y = f1("+");
+
+if (x == y)
+    console.log("x == y");
+else
+    console.log("x != y"); // 따라서 x와 y가 가리키는 함수는 다르다.
+    
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
