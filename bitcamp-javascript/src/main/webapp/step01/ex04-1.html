@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>변수 선언 - 사용 범위</h1>
+
+<script>
+"use strict"
+
+var a; // 한 번 변수를 선언하면 다음 script 태그에서도 사용할 수 있다.
+
+a = 100;
+console.log(a);
+</script>
+
+<script>
+console.log(a); // OK!
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

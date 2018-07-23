@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>조건문 - switch</h1>
+
+<script>
+var level = 0;
+
+switch (level) {
+case 0:
+  console.log("손님입니다.")
+  break;
+case 1:
+  console.log("회원입니다.")
+  break;
+case 9:
+  console.log("관리자입니다.")
+  break;
+default:
+  console.log("유효하지 않은 등급입니다.");
+}
+</script>
+
+<script>
+var level = "손님";
+
+switch (level) {
+case "손님":
+  console.log("보기만 가능합니다.")
+  break;
+case "회원":
+  console.log("자신의 게시물에 대해 변경 가능합니다.")
+  break;
+case "관리자":
+  console.log("모두 가능합니다.")
+  break;
+default:
+  console.log("유효하지 않은 등급입니다.");
+}
+</script>
+
+
+<script>
+var level = 1.5; // 자바스크립트는 부동소수점 가능
+
+switch (level) {
+case 1:
+  console.log("1")
+  break;
+case 1.5:
+  console.log("1.5")
+  break;
+case 2:
+  console.log("2")
+  break;
+default:
+  console.log("기타");
+}
+</script>
+
+<script>
+var level = true; // 자바스크립트는 논리값 가능
+
+switch (level) {
+case false:
+  console.log("false")
+  break;
+case true:
+  console.log("true")
+  break;
+default:
+  console.log("기타");
+}
+</script>
+
+<script>
+var value = "홍길동"; 
+
+switch (value) { // switch에 다양한 타입의 값이 올 수 있다.
+case false: console.log("false") 
+  break;
+case true: console.log("true") 
+  break;
+case 100: console.log("100") 
+  break;
+case 3.14: console.log("3.14") 
+  break;
+case "홍길동": console.log("홍길동") 
+  break;
+default:
+  console.log("기타");
+}
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>변수 선언 - 중복 선언</h1>
+
+<script>
+"use strict"
+
+var a = 100; // => window["a"] = 100;
+
+// 자바스크립트는 변수를 중복 선언해도 오류가 아니다.
+// 왜? 변수 이름은 window 객체에 값을 넣는 key이기 때문이다.
+var a = 200; // => window["a"] = 200;
+
+// 자바의 맵 객체를 떠올리면 이해가 될 것이다.
+/*
+HashMap map = new HashMap();
+map.put("a", 100); // 맵 객체에 a라는 이름으로 값을 넣은 후 
+map.put("a", "Hello"); // 또 같은 이름으로 다른 값을 넣을 수 있지 않는가?
+ */
+
+var a = "hello"; // => window["a"] = "Hello";
+
+console.log(a);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>배열 선언 - 자바 배열과 차이점</h1>
+
+<script>
+"use strict"
+
+var arr = new Array();
+
+// 자바의 배열은 오직 한 가지 타입의 값만 가능하다.
+// 자바스크립트는 동적 타입이기 때문에 여러 타입의 값을 넣을 수 있다.
+// 자바의 ArrayList와 기능이 비슷하다.
+arr[0] = "홍길동";
+arr[1] = 100;
+arr[2] = 100;
+arr[3] = 100;
+arr[4] = 300;
+arr[5] = 100.0;
+arr[6] = false;
+arr[7] = "임꺽정";
+arr[8] = 90;
+arr[9] = 90;
+arr[10] = 90;
+arr[11] = 270;
+arr[12] = 90.0;
+arr[13] = true;
+
+console.log("배열 길이: ", arr.length);
+
+for (var i = 0; i < arr.length; i++)
+    console.log(arr[i]);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

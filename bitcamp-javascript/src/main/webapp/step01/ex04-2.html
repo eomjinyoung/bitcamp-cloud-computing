@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>변수 선언 - 글로벌 변수와 window 객체</h1>
+
+<script>
+"use strict"
+
+// script 태그에 그냥 선언한 변수는 모두 글로벌 변수이다.
+// 즉 window 객체에 소속된다.
+// window 객체? 웹 브라우저에서 제공하는 내장 객체 이다. 
+var a; 
+
+a = 100;
+console.log(a); // window를 생략해도 된다.
+console.log(window.a); // 물론 이렇게 명시해도 된다.
+</script>
+
+<script>
+//그래서 다른 script 태그에서 사용할 수 있었던 것이다.
+console.log(a);  
+console.log(window.a);
+
+// 물론 window 객체를 직접 사용하면,
+// 변수 선언 없이 변수에 값을 넣을 수 있다.
+window.b = 200;
+
+console.log(b);
+console.log(window.b);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

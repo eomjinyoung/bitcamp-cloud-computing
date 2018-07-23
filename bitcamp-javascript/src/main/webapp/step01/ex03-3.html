@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>strict 모드와 script 태그</h1>
+
+<script type="text/javascript">
+"use strict"
+//var a;
+
+a = 100; // 실행 오류!
+console.log(a);
+</script>
+
+<script>
+// use strict는 선언된 태그에서만 적용된다.
+
+c = 200; // 실행 오류? 정상 실행!
+         // 이전에 선언된 use strict는 다른 태그에 영향을 끼치지 못한다.
+console.log(c)
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

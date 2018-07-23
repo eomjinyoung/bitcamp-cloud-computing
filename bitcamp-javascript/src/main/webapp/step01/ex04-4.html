@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>변수 선언 - 변수와 블록</h1>
+
+<script>
+"use strict"
+
+// 자바스크립트는 블록을 이용한 범위 제한을 지원하지 않는다.
+var a = 100;
+{
+  var b = 200; // 블록 안에 선언했다고 로컬 변수가 되는 것은 아니다.
+}
+console.log(a);
+console.log(b); // OK!
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

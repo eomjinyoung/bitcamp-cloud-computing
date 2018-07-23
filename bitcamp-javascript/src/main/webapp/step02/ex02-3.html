@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>반복문 - for</h1>
+
+<script>
+var sum = 0;
+
+for (var count = 1; count <= 10; count++)
+    sum += count;
+console.log(sum);
+sum = 0;
+
+var count = 1;
+for (; count <= 10; count++)
+    sum += count;
+console.log(sum);
+sum = 0;
+
+var count = 1;
+for (; count <= 10;) {
+    sum += count;
+    count++;
+}
+console.log(sum);
+sum = 0;
+
+var count = 1;
+for (;;) {
+    sum += count;
+    count++;
+    if (count > 10)
+        break;
+}
+console.log(sum);
+sum = 0;
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
