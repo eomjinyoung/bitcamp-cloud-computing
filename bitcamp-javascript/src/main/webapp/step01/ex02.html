@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>script 태그의 type 속성</h1>
+
+<script type="text/javascript">
+  // type 속성을 생략하면 기본 값이 "text/javascript"이다.
+  console.log("Hello!");
+</script>
+
+<script type="text/okok">
+  // type 속성이 "text/javascript"가 아닌 경우 웹 브라우저는 
+  // script 태그를 처리하지 못한다. 
+  // 결국 script 태그는 일반 태그처럼 메모리에 로딩만 된다.
+  // 화면에 출력되지도 않는다.
+  console.log("Hello2!");
+</script>
+
+<scropt>
+  // script 태그가 아닌 임의의 태그는 화면에 출력된다.
+  console.log('okok');
+</scropt>
+
+</body>
+</html>
+
+
+
+
+
+
