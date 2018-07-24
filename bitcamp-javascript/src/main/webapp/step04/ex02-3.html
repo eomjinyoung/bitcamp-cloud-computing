@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 프로퍼티 - 함수 프로퍼티 추가하기</h1>
+
+<script>
+"use strict"
+
+var obj1 = new Object();
+obj1.result = 0;
+obj1.plus = function(value) {
+    // 같은 객체에 소속된 프로퍼티(변수,함수)를 가리킬 때는 
+    // 반드시 this를 지정해야 한다.
+    // 자바처럼 this를 생략할 수 없다.
+    this.result += value;
+};
+obj1.minus = function(value) {
+    this.result -= value;
+};
+
+var obj2 = {
+    result: 0,
+    plus: function(value) {this.result += value;},
+    minus: function(value) {this.result -= value;}
+};
+
+obj1.plus(100);
+obj1.plus(50);
+obj1.minus(70);
+
+obj2.plus(10);
+obj2.plus(5);
+obj2.minus(7);
+
+console.log(obj1.result, obj2.result);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

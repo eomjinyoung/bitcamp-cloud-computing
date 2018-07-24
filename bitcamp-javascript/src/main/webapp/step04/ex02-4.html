@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 프로퍼티 - {} 표기법에서 함수 프로퍼티 추가하는 또 다른 방법</h1>
+
+<script>
+"use strict"
+
+var obj2 = {
+    result: 0,
+    plus(value) {this.result += value;},
+    minus(value) {this.result -= value;}
+};
+
+obj2.plus(10);
+obj2.plus(5);
+obj2.minus(7);
+
+console.log(obj2.result);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

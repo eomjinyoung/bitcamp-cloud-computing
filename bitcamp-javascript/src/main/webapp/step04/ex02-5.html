@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 프로퍼티 - arrow 함수와 this</h1>
+
+<script>
+"use strict"
+
+var obj1 = new Object();
+obj1.result = 0;
+obj1.plus = value => {this.result += value};
+obj1.minus = value => {this.result -= value};
+
+var obj2 = {
+    result: 0,
+    plus: value => {this.result += value},
+    minus: value => {this.result -= value}
+};
+
+obj1.plus(100);
+obj1.plus(50);
+obj1.minus(70);
+
+obj2.plus(10);
+obj2.plus(5);
+obj2.minus(7);
+
+console.log(obj1.result, obj2.result);
+
+// Arrow 함수에서 this는 무조건 window 객체를 가리킨다.
+// 그래서 객체 함수로 사용할 때 주의해야 한다.
+// => 사실상 Arrow 함수는 객체의 메서드를 만들 때 사용하라고 만든 문법이 아니라,
+//    함수를 호출할 때 파라미터 값으로 전달하거나 
+//    함수의 리턴 값으로 받기 쉽도록 하기 위해 만든 문법이다.
+
+function test() {
+    // this : 이 함수가 소속된 객체를 가리킨다.
+    console.log(this);
+}
+
+// 객체 없이 함수를 호출할 때는 this라는 변수가 존재하지 않는다.
+test();
+
+var obj3 = new Object();
+obj3.value = 100;
+obj3.f1 = test; // 이렇게 일반 함수를 객체에 프로퍼티로 저장할 수 있다.
+obj3.f2 = function() {// 당연히 익명 함수도 저장 가능.
+    // this : 이 익명 함수가 소속된 객체를 가리킨다.
+    console.log(this)
+}; 
+obj3.f3 = () => {
+    // Array 함수의 this는 무조건 window 객체이다.
+    console.log(this);
+};
+
+obj3.f1();
+obj3.f2();
+obj3.f3();
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

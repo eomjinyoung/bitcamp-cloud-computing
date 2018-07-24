@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 생성 - 배열에 객체 넣기</h1>
+
+<script>
+"use strict"
+
+var scores = [
+	{
+	    name: "홍길동",
+	    kor: 100,
+	    eng: 90,
+	    math: 80,
+	    sum() {return this.kor + this.eng + this.math},
+	    aver() {return this.sum() / 3}
+	},
+	{
+	    name: "임꺽정",
+	    kor: 90,
+	    eng: 90,
+	    math: 80,
+	    sum() {return this.kor + this.eng + this.math},
+	    aver() {return this.sum() / 3}
+	},
+	{
+	    name: "유관순",
+	    kor: 80,
+	    eng: 80,
+	    math: 80,
+	    sum() {return this.kor + this.eng + this.math},
+	    aver() {return this.sum() / 3}
+	}
+]; 
+
+
+for (var s of scores) {
+    console.log(s.name, s.sum(), s.aver());
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
