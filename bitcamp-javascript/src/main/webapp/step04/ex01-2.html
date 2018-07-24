@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 정의 - Object.create(원형객체)</h1>
+
+<script>
+"use strict"
+
+var score = new Object();
+score.name = "홍길동";
+score.kor = 0;
+score.eng = 0;
+score.math = 0;
+score.sum = 0;
+score.aver = 0;
+
+// 다른 객체를 복제해서 만들기
+var obj1 = Object.create(score);
+console.log(obj1);
+console.log(obj1.name);
+console.log(obj1.kor);
+
+// 자바스크립트는 자바처럼 설계도를 기반으로 객체를 만들지 않는다.
+// 다른 객체를 복제해서 객체를 만든다.
+// 즉 객체 생성 방식이 "프로토타이핑(prototyping) 방식"이다.
+//
+// 이렇게 복제한 객체에 새 변수나 메서드를 추가하여 사용한다.
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

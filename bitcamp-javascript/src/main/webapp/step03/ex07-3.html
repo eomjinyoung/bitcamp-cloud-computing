@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>리턴 값 destructuring - 객체 리턴 값 받기</h1>
+
+<script>
+"use strict"
+
+function f1() {
+    var obj = new Object();
+    obj.name = "홍길동";
+    obj.kor = 100;
+    obj.eng = 90;
+    obj.math = 80;
+    return obj;
+}
+
+// 객체 값을 분해하여 변수에 받을 때는 중괄호를 사용한다.
+var {name, kor} = f1();
+console.log(name, kor);
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 정의 - new 명령과 Object() 함수</h1>
+
+<script>
+"use strict"
+
+// new 명령
+// => 빈 객체를 생성한다.
+// Object()
+// => 빈 객체에 최소한의 프로퍼티를 추가한다.
+// => 즉 Object.create(Object.prototype)과 결과가 같다.
+// => 이렇게 객체에 프로퍼티를 추가해주는 함수를 "생성자(constructor)"라 부른다.
+// => 자바스크립트는 생성자를 위한 별도의 문법이 없다.
+//    그냥 일반 함수 문법을 사용한다.
+//
+var obj1 = new Object();
+console.log(obj1);
+
+// 주의!
+// => new 명령만 사용할 수 없다.
+// => new 명령 다음에 반드시 객체를 초기화시키는 생성자 함수가 와야 한다.
+//var obj2 = new; // 오류!
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
