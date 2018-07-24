@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>변수 변수 destructuring(분해) - 객의 값 분해</h1>
+
+<script>
+"use strict"
+
+var obj = new Object();
+obj.name = "홍길동";
+obj.kor = 100;
+obj.eng = 90;
+obj.math = 80;
+
+// 객체 값의 일부분을 분해하여 변수에 저장하기
+// => 객체 값을 분해하여 변수에 저장할 때는 변수 선언에 중괄호 {}를 사용하라!
+// => 객체에서 추출하고자 하는 프로퍼티 이름과 같은 이름으로 변수를 선언해야 한다.
+var {name, eng} = obj;
+console.log(name, eng);
+
+var {kor, eng} = obj;
+console.log(kor, eng);
+
+// 만약 객체의 프로퍼티 값을 추출할 때 변수 이름을 다르게 하고 싶다면 
+// 다음과 같이 하라!
+// 문법:
+// var {추출할 프로퍼티이름: 새변수명, 추출할 프로퍼티 이름 : 새변수명} = 객체;
+var {kor:k, eng:e} = obj;
+console.log(k, e);
+
+// 값이 없을 때 기본 값을 넣고 싶다면 
+// var {프로퍼티명: 새변수명 = 기본값, ...} = 객체;
+var {name:n, sum:s = 0, aver:a = 0} = obj;
+console.log(n, s, a);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

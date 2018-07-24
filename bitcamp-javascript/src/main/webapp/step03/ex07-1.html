@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>리턴 값 destructuring</h1>
+
+<script>
+"use strict"
+
+function Score(name, kor, eng, math) {
+    var obj = new Object();
+    obj.setName = function(n) {name = n;};
+    obj.getName = function() {return name;};
+    
+    obj.setKor = function(value) {kor = value;};
+    obj.getKor = function() {return kor;};
+    
+    obj.setEng = function(value) {eng = value;};
+    obj.getEng = function() {return eng;};
+    
+    obj.setMath = function(value) {math = value;};
+    obj.getMath = function() {return math;};
+    
+    obj.sum = function() {return kor + eng + math;};
+    obj.aver = function() {return this.sum() / 3;};
+    
+    return obj;
+}
+
+var {getName, sum} = Score("홍길동", 100, 100, 96);
+
+console.log(getName(), sum());
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>arrow 함수 - default 파라미터와 rest 파라미터</h1>
+
+<script>
+"use strict"
+
+// default parameter
+var f1 = (a, b=100, c) => {
+    console.log(a, b, c);
+};
+f1(15);
+
+//default parameter + single parameter
+var f2 = (a = 100) => {
+    console.log(a);
+};
+f2();
+
+//rest parameter
+var f3 = (a, ...x) => {
+    console.log(a, x[0], x[1], x[2]);
+};
+f3(100, 200, 300);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
