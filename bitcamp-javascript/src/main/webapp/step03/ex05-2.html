@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>함수 파라미터 - arguments 내장 객체</h1>
+
+<script>
+"use strict"
+
+// 모든 함수는 아규먼트 값을 보관하는 arguments라는 객체를 갖고 있다.
+// 모든 아규먼트 값은 파라미터의 개수와 상관없이 arguments에 동시에 보관된다.
+// 배열처럼 사용할 수 있다.
+function f1(a, b) {
+    console.log(a, b);
+    console.log("length =", arguments.length);
+    for (var value of arguments) {
+        console.log(value);
+    }
+    console.log("---------------");
+}
+
+
+f1();
+f1(100);
+f1(100, 200);
+f1(100, 200, 300);
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
