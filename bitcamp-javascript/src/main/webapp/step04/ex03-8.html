@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 생성 - 생성자 연결 II</h1>
+
+<script>
+"use strict"
+
+function A() {}
+A.prototype.f1 = function() {console.log("A->f1()...")};
+
+function B() {}
+B.prototype = Object.create(A.prototype);
+B.prototype.constructor = B;
+B.prototype.f2 = function() {console.log("B->f2()...")};
+
+function C() {}
+C.prototype = Object.create(B.prototype);
+C.prototype.constructor = C;
+C.prototype.f3 = function() {console.log("C->f3()...")};
+
+function D() {}
+D.prototype = Object.create(C.prototype);
+D.prototype.constructor = D;
+D.prototype.f4 = function() {console.log("D->f4()...")};
+
+
+var obj = new D();
+obj.f4();
+obj.f3();
+obj.f2();
+obj.f1();
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>window 객체 - 타이머</h1>
+
+<script>
+"use strict"
+
+//var 타이머아이디 = window.setTimeout(호출될 함수, 경과시간_밀리초);
+window.setTimeout(() => {
+    console.log('지정된 시간이 경과하면 딱 한 번만 호출된다.');
+}, 2000);
+
+//var 타이머아이디 = window.setInterval(호출될 함수, 경과시간_밀리초);
+var count = 0;
+var tid = window.setInterval(() => {
+    count++;
+    console.log('타이머를 강제로 멈추기 전까지 영원히 호출된다.');
+    if (count == 10) 
+        window.clearInterval(tid);
+}, 3000);
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>location 객체 - URL에서 값 추출하기</h1>
+
+<script>
+"use strict"
+
+var values = location.href.split("?")[1];
+var params = values.split("&");
+for (var param of params) {
+    var kv = param.split("=");
+    console.log(kv[0], kv[1]);
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

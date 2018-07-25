@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>location 객체 - 페이지 바꾸기</h1>
+
+<button onclick="changePage()">페이지 변경</button>
+
+<p>
+<a href="ex03-3.html?no=2">ex03-3 페이지로 가기</a>
+</p>
+
+<script>
+"use strict"
+
+// location.href 의 값을 변경하면 해당 URL을 요청한다.
+// 따라서 페이지가 바뀐다.
+function changePage() {
+    location.href = "ex03-1.html";
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
