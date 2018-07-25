@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>DOM API - 특정 태그 아래에 소속된 태그를 찾기</h1>
+<div id="d1">
+	<h2 class="g1 g3">d1.제목1</h2>
+	<h2 class="g1">d1.제목2</h2>
+	<h2 class="g1 g2 g3">d1.제목3</h2>
+	<h2 class="g2">d1.제목4</h2>
+</div>
+
+<div id="d2">
+    <h2 class="g1 g3">d2.제목1</h2>
+    <h2 class="g1">d2.제목2</h2>
+    <h2 class="g1 g2 g3">d2.제목3</h2>
+    <h2 class="g2">d2.제목4</h2>
+</div>
+
+<h2 class="g1 g3">제목1</h2>
+<h2 class="g1">제목2</h2>
+<h2 class="g1 g2 g3">제목3</h2>
+<h2 class="g2">제목4</h2>
+
+<script>
+"use strict"
+
+// document 객체에 대해 querySelector() 또는 querySelectorAll()을 
+// 호출하면 문서 전체에서 해당 조건의 태그를 찾는 것이다.
+var el = document.querySelectorAll(".g1.g3");
+console.log(el);
+console.log("------------------------")
+
+// 부모 태그를 지정하면 그 부모 태그의 자손들에게서 찾는다.
+var el = d2.querySelectorAll(".g1.g3");
+console.log(el);
+console.log("------------------------")
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

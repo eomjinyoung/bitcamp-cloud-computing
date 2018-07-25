@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+.strong {
+    font-weight: bolder;
+    background-color: black;
+    color: white;
+}
+</style>
+</head>
+<body>
+<h1>DOM API - 속성 변경 II</h1>
+
+<h1>제목1</h1>
+<h1>제목2</h1>
+<h1>제목3</h1>
+<h1>제목4</h1>
+
+<script>
+"use strict"
+
+
+var e = document.querySelector("h1:nth-child(2)");
+e.innerHTML = "'" + e.innerHTML + "'"; 
+
+// HTML 태그의 스타일을 변경할 때는 ex03-1.html에서 한 것처럼 
+// 직접 변경하지 말라!
+// 다음과 같이 css 스타일을 정의해 놓고 클래스를 이용하여 제어하는 것이 
+// 유지보수에 좋다.
+e.className = "strong";
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

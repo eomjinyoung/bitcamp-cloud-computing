@@ -9,15 +9,15 @@ div {
     margin: 10px 20px 30px 40px;
 }
 #d1 {
-    height: 200px;
+    height: 150px;
 }
 #d2 {
-    height: 300px;
+    height: 150px;
 }
 </style>
 </head>
 <body>
-<h1>DOM API - 태그 생성하기 II</h1>
+<h1>DOM API - 속성 설정하기</h1>
 
 <div id="d1"></div>
 <div id="d2"></div>
@@ -25,21 +25,20 @@ div {
 <script>
 "use strict"
 
-// 방법1)
-var e1 = document.createElement("h2");
-var text = document.createTextNode("제목입니다.");
-e1.appendChild(text);
+// 방법1) 원래 그 태그에 있던 속성이면 바로 속성명으로 값을 설정할 수 있다.
+var e1 = document.createElement("a");
+e1.href = "http://www.daum.net";
+e1.innerHTML = "다음카카오";
 
-d2.appendChild(e1);
+d1.appendChild(e1);
 
-// 방법2)
-var e2 = document.createElement("h2");
-e2.innerHTML = "제목이래요...";
+// 방법2) 만약 그 태그에 없는 새 속성을 추가한다면 addAttribute()를 호출하라!
+// => 물론 기존 속성도 이 메서드를 사용할 수 있다.
+var e2 = document.createElement("a");
+e2.setAttribute("href", "http://www.daum.net");
+e2.innerHTML = "다음카카오";
 
-d1.appendChild(e2);
-
-// 방법3)
-d1.innerHTML += "<h2>오호라...</h2>";
+d2.appendChild(e2);
 
 </script>
 
