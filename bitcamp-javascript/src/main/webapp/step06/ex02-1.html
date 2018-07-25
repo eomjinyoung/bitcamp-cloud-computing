@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+div {
+    border: 1px solid red;
+    margin: 10px 20px 30px 40px;
+}
+#d1 {
+    height: 200px;
+}
+#d2 {
+    height: 300px;
+}
+</style>
+</head>
+<body>
+<h1>DOM API - 태그 생성하기</h1>
+
+<div id="d1"></div>
+<div id="d2"></div>
+
+<script>
+"use strict"
+
+// 방법1)
+var e1 = document.createElement("h2");
+var text = document.createTextNode("제목입니다.");
+e1.appendChild(text);
+
+d2.appendChild(e1);
+
+// 방법2)
+var e2 = document.createElement("h2");
+e2.innerHTML = "제목이래요...";
+
+d1.appendChild(e2);
+
+// 방법3)
+d1.innerHTML += "<h2>오호라...</h2>";
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

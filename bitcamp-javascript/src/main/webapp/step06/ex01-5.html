@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>DOM API - css selector로 태그 찾기 II</h1>
+<div id="d1">
+	<h2 class="g1 g3">d1.제목1</h2>
+	<h2 class="g1">d1.제목2</h2>
+	<h2 class="g1 g2 g3">d1.제목3</h2>
+	<h2 class="g2">d1.제목4</h2>
+</div>
+
+<div id="d2">
+    <h2 class="g1 g3">d2.제목1</h2>
+    <h2 class="g1">d2.제목2</h2>
+    <h2 class="g1 g2 g3">d2.제목3</h2>
+    <h2 class="g2">d2.제목4</h2>
+</div>
+
+<h2 class="g1 g3">제목1</h2>
+<h2 class="g1">제목2</h2>
+<h2 class="g1 g2 g3">제목3</h2>
+<h2 class="g2">제목4</h2>
+
+<script>
+"use strict"
+
+// querySelectorAll(selector)
+// => 리턴 값은 NodeList 객체이다.
+// => 여러 개의 태그를 찾을 때 사용한다.
+
+// 태그 이름으로 찾기
+var el = document.querySelectorAll("div > .g1.g3");
+console.log(el);
+console.log("------------------------")
+
+// NodeList는 배열은 아니지만 Collection 타입이기 때문에 
+// for..of 에 사용할 수 있다.
+for (var e of el) {
+    console.log(e);
+}
+
+console.log("------------------------")
+
+// NodeList는 배열이 아니기 때문에 다음과 같이 사용하면 안된다.
+for (var i in el) {
+    console.log(el[i]);
+}
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>DOM API - 태그 이름으로 태그 찾기</h1>
+
+<h2 id="header1">제목1</h2>
+<h2 id="header2">제목2</h2>
+<h2 id="header3">제목3</h2>
+<h2 id="header4">제목4</h2>
+
+<script>
+"use strict"
+
+// => 리턴 값은 태그 객체를 담고 있는 HTMLCollection 객체이다.
+// => 만약 해당 태그를 찾지 못했으면 빈 HTMLCollection을 리턴한다. 
+//    null은 아니다.
+var el = document.getElementsByTagName("h2");
+console.log(el);
+console.log("------------------------");
+
+for (var i = 0; i < el.length; i++)
+    console.log(el[i])
+    
+console.log("------------------------");
+
+// 주의!
+// => HTMLCollection은 일반 객체이기 때문에 for..in을 사용하면 
+//    모든 프로퍼티에 대해 만큼 반복한다.
+for (var i in el)
+    console.log(i, el[i])
+
+console.log("------------------------");
+
+// HTMLCollection은 배열은 아니지만 Collection 타입이기 때문에 
+// for..of 문법에 사용할 수 있다.
+for (var value of el/* 배열이나 Collection 타입의 객체만 올 수 있다.*/)
+    console.log(value)
+    
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
