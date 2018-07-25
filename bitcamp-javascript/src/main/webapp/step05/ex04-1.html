@@ -7,15 +7,22 @@
 <body>
 <h1>navigator 객체 - 웹브라우저 정보</h1>
 
-<input type="text"><br>
-<button onclick="location.reload()">현재 페이지 다시 로딩</button>
-
 <script>
 "use strict"
 
 // window.navigator
 // => 웹브라우저를 다루는 객체이다.
 console.log(window.navigator);
+console.log(navigator.userAgent);
+
+if (navigator.userAgent.indexOf("Chrome") != -1) 
+    console.log("크롬 브라우저");
+else if (navigator.userAgent.indexOf("Safari") != -1)
+    console.log("사파리 브라우저");
+else if (navigator.userAgent.indexOf("Firefox") != -1)
+    console.log("파이어폭스 브라우저");
+else
+    console.log("기타 브라우저");
 </script>
 
 
