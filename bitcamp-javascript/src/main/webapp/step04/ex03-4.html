@@ -18,6 +18,13 @@ function Score(name, kor, eng, math) {
     // => 그래서 개발자들이 구분하기 좋게 생성자 함수의 이름은 대문자로 시작한다.
     //    꼭 자바의 클래스명처럼 명사로 이름을 짓는다.
     // => 그렇다고 생성자 함수가 특별한 문법이 아니다. 그냥 일반 함수이다.
+    //
+    // 주의!
+    // => 모든 생성자는 특별하게 지정하지 않으면 상위 생성자로서 Object()를 
+    //    먼저 호출한다.
+    // => 그래서 자바스크립트의 모든 객체는 Object() 생성자가 추가한
+    //    프로퍼티(변수와 메서드)를 갖고 있다.
+    // 
     this.name = name;
     this.kor = kor;
     this.eng = eng;
@@ -36,6 +43,13 @@ var scores = [
 for (var s of scores) {
     console.log(s.name, s.sum(), s.aver());
 }
+console.log("----------------------------");
+
+// Score() 생성자를 통해 초기화된 객체의 내용을 살펴보자!
+// => Score() 생성자가 추가한 프로퍼티 뿐만 아니라 
+//    Object() 생성자가 추가한 프로퍼티도 있을 것이다.
+
+console.log(scores[0]);
 
 </script>
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>객체 생성 - 생성자에 추가된 프로퍼티</h1>
+
+<script>
+"use strict"
+
+function Score(name, kor, eng, math) {
+    this.name = name;
+    this.kor = kor;
+    this.eng = eng;
+    this.math = math;
+}
+
+Score.prototype.sum = function() {return this.kor + this.eng + this.math};
+Score.prototype.aver = function() {return this.sum() / 3};
+
+// 함수에 직접 추가된 프로퍼티는 
+// 사용할 때 함수 이름으로 사용해야 한다.
+Score.toObject = function(str) {
+    var values = str.split(",");
+    return new Score(
+            values[0], 
+            parseInt(values[1]), 
+            parseInt(values[2]), 
+            parseInt(values[3]));
+};
+
+var scores = [ 
+    new Score("홍길동", 100, 90, 80),
+    new Score("임꺽정", 90, 90, 80),
+    new Score("유관순", 80, 80, 80),
+    Score.toObject("안중근,70,70,65")
+]; 
+
+
+for (var s of scores) {
+    console.log(s.name, s.sum(), s.aver());
+}
+
+console.log("--------------------------")
+
+// 함수에 추가된 메서드를 
+// 그 함수가 초기화시킨 객체에서 호출할 수 있는가?
+var obj = new Score("윤봉길", 100, 100, 100);
+
+// => 객체를 통해 prototype에 보관된 메서드는 호출할 수 있다.
+console.log(obj.sum());
+console.log(obj.aver());
+
+// => prototype에 보관된 것이 아니라 함수에 저장된 메서드라면?
+console.log(obj.toObject("김구,80,80,80")); 
+
+// 자바는 객체를 사용하여 클래스의 스태틱 메서드를 호출할 수 있지만,
+// 자바스크립트는 생성자(함수)에 추가된 메서드를 호출할 때 객체를 사용할 수 없다.
+// 생성자(함수) 이름을 통해서만 호출할 수 있다.  
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
