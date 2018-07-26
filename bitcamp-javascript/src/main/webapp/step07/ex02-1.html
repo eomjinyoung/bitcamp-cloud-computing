@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>이벤트 객체 - 클릭 이벤트 정보 추출하기</h1>
+
+<button id="btn1">버튼1</button><br>
+
+<script>
+"use strict"
+
+btn1.onclick = function(event) {
+    // 마우스 클릭으로 발생한 이벤트 객체는 MouseEvent()로 초기화시킨 객체이다.
+    // => 보통 자바처럼 MouseEvent 객체라 표현한다.
+    console.log("alt 키 누름여부", event.altKey);
+    console.log("ctrl 키 누름여부", event.ctrlKey);
+    console.log("태그를 기준으로 x 좌표", event.offsetX);
+    console.log("태그를 기준으로 y 좌표", event.offsetY);
+    console.log("브라우저를 기준으로 x 좌표", event.clientX);
+    console.log("브라우저를 기준으로 y 좌표", event.clientY);
+    console.log("누른 버튼 번호", event.button);
+};
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

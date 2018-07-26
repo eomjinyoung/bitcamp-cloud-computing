@@ -5,11 +5,12 @@
 <title>자바스크립트</title>
 </head>
 <body>
-<h1>이벤트 처리 - 이벤트와 이벤트 리스너</h1>
+<h1>이벤트 리스너 등록 - 리스너를 등록하는 다양한 방법</h1>
 
 <button id="btn1" onclick="var v = prompt('나이는?'); if (parseInt(v) < 19) alert('미성년입니다.'); else alert('성년입니다.');">버튼1</button><br>
 <button id="btn2" onclick="f1()">버튼2</button><br>
 <button id="btn3">버튼3</button><br>
+<button id="btn4">버튼4</button><br>
 
 <script>
 "use strict"
@@ -18,7 +19,7 @@
 // => 사용자가 웹브라우저에 의해 발생되는 특별한 상태를 말한다.
 // => 예) 마우스를 클릭, 키보드의 키를 누르기, 키보드의 키를 떼기, 윈도우 크기 변경하기 등
 //
-// 이벤트 리스너(event listener)
+// 이벤트 리스너(event listener = event handler)
 // => 그러한 상태에 놓였을 때 특별한 작업을 수행하도록 호출되는 메서드
 //
 
@@ -48,6 +49,39 @@ function f1() {
     else 
         alert('성년입니다.');
 }
+
+// 방법3)
+// => 태그를 찾아 이벤트 리스너 이름으로 함수를 등록하기
+// => 이벤트 리스너 이름? 
+//    태그의 onxxx 속성이름으로 저장한다.
+//    예) 마우스 클릭 이벤트 ==> onclick
+// => 이 방식은 함수를 한 개만 등록할 수 있다.  
+
+var e = document.querySelector("#btn3");
+e.onclick = function(event) {
+    console.log(event);
+    var v = prompt('나이는?'); 
+    if (parseInt(v) < 19) 
+        alert('미성년입니다.'); 
+    else 
+        alert('성년입니다.');
+}; 
+
+// 방법4)
+// => 이벤트 리스너(핸들러)를 여러 개 등록할 때 이 방식을 사용한다.
+// => 문법
+//    e.addEventListener("이벤트명", 함수);
+//
+var e = document.querySelector("#btn4");
+e.addEventListener("click", function(event) {
+    var v = prompt('나이는?'); 
+    if (parseInt(v) < 19) 
+        alert('미성년입니다.'); 
+    else 
+        alert('성년입니다.');
+});
+e.addEventListener("click", function() {alert("okok")});
+e.addEventListener("click", function() {alert("nono")});
 </script>
 
 

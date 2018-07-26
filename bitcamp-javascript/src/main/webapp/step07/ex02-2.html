@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>이벤트 객체 - 키 이벤트 정보 추출하기</h1>
+
+<textarea id="txt1" rows="5" cols="50"></textarea> 
+<span id="textCnt">0</span>/140<br>
+
+<script>
+"use strict"
+
+//=> keydown 이벤트는 key 값이 화면에 입력되기 전에 발생한다.
+//=> 모든 키에 대해 이벤트가 발생한다.
+txt1.onkeydown = function(event) {
+    console.log("onkeydown");
+    //textCnt.innerHTML = txt1.value.length;
+};
+
+//=> keypress 이벤트는 key 값이 화면에 입력되기 전에 발생한다.
+//=> 텍스트 key에 대해서 발생한다. 
+//   기타 key에 대해서는 이벤트가 발생하지 않는다.
+txt1.onkeypress = function(event) {
+    console.log("onkeypress");
+    //textCnt.innerHTML = txt1.value.length;
+};
+
+//=> 입력 상자의 값이 변경되었을 때 발생한다.
+//=> input 이벤트는 key 값이 화면에 출력된 후 발생한다.
+//=> 텍스트 key에 대해서 발생한다.
+txt1.oninput = function(event) {
+    console.log("oninput");
+    textCnt.innerHTML = txt1.value.length;
+};
+
+//=> keyup 이벤트는 key 값이 화면에 출력되고 key를 뗐을 때 발생한다.
+//=> 모든 키에 대해 이벤트가 발생한다.
+txt1.onkeyup = function(event) {
+    console.log("onkeyup");
+    //textCnt.innerHTML = txt1.value.length;
+};
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
