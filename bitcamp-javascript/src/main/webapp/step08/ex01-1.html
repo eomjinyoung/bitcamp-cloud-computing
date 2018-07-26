@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+#resultDiv {
+    height: 200px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>AJAX 동기 요청</h1>
+
+<button id="btn1">버튼1</button><br>
+
+<div id="resultDiv"></div>
+
+<script>
+"use strict"
+
+// AJAX(Asynchronous JavaScript And XML)
+// => 웹 브라우저에서 웹 서버쪽으로 비동기 요청을 수행하는 것.
+// => 비동기란, 
+//    자바의 스레드처럼 작업을 실행시켜 놓고 즉시 다음 라인을 실행하는 방식이다.
+//    이전에 실행시킨 작업이 끝나면 등록된 함수를 호출하는 식으로 동작한다.
+// => 비동기 전의 상황
+//    AJAX가 등장하기 전에는 웹 페이지의 특정 부분을 갱신하기 위해서
+//    페이지 전체를 다시 로딩했다.
+// => 비동기를 지원한 후의 상황
+//    현재 웹 페이지를 유지한체로 웹서버에 요청할 수 있다.
+//    웹서버의 응답 결과를 가지고 현재 웹페이지의 일부를 갱신할 수 있다.
+// => 이렇게 함으로써 전체 페이지를 다시 로딩하는 방식보다 
+//    네트워크 오버헤드(주고 받는 데이터의 양)가 줄어 든다.
+
+btn1.onclick = function() {
+    // 1) HTTP 요청을 수행할 객체 준비
+    var xhr = new XMLHttpRequest();
+    
+    // 2) 서버에 연결
+    // 첫 번째 파라미터: HTTP 메서드. 예) GET, POST, HEAD 
+    // 두 번째 파라미터: URL
+    // 세 번째 파라미터: 비동기 요청 여부
+    xhr.open('GET', 'ex01-1.jsp', false);
+    
+    // 3) 서버에 요청 정보를 보낸다.
+    // => 동기 요청인 경우 서버에서 응답이 올 때까지 리턴하지 않는다.
+    xhr.send();
+    
+    // 4) 서버에 받은 응답 데이터를 추출한다.
+    console.log(xhr.responseText);
+    resultDiv.innerHTML = xhr.responseText;
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -5,9 +5,10 @@
 <title>자바스크립트</title>
 </head>
 <body>
-<h1>태그의 기본 행위를 막기 - form의 submit 버튼</h1>
+<h1>태그의 기본 행위를 막기 - form의 submit 이벤트</h1>
 
-<form action="http://www.daum.net">
+<form id="form1" action="http://www.daum.net" 
+      onsubmit="return checkValidate()">
 *이름: <input id="fiName" type="text" name="name"><br>
 *나이: <input id="fiAge" type="number" name="age"><br>
 전화:  <input id="fiTel" type="text" name="tel"><br>
@@ -17,14 +18,16 @@
 <script>
 "use strict"
 
-var e = document.querySelector("form input[type='submit']");
-e.onclick = function(e) {
+// onsubmit의 코드 실행 리턴 값이 true이면 입력 폼의 action을 실행하고,
+// false이면 실행하지 않는 특징을 이용한다.
+function checkValidate() {
     if (fiName.value.length == 0 || fiAge.value.length == 0) {
-        e.preventDefault();
         alert("필수 항목을 입력하세요!");
-        return;
+        return false;
     }
+    return true;
 };
+
 
 </script>
 

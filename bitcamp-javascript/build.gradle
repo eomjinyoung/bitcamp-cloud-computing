@@ -11,7 +11,14 @@ compileJava {
 }
 
 dependencies {
+    // Servlet API 라이브러리
+    // => providedCompile: 빌드할 때 사용. 배포에는 제외
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+    // => compile: 빌드할 때 사용. 배포에 포함.
     compile 'com.google.guava:guava:23.0'
+    
+    // => testCompile: 테스트할 때만 사용. 배포에는 제외.
     testCompile 'junit:junit:4.12'
 }
 
