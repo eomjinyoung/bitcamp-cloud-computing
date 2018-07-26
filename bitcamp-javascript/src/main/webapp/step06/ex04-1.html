@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+img {
+    height: 80px;
+}
+</style>
+</head>
+<body>
+<h1>DOM API - 자식 태그 추가하기</h1>
+
+<div id="d1">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqCALUHUdpgSujH5wBwipBW67q3MT1jmT2WV_MgESkik0bxkIE">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDNXuH8PzS5-fzy4l5X_thDRZju2R5SX4J2kXS0NMCJRE5ISWg">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxj34I3aOOVIkLTSIA7rojjKUyWTbCPy5e1ta0quE4lrf12VRY">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkXkys4VTp3J32trOf63oussTfZcLf-Yrt-dLl2WtneYCqgevf-g">
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR48p7gHV7yt5zY6BHFQaoBE4rpKVT_GP-2QINzb4ivf7eE8hlc">
+</div>
+
+<script>
+"use strict"
+
+setInterval(() => {
+	var e = document.querySelector("#d1 > img:first-child");
+	
+	// d1 태그에 막내 자식 태그를 추가한다.
+	d1.appendChild(e);
+}, 2000);
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>이벤트 처리 - 이벤트와 이벤트 리스너</h1>
+
+<button id="btn1" onclick="var v = prompt('나이는?'); if (parseInt(v) < 19) alert('미성년입니다.'); else alert('성년입니다.');">버튼1</button><br>
+<button id="btn2" onclick="f1()">버튼2</button><br>
+<button id="btn3">버튼3</button><br>
+
+<script>
+"use strict"
+
+// 이벤트(event)
+// => 사용자가 웹브라우저에 의해 발생되는 특별한 상태를 말한다.
+// => 예) 마우스를 클릭, 키보드의 키를 누르기, 키보드의 키를 떼기, 윈도우 크기 변경하기 등
+//
+// 이벤트 리스너(event listener)
+// => 그러한 상태에 놓였을 때 특별한 작업을 수행하도록 호출되는 메서드
+//
+
+// 이벤트 처리
+// => 특정 이벤트가 발생했을 때 호출될 함수를 등록하는 것.
+//
+
+// 방법1) 
+// => 태그에 이미 특정 이벤트와 관련하여 등록된 속성에 자바스크립트 코드를 넣기
+// => 이벤트 관련 속성의 이름은 onxxx이다.
+//    예) 마우스 클릭 이벤트 => onclick
+// => 코드:
+//    <button onclick="var v = prompt('나이는?'); if (parseInt(v) < 19) alert('미성년입니다.');">버튼</button>
+// => 이 방식은 HTML 코드와 자바스크립트 코드가 섞여 있기 때문에 유지보수에 안 좋다.
+// => 특히 긴 자바스크립트 코드를 HTML 속성에 작성하는 것은 코드를 읽기 힘들게 한다.
+
+// 방법2)
+// => 1번 방법과 마찬가지로 HTML 코드에 자바스크립트 코드를 둔다.
+//    하지만 대부분의 코드는 함수 안에 정의해 두고 
+//    HTML에서는 그 함수를 호출하는 코드만 둔다.
+// => 1번 방식 보다는 낫지만 그래도 HTML 코드에 자바스크립트 코드가 섞여 있다.
+// 
+function f1() {
+    var v = prompt('나이는?'); 
+    if (parseInt(v) < 19) 
+        alert('미성년입니다.'); 
+    else 
+        alert('성년입니다.');
+}
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
