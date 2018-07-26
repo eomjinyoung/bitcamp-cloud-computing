@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+button {
+    height: 30px;
+    margin: 20px;
+}
+div[id='d1'] {
+    margin: 20px;
+    border: 1px solid black;
+}
+div[id='d11'] {
+    margin: 20px;
+    border: 1px solid red;
+}
+div[id='d12'] {
+    margin: 20px;
+    border: 1px solid blue;
+}
+
+</style>
+</head>
+<body>
+<h1>이벤트 전달 단계 - target 단계에서만 리스너가 호출되게 하기</h1>
+
+<div id="d1">d1
+    <div id="d11">d11
+        <button id="btn1">버튼 1</button>
+        <button id="btn2">버튼 2</button>
+    </div>
+    <div id="d12">d12
+        <button id="btn3">버튼 3</button>
+        <button id="btn4">버튼 4</button>
+    </div>
+</div>
+
+
+<script>
+"use strict"
+
+d1.onclick = function() {console.log("d1")};
+d11.onclick = function() {console.log("d11")};
+d12.onclick = function() {console.log("d12")};
+
+btn1.onclick = function(event) {
+    // target 단계에서 리스너가 호출되면 
+    // 조상 태그로 버블링 하지 않도록 설정하면 된다.
+    // 다음 메서드를 리스너 호출이 끝나기 전까지 실행하면 된다.
+    // 즉 처음이나 마지막 어디에 위치하더라도 상관없다.
+    // 왜? 이벤트 객체에 버블링 단계에서 호출되지 않도록 설정했기 때문에
+    // 조상들은 이 이벤트를 무시할 것이다.
+    event.stopPropagation(); // 버블링을 멈추는 명령이다.
+    console.log("btn1")
+};
+btn2.onclick = function() {console.log("btn2")};
+btn3.onclick = function() {console.log("btn3")};
+btn4.onclick = function() {console.log("btn4")};
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

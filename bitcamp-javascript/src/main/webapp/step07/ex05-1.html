@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>태그의 기본 행위를 막기 - a 태그</h1>
+
+<a id="a1" href="http://www.daum.net">다음</a><br>
+<a id="a2" href="http://www.naver.com">뇌이버</a><br>
+
+
+<script>
+"use strict"
+
+// a 태그의 기본 행위
+// => a 태그를 클릭하면 href에 지정된 URL을 요청한다.
+// 
+a1.onclick = function(event) {
+    console.log("a1....click");
+};
+
+a2.onclick = function(event) {
+    // a 태그를 버튼으로 사용하기 위해
+    // a 태그의 기본 행위를 막고 싶다면?
+    event.preventDefault();
+    console.log("a2....click");
+};
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

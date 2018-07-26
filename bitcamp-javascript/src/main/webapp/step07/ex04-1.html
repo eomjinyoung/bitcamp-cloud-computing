@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+button {
+    height: 30px;
+    margin: 20px;
+}
+div[id^='d1'] {
+    margin: 20px;
+    border: 1px solid red;
+}
+div[id^='d2'] {
+    margin: 20px;
+    border: 1px solid blue;
+}
+</style>
+</head>
+<body>
+<h1>이벤트 전달 단계 - 전달 순서</h1>
+
+<div id="d1">d1
+    <div id="d11">d11
+        <button id="btn1">버튼 1</button>
+        <button id="btn2">버튼 2</button>
+    </div>
+    <div id="d12">d12
+        <button id="btn3">버튼 3</button>
+        <button id="btn4">버튼 4</button>
+    </div>
+</div>
+
+<div id="d2">d2
+    <div id="d21">d21
+        <button id="btn5">버튼 5</button>
+        <button id="btn6">버튼 6</button>
+    </div>
+    <div id="d22">d22
+        <button id="btn7">버튼 7</button>
+        <button id="btn8">버튼 8</button>
+    </div>
+</div>
+
+<script>
+"use strict"
+
+// 이벤트 전달 단계
+// 1) capture phase
+//    => 부모 태그에서 내려오는 단계
+// 2) target phase
+//    => 목적지에 도착한 단계
+// 3) bubble phase
+//    => 꺼꾸로 부모 태그로 따라 올라가는 단계 
+// 
+// 보통 다음과 같이 일반적인 방법으로 리스너를 등록하면 
+// 해당 리스너는 target 또는 bubble 단계일 때 호출된다. 
+// => e.onxxx = function() {} 
+// => e.addEventListener("xxx", function() {})
+//
+
+d1.onclick = function() {console.log("d1")};
+d11.onclick = function() {console.log("d11")};
+d12.onclick = function() {console.log("d12")};
+
+d2.addEventListener("click", function() {console.log("d2")});
+d21.addEventListener("click", function() {console.log("d21")});
+d22.addEventListener("click", function() {console.log("d22")});
+
+btn1.onclick = function() {console.log("btn1")};
+btn2.onclick = function() {console.log("btn2")};
+btn3.onclick = function() {console.log("btn3")};
+btn4.onclick = function() {console.log("btn4")};
+
+btn5.addEventListener("click", function() {console.log("btn5")});
+btn6.addEventListener("click", function() {console.log("btn6")});
+btn7.addEventListener("click", function() {console.log("btn7")});
+btn8.addEventListener("click", function() {console.log("btn8")});
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

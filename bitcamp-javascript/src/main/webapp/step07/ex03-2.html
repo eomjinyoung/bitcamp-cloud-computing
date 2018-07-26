@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>프로그래밍으로 이벤트 발생시키기 - 커스텀 이벤트 발생시키기</h1>
+
+<span id="txt1">이벤트 발생시키기</span>
+
+<button id="btn1">버튼1</button><br>
+
+<script>
+"use strict"
+
+// 커스텀 이벤트?
+// => 기존에 존재하는 이벤트가 아닌 새 이벤트를 만들 수 있다.
+// => 이벤트에 특정 값을 첨부하려면 detail 이름으로 값을 설정해야 한다.
+txt1.onclick = function() {
+    // 1) 발생시킬 이벤트 객체를 준비한다.
+    // => 첫 번째 파라미터는 이벤트 이름이다.
+    // => 두 번째 파라미터는 이벤트에 첨부할 값이다. 
+    //    단 detail이라는 이름으로 값을 첨부해야 한다.
+    var e = new CustomEvent("okok", {
+        detail: {
+            name: "홍길동",
+            age: 20,
+            working: false
+        }
+    });
+    
+    // 2) 이벤트를 발생시킬 대상 객체에 대해 dispatchEvent()를 호출한다.
+    btn1.dispatchEvent(e);
+};
+
+// 새로 만든 이벤트에 대한 프로퍼티 명이 존재하지 않기 때문에 
+// 커스텀 이벤트의 리스너를 등록할 때는 onxxx 프로퍼티를 사용할 수 없다.
+// 대신 addEventListener()를 사용해야 한다.
+btn1.addEventListener("okok", function(event) {
+    console.log("name=", event.detail.name);
+    console.log("age=", event.detail.age);
+    console.log("working=", event.detail.working);
+});
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
