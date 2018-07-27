@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+#resultDiv {
+    height: 200px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>AJAX 비동기 요청 - GET 요청</h1>
+
+<button id="btn1">버튼1</button><br>
+
+<div id="resultDiv"></div>
+
+<script>
+"use strict"
+
+// GET 요청의 핵심은 서버에 값을 보낼 때 URL에 붙여 보낸다는 것이다.
+// 
+btn1.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert("서버에서 오류 발생!");
+            return;
+        }
+        console.log(xhr.responseText);
+        resultDiv.innerHTML = xhr.responseText;
+    };
+    
+    // 서버에 값을 보낼 때 URL에 붙여 보낸다.
+    xhr.open('GET', 'ex01-2.jsp?a=100&b=200&op=%2b', true);
+    xhr.send();
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

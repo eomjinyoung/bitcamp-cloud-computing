@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+#resultDiv {
+    height: 200px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>AJAX 동기 요청 - 동기 방식의 문제점을 비동기로 해결</h1>
+
+<input id="iA" type="text">
+<select id="iOp">
+    <option value="%2B">+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+</select>
+<input id="iB" type="text">
+<button id="btn1">계산하기</button><br>
+
+<div id="resultDiv"></div>
+
+<script>
+"use strict"
+
+
+btn1.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    // 서버에서 응답이 왔을 때 출력하게 한다.
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert("서버에서 오류 발생!");
+            return;
+        }
+        console.log(xhr.responseText);
+        resultDiv.innerHTML = xhr.responseText;
+    };
+    
+    xhr.open('GET', 
+            'ex01-3.jsp?a=' + iA.value + 
+            '&op=' + iOp.value +
+            '&b=' + iB.value, true);
+    xhr.send();
+    
+    // 비동기 요청에서는 send()를 호출한 후 바로 리턴한다.
+    // 따라서 동기 요청 때처럼 화면이 벽돌이 되는 상황을 피할 수 있다.
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

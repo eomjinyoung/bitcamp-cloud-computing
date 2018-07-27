@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+
+  <!-- 웹 컴포넌트(페이지 컨트롤러 등)만 관리한다. -->
+  <context:component-scan base-package="bitcamp.pms.controller.json">
+  </context:component-scan>
+
+  <!-- MVC 관련 애노테이션을 처리할 객체들을 자동 등록한다. 
+         matrix variable 기능을 사용하고 싶으면 다음과 같이 활성화시켜라!
+  -->
+  <mvc:annotation-driven enable-matrix-variables="true">
+      <mvc:message-converters>
+          <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="objectMapper">
+               <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                  <property name="dateFormat">
+                      <bean class="java.text.SimpleDateFormat">
+                          <constructor-arg value="yyyy-MM-dd"/>
+                      </bean>
+                  </property>
+               </bean>
+            </property>
+          </bean>
+      </mvc:message-converters>
+  </mvc:annotation-driven>
+  
+</beans>
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+#resultDiv {
+    height: 200px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>AJAX 비동기 요청 - 서버의 응답 결과를 받기 III</h1>
+
+<button id="btn1">버튼1</button><br>
+
+<div id="resultDiv"></div>
+
+<script>
+"use strict"
+
+// 서버가 요청을 처리하는 중에 오류가 발생한다면 
+// 그 응답 결과에 따라 분리해 처리해야 한다.
+// 
+btn1.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert("서버에서 오류 발생!");
+            return;
+        }
+        
+        //서버의 응답 결과가 정상적인지 아니면 오류인지 확인하는 방법
+        //status 코드 값을 확인한다.
+        console.log(xhr.responseText);
+        resultDiv.innerHTML = xhr.responseText;
+    };
+    // 다음과 같이 존재하지 않는 자원을 요청해보자!
+    // 그럼 서버에서 오류가 발생할 것이고, 
+    // 응답 status 코드는 200이 아닐 것이다.
+    xhr.open('GET', 'ex01-1.jspx', true);
+    xhr.send();
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

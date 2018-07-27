@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>연산자 - == 와 ===  </h1>
+
+<script>
+"use strict"
+
+var a = "false";
+var b = false;
+
+if (a == b)
+    console.log("'false' == false");
+else    
+    console.log("'false' != false");
+    
+var a = "100";
+var b = 100;
+
+if (a == b) // 암시적 형변환에 의해 string => number로 바꾼 다음 연산한다.
+    console.log("'100' == 100");
+else    
+    console.log("'100' != 100");
+
+if (a === b) // 암시적 형변환을 수행하지 않는다. 무조건 타입이 같아야 연산을 수행한다.
+    console.log("'100' === 100");
+else    
+    console.log("'100' !== 100");
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

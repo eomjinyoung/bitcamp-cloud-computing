@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>연산자 - undefined 암시적 형변환 응용 </h1>
+
+<script>
+"use strict"
+
+var obj = new Object();
+obj.plus = function(a, b) {return a + b};
+obj.minus = function(a, b) {return a - b};
+
+console.log(obj.plus(100, 200));
+
+// 존재하지 않는 함수(또는 변수)를 사용하려 하면 실행 오류가 발생할 것이다.
+// 그래서 존재하는지 여부를 확인한 후 사용해야 한다.
+// => 방법1)
+if (obj.hasOwnProperty('minus'))
+    console.log(obj.minus(100, 200));
+
+// => 방법2) 해당 변수가 존재하는 지 여부를 검사
+if (obj.minus != undefined)
+    console.log(obj.minus(100, 200));
+    
+// => 방법3) 
+//    조건문의 검사는 오직 boolean 값만 가능하다.
+//    따라서 다른 타입의 값은 boolean으로 암시적 형변환이 된 후에 검사를 수행한다.
+//    undefined의 경우 boolean으로 바꾸면 false가 된다.
+if (obj.minus) 
+    console.log(obj.minus(100, 200));
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

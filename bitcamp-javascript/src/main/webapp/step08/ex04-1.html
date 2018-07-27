@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+</head>
+<body>
+<h1>AJAX 비동기 요청 - JSON 다루기</h1>
+
+<button id="btn1">JSON 데이터 가져오기</button>
+
+<form>
+이름: <input id="fiName" type="text"><br>
+나이: <input id="fiAge" type="number"><br>
+전화: <input id="fiTel" type="tel"><br>
+</form>
+
+
+<script>
+"use strict"
+
+btn1.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert("서버에서 오류 발생!");
+            return;
+        }
+        console.log(xhr.responseText);
+        
+        // 서버에서 받은 JSON 문자열을 파싱하여 자바스크립트 객체로 바꾼 다음에
+        // 사용하면 프로그래밍이 편하다.
+        // 개발자가 직접 JSON 문자열에서 값을 추출할 필요가 없다.
+        // 
+        var obj = JSON.parse(xhr.responseText);
+        fiName.value = obj.name;
+        fiAge.value = obj.age;
+        fiTel.value = obj.tel;
+    };
+    
+    // 서버에 값을 보낼 때 URL에 붙여 보낸다.
+    xhr.open('GET', 'ex04-1.jsp', true);
+    xhr.send();
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
