@@ -52,7 +52,7 @@ function loadList(page, size) {
 	    for (var item of data.list) {
 	        var tr = document.createElement("tr");
 	        tr.innerHTML = 
-		        `<td><a href='view/${item.id}'>${item.id}</a></td>
+		        `<td><a href='#' data-id='${item.id}' onclick='clickViewLink(event)'>${item.id}</a></td>
 		        <td>${item.email}</td>`;
 		    tbody.appendChild(tr);
 	    }
@@ -73,6 +73,12 @@ function loadList(page, size) {
 	        `../../json/member/list?page=${page}&size=${size}`, 
 	        true);
 	xhr.send();
+}
+
+function clickViewLink(event) {
+    event.preventDefault();
+    var id = event.currentTarget.getAttribute('data-id');
+    location.href = "view.html?id=" + id;
 }
 </script>
 

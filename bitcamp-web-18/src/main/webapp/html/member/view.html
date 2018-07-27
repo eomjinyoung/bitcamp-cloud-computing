@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>멤버 보기</title>
+</head>
+<body>
+<h1>멤버 보기3</h1>
+<form>
+<table border='1'>
+<tr><th>아이디</th><td>
+    <input type='text' id='eId' readonly></td></tr>
+<tr><th>이메일</th>
+    <td><input type='email' id='eEmail'></td></tr>
+<tr><th>암호</th>
+    <td><input type='password' id='ePassword'></td></tr>
+</table>
+<p>
+<a href='../list'>목록</a>
+<button>변경</button>
+<a href='../delete?id=user01'>삭제</a>
+</p>
+</form>
+
+<script>
+"use strict"
+
+var data = null;
+var values = location.href.split('?');
+
+if (values.length < 2) {
+    alert('아이디를 지정하지 않았습니다.');
+    location.href = "list.html";
+    
+} else {
+    var id = values[1].split('=')[1];
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert("서버에서 오류 발생!");
+            return;
+        }
+        data = JSON.parse(xhr.responseText);
+        if (data.member == null) {
+            alert('아이디가 무효합니다.');
+            location.href = "list.html";
+            return;
+        }
+        eId.value = data.member.id;
+        eEmail.value = data.member.email;
+    };
+    
+    xhr.open('GET', 
+            `../../json/member/view/${id}`, 
+            true);
+    xhr.send();
+}
+    
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    

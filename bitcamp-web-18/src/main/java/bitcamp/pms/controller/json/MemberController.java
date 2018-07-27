@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,13 +70,10 @@ public class MemberController {
     }
     
     @RequestMapping("view/{id}")
-    public String view(
-            @PathVariable String id,
-            Model model) throws Exception {
-        
-        Member member = memberService.get(id);
-        model.addAttribute("member", member);
-        return "member/view";
+    public Object view(@PathVariable String id) throws Exception {
+        HashMap<String,Object> data = new HashMap<>();
+        data.put("member", memberService.get(id));
+        return data;
     }
 
 }
