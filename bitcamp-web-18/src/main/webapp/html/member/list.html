@@ -22,14 +22,20 @@
 </div>
 
 
+<script src="../js/common.js"></script>
 <script>
 "use strict"
+
+var {page, size} = parseQuery(location.href);
 
 let tbody = document.querySelector('#eListTable > tbody'); 
 let data = null;
 
-loadList(1, 3);
-
+if (page != undefined && size != undefined) {
+    loadList(page, size);
+} else {
+    loadList(1, 3);
+}
 ePrevBtn.onclick = function() {
     loadList(data.page - 1, data.size);
 };
@@ -78,7 +84,7 @@ function loadList(page, size) {
 function clickViewLink(event) {
     event.preventDefault();
     var id = event.currentTarget.getAttribute('data-id');
-    location.href = "view.html?id=" + id;
+    location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
 }
 </script>
 
