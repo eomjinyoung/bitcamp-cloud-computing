@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<style>
+#resultDiv {
+    height: 200px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+<h1>AJAX 비동기 요청</h1>
+
+<button id="btn1">버튼1</button><br>
+
+<div id="resultDiv"></div>
+
+<script>
+"use strict"
+
+// 동기 요청의 문제점을 극복하는 방법은 
+// 서버에 요청할 때 별도의 스레드로 실행하는 방법이다.
+// XMLHttpRequest는 비동기 요청을 지원한다.
+// 
+btn1.onclick = function() {
+    // 1) HTTP 요청을 수행할 객체 준비
+    var xhr = new XMLHttpRequest();
+    
+    // 2) 서버에 연결
+    // 비동기 요청을 수행하려면 세 번째 파라미터의 값을 true로 설정하라!
+    xhr.open('GET', 'ex01-1.jsp', true);
+    
+    // 3) 서버에 요청 정보를 보낸다.
+    // => 별도의 스레드를 통해 서버에 요청을 한다.
+    //    그리고 서버의 응답을 기다리지 않고 즉시 다음 명령을 실행한다.
+    xhr.send();
+    
+    // 4) 서버에 받은 응답 데이터를 추출한다.
+    // => 서버에서 응답이 오기 전에 서버가 보낸 응답 결과를 출력하기 때문에 
+    //    출력 결과는 없다.
+    console.log(xhr.responseText);
+    resultDiv.innerHTML = xhr.responseText;
+};
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
