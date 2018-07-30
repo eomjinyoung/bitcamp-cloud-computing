@@ -16,8 +16,6 @@ let bit = function(value) {
         }
     }
     
-    if (el.length == 0) return null;
-    
     // 개발자가 쓰기 좋은 함수를 추가해서 리턴하자!
     el.html = function(value) {
         if (arguments.length == 0) {
@@ -55,9 +53,43 @@ let bit = function(value) {
         return el;
     };
     
-    el.on = function(name, handler) {
-        for (var e of el)
-            e.addEventListener(name, handler);
+    el.on = function(name, p2, p3) {
+        var selector = null;
+        var handler = null;
+        
+        if (arguments.length == 2) handler = p2;
+        if (arguments.length == 3) {
+            selector = p2;
+            handler = p3;
+        }
+        
+        for (var e of el) {
+            if (!selector) {
+                // selector가 지정되어 있지 않으면, 
+                // 해당 태그에 대해 이벤트가 발생했을 때 핸들러를 호출한다.
+                e.addEventListener(name, handler);
+            } else {
+                // selector가 지정되어 있으면,
+                // 핸들러를 호출하기 전에 selector에 해당하는 것인지 검사하는
+                // 함수가 먼저 호출되게 한다.
+                e.addEventListener(name, function(event) {
+                    // 현재 태그의 자신 태그 중에서 
+                    // selector 조건에 해당되는 자식 태그들을 찾는다. 
+                    var selectorTargets = e.querySelectorAll(selector);
+                    
+                    // 그 자식 태그들 중에 이 이벤트가 발생된 태그를 찾는다.
+                    for (var target of selectorTargets) {
+                        // 만약 이벤트가 발생된 태그와 일치하는 자식 태그가 있다면,
+                        // 그때서야 핸들러를 호출해준다.
+                        if (event.target == target) {
+                            handler(event);
+                            break;
+                        }
+                    }
+                });
+            }
+        }
+        
         return el;
     };
     
