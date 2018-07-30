@@ -2,46 +2,70 @@
 
 // 자주 사용할 함수를 라이브러리화 시킨다.
 let bit = function(value) {
-    var e;
+    var el = [];
     if (value instanceof HTMLElement) {
-        e = value;
+        el[0] = value;
     } else if (value.startsWith('<')) {
-        e = document.createElement(
+        el[0] = document.createElement(
                 value.substr(1, value.length - 2));
     } else {
-        e = document.querySelector(value);
+        var list = document.querySelectorAll(value);
+        // selector로 찾은 태그들을 빈 배열로 옮긴다.
+        for (var i = 0; i < list.length; i++) {
+            el[i] = list[i];
+        }
     }
     
+    if (el.length == 0) return null;
+    
     // 개발자가 쓰기 좋은 함수를 추가해서 리턴하자!
-    e.html = function(value) {
+    el.html = function(value) {
         if (arguments.length == 0) {
-            return e.innerHTML;
+            return el[0].innerHTML;
         }
-        e.innerHTML = value;
-        return e;
+        for (var e of el) 
+            e.innerHTML = value;
+        return el;
     };
     
-    e.append = function(child) {
-        e.appendChild(child);
-        return e;
+    el.append = function(child) {
+        for (var e of el) 
+            e.appendChild(child);
+        return el;
     };
     
-    e.appendTo = function(parent) {
-        parent.appendChild(e);
-        return e;
+    el.appendTo = function(parent) {
+        for (var e of el)
+            parent[parent.length - 1].appendChild(e);
+        return el;
     };
     
-    e.attr = function(name, value) {
+    el.attr = function(name, value) {
         if (arguments.length < 2) {
-            return e.getAttribute(name);
+            return el[0].getAttribute(name);
         }
-        e.setAttribute(name, value);
+        for (var e of el)
+            e.setAttribute(name, value);
+        return el;
     };
     
-    e.removeAttr = function(name) {
-        e.removeAttribute(name);
+    el.removeAttr = function(name) {
+        for (var e of el)
+            e.removeAttribute(name);
+        return el;
     };
-    return e;
+    
+    el.on = function(name, handler) {
+        for (var e of el)
+            e.addEventListener(name, handler);
+        return el;
+    };
+    
+    el.click = function(handler) {
+        return el.on('click', handler);
+    };
+    
+    return el;
 };
 
 bit.parseQuery = function(url) {

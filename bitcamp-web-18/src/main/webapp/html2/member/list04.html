@@ -72,16 +72,16 @@ function loadList(page, size) {
        else
              $(eNextBtn).removeAttr('disabled');
        
+		$('.viewLink').click(function (event) {
+		    alert('okok');
+		    event.preventDefault();
+		    var id = $(event.currentTarget).attr('data-id');
+		    location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
+		});
        
     });
 }
 
-$('.viewLink').click(function (event) {
-    alert('okok');
-    event.preventDefault();
-    var id = $(event.currentTarget).attr('data-id');
-    location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
-});
 
 </script>
 

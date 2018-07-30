@@ -37,11 +37,11 @@ if (page != undefined && size != undefined) {
     loadList(1, 3);
 }
 
-$(ePrevBtn).click(function() {
+$(ePrevBtn).on('click', function() {
     loadList(data.page - 1, data.size);
 });
 
-$(eNextBtn).click(function() {
+$(eNextBtn).on('click', function() {
     loadList(data.page + 1, data.size);
 });
 
@@ -56,7 +56,8 @@ function loadList(page, size) {
        tbody.html('');
        for (var item of data.list) {
            $("<tr>")
-             .html(`<td><a href='#' data-id='${item.id}' class='viewLink'>${item.id}</a></td>
+             .html(`<td><a href='#' data-id='${item.id}' 
+               onclick='clickViewLink(event)'>${item.id}</a></td>
                <td>${item.email}</td>`)
              .appendTo(tbody);
        }
@@ -71,18 +72,14 @@ function loadList(page, size) {
            $(eNextBtn).attr('disabled', '');
        else
              $(eNextBtn).removeAttr('disabled');
-       
-       
     });
 }
 
-$('.viewLink').click(function (event) {
-    alert('okok');
+function clickViewLink(event) {
     event.preventDefault();
     var id = $(event.currentTarget).attr('data-id');
     location.href = `view.html?id=${id}&page=${data.page}&size=${data.size}`;
-});
-
+}
 </script>
 
 </body>
