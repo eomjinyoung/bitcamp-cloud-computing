@@ -29,9 +29,8 @@
 var data = null;
 var {id, page, size} = parseQuery(location.href);
 
-if (id == undefined) {
-    alert('아이디를 지정하지 않았습니다.');
-    location.href = "list.html";
+if (id == undefined) { // 입력 폼 
+    
     
 } else {
     var xhr = new XMLHttpRequest();
@@ -39,7 +38,7 @@ if (id == undefined) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState < 4) return;
         if (xhr.status !== 200) {
-            alert("서버에서 오류 발생!");
+            alert('서버에서 오류 발생!');
             return;
         }
         data = JSON.parse(xhr.responseText);
@@ -61,6 +60,54 @@ if (id == undefined) {
 eListBtn.onclick = function() {
     location.href = `list.html?page=${page}&size=${size}`;
 };
+
+eUpdateBtn.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert('서버에서 오류 발생!');
+            return;
+        }
+        let data = JSON.parse(xhr.responseText);
+        if (data.status == 'success') {
+            location.href = `list.html?page=${page}&size=${size}`;
+        } else {
+            alert('변경 오류입니다!');
+            console.log(data.error);
+        }
+    };
+    
+    xhr.open('POST', '../../json/member/update', true);
+    xhr.setRequestHeader('Content-Type', 
+            'application/x-www-form-urlencoded');
+    xhr.send(`id=${eId.value}&email=${eEmail.value}&password=${ePassword.value}`);
+};
+
+eDeleteBtn.onclick = function() {
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState < 4) return;
+        if (xhr.status !== 200) {
+            alert('서버에서 오류 발생!');
+            return;
+        }
+        let data = JSON.parse(xhr.responseText);
+        if (data.status == 'success') {
+            location.href = `list.html?page=${page}&size=${size}`;
+        } else {
+            alert('삭제 오류입니다!');
+            console.log(data.error);
+        }
+    };
+    
+    xhr.open('GET', 
+            `../../json/member/delete?id=${eId.value}`,
+            true);
+    xhr.send();
+}
     
 </script>
 
