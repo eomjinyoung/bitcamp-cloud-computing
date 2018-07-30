@@ -45,10 +45,11 @@ public class MemberController {
     }
     
     @PostMapping("add")
-    public String add(Member member) throws Exception {
-        
+    public Object add(Member member) throws Exception {
+        HashMap<String,Object> result = new HashMap<>();
         memberService.add(member);
-        return "redirect:list";
+        result.put("status", "success");
+        return result;
     }
     
     @RequestMapping("delete")

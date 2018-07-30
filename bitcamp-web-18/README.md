@@ -7,3 +7,18 @@
   프론트 컨트롤러의 IoC 컨테이너가 관리하도록 이관한다.
 - app-servlet.xml, json-servlet.xml 파일 생성
 - web.xml에서 프로런트 컨트롤러에 IoC 컨테이너 설정 파일을 등록한다. 
+
+## 페이지 컨트롤러 추가
+- *.json.MemberController 추가
+- 페이지 컨트롤러를 @RestController로 선언
+- 리턴 값으로 JSP URL 대신 데이터를 객체를 리턴 
+
+### html 
+AJAX 기반 front-end 웹 페이지 작성
+- html/member/list.html : AJAX 기반 회원 목록 페이지 출력 HTML 생성
+- html/member/view.html : AJAX 기반 회상 상세 조회 페이지 출력 HTML 생성
+- html/js/common.js : Query String 분석 함수 추가
+
+### html2
+mini jQuery 라이브러리 작성
+- 
