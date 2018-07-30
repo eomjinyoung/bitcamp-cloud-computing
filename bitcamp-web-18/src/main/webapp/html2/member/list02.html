@@ -49,28 +49,28 @@ function loadList(page, size) {
         {
             page: page,
             size: size
-        }, function() {console.log("로딩 성공!")})
-     .done(function(result) {
-       data = result;
-       tbody.html('');
-       for (var item of data.list) {
-           $("<tr>")
-             .html(`<td><a href='#' data-id='${item.id}' 
-               onclick='clickViewLink(event)'>${item.id}</a></td>
-               <td>${item.email}</td>`)
-             .appendTo(tbody);
-       }
-       
-       $(ePageNo).html(data.page);
-       if (data.page <= 1)
-           $(ePrevBtn).attr('disabled', '');
-       else 
-           $(ePrevBtn).removeAttr('disabled');
-       
-       if (data.page >= data.totalPage)
-           $(eNextBtn).attr('disabled', '');
-       else
-             $(eNextBtn).removeAttr('disabled');
+        },
+        function(result) {
+            data = result;
+            tbody.html('');
+            for (var item of data.list) {
+                $("<tr>")
+                  .html(`<td><a href='#' data-id='${item.id}' 
+                    onclick='clickViewLink(event)'>${item.id}</a></td>
+                    <td>${item.email}</td>`)
+                  .appendTo(tbody);
+            }
+            
+            $(ePageNo).html(data.page);
+            if (data.page <= 1)
+                $(ePrevBtn).attr('disabled', '');
+            else 
+                $(ePrevBtn).removeAttr('disabled');
+            
+            if (data.page >= data.totalPage)
+                $(eNextBtn).attr('disabled', '');
+            else
+                $(eNextBtn).removeAttr('disabled');
     });
 }
 
