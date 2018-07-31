@@ -59,21 +59,23 @@ $(eListBtn).click(function() {
 });
 
 $(eUpdateBtn).click(function() {
-    $.post('../../json/member/update', 
-        {
+    $.ajax('../../json/member/update', {
+        method: 'POST',
+        dataType: 'json',
+        data: {
             id: $(eId).val(), 
             email: $(eEmail).val(), 
             password: $(ePassword).val()
         },
-        function(data) {
+        success: function(data) {
 	        if (data.status == 'success') {
 	            location.href = `list.html?page=${page}&size=${size}`;
 	        } else {
 	            alert('변경 오류입니다!');
 	            console.log(data.error);
 	        }
-        },
-        'json');
+        }
+    });
 });
 
 eDeleteBtn.onclick = function() {

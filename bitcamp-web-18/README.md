@@ -20,5 +20,7 @@ AJAX 기반 front-end 웹 페이지 작성
 - html/js/common.js : Query String 분석 함수 추가
 
 ### html2
-mini jQuery 라이브러리 작성
-- 
+mini jQuery(bit.js) 라이브러리 작성
+- DOM API 랩퍼 함수 작성
+- AJAX 랩퍼 함수 작성
+- Event 랩퍼 함수 작성
