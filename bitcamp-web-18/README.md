@@ -28,3 +28,12 @@ mini jQuery(bit.js) 라이브러리 작성
 ### html3
 jQuery 적용
 - 기존에 bit.js 대신 jQuery 라이브러리를 적용한다.
+
+### html4
+Bootstrap 적용
+- UI에 부트스트랩 CSS 적용하기
+- css 폴더를 만들어 공통 CSS 관리하기
+
+### html5
+HTML과 JavaScript 분리하기
+- 유지보수를 쉽게 만들기 위해 HTML과 자바스크립트 코드를 분리한다.
