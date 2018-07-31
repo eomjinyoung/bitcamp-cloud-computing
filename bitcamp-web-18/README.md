@@ -24,3 +24,7 @@ mini jQuery(bit.js) 라이브러리 작성
 - DOM API 랩퍼 함수 작성
 - AJAX 랩퍼 함수 작성
 - Event 랩퍼 함수 작성
+
+### html3
+jQuery 적용
+- 기존에 bit.js 대신 jQuery 라이브러리를 적용한다.
