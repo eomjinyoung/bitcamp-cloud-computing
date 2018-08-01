@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import bitcamp.pms.domain.Member;
 import bitcamp.pms.service.MemberService;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/member")
 public class MemberController {
 
     @Autowired MemberService memberService;
     
+    //@CrossOrigin
     @RequestMapping("list")
     public Object list(
             @RequestParam(defaultValue="1") int page, 

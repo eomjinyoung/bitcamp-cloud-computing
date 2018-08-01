@@ -54,5 +54,9 @@ HTML과 JavaScript 분리하기
 - common.js에 서버 주소를 등록한다.
 - 나머지 모든 파일에서 AJAX 요청 주소를 변경한다.
 
-Phonegap을 이용하여 모바일 웹 앱 배치하기. 
+Phonegap 준비
+- iOS/Android PhoneGap 앱 설치
 - 
+
+Cross Domain 설정
+- @CrossOrigin 또는 <mvc-cors> 태그로 설정하기
