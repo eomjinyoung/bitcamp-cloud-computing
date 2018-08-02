@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+<title>tictactoe</title>
+<style>
+#cell-box {
+    border: 1px solid blue;
+    width: 150px;
+    overflow: hidden;
+}
+.cell {
+    box-sizing: border-box;
+    float: left;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<h1>Tic-Tac-Toe 게임</h1>
+<h2>3단계</h2>
+<ul>
+    <li>사용자 액션에 대한 이벤트를 리스너 등록한다.</li>
+</ul>
+
+<div id="cell-box">
+    <a data-pos="11" class="cell">0</a>
+    <a data-pos="12" class="cell">1</a>
+    <a data-pos="13" class="cell">2</a>
+    <a data-pos="21" class="cell">3</a>
+    <a data-pos="22" class="cell">4</a>
+    <a data-pos="23" class="cell">5</a>
+    <a data-pos="31" class="cell">6</a>
+    <a data-pos="32" class="cell">7</a>
+    <a data-pos="33" class="cell">8</a>
+</div>
+<a id='new-game'>새 게임</a>
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="tictactoe03.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
