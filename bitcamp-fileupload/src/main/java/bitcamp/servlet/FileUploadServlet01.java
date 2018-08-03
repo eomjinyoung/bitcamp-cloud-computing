@@ -35,7 +35,7 @@ public class FileUploadServlet01 extends HttpServlet {
         // 멀티파트 데이터를 파싱한다.
         // 업로드된 파일은 위에서 설정한 factory를 이용하여 다룬다.
         ServletFileUpload upload = new ServletFileUpload(factory);
-    
+        
         // 클라이언트가 보낸 데이터를 분석한다.
         HashMap<String,Object> paramMap = new HashMap<>();
         try {
