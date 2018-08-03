@@ -66,6 +66,15 @@ public class FileUploadServlet01 extends HttpServlet {
         out.printf("photo = <a href='files/%s'>%s</a><br>\n", 
                 paramMap.get("photo"),
                 paramMap.get("photo"));
+        out.printf("<p><img src='files/%s'></p>", paramMap.get("photo"));
+        out.println("<p><img id='img1'></p>");
+        out.println("<script>");
+        out.println("    setTimeout(() => {");
+        out.printf(
+                "        document.getElementById('img1').src = 'files/%s';", 
+                paramMap.get("photo"));
+        out.println("    }, 5000);");
+        out.println("</script>");
         out.println("</body></html>");
     }
 }
