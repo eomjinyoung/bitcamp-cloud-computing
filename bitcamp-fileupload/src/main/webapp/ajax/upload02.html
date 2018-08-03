@@ -26,9 +26,9 @@
 </pre>
 
 <input id="fileupload" type="file" name="files" 
-       data-url="../mvc/exam11_2/upload01" multiple>
+       data-url="../mvc/ajax/upload01" multiple>
 <hr>
-<p><img id="photoImg" width="100"></p>
+<div id="imgList"></div>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
@@ -37,16 +37,31 @@
 <script>
 "use strict"
 
+// fileupload() 함수
+// => input 태그에 대해 파일 업로드 정보를 설정한다.
+// => jQuery에 기본 함수가 아니다.
+// => blueimp-file-upload 라이브러리가 추가한 함수이다.
+// => 이 함수를 호출하면 지정한 input 태그에 플러그인에서 만든 
+//    click 리스너를 자동 등록한다.
+// => 따라서 input 태그를 클릭하면 등록된 플러그인 리스너 함수가 호출되어 
+//    업로드 작업을 수행한다.
+// 
+
+var jqImgList = $('#imgList');
+
 $('#fileupload').fileupload({
     dataType: 'json',
     done: function (e, data) { 
       console.log('done()...');
       console.log(data.result); // 서버가 보낸 JSON 객체는 data.result 에 보관되어 있다.
       
-      $('#photoImg').attr("src", "../files/" + data.result.filename);
+      setTimeout(() => {
+	      $('<img>')
+	        .attr('src', '../files/' + data.result.filenames[0])
+	        .css('height', '80px')
+	        .appendTo(jqImgList);
+      }, 5000);
       
-      //var file = data.result.fileList[0];
-      //$('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
     }
 });
 

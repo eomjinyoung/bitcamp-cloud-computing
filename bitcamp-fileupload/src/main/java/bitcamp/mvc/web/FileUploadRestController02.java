@@ -21,9 +21,11 @@ public class FileUploadRestController02 {
     @RequestMapping("upload01")
     public Object upload01(
             String name, 
-            int age, 
+            String age, 
             MultipartFile[] files) {
-
+        
+        System.out.println("upload01()...호출됨!");
+        
         HashMap<String,Object> result = new HashMap<>();
         result.put("name", name);
         result.put("age", age);
