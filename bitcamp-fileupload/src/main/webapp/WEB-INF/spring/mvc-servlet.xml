@@ -47,6 +47,17 @@
 	    <property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- 멀티파트 요청 파라미터 값을  처리할 객체를 등록해야만 파일 업로드를 수행할 수 있다.
+	   => CommonsMultipartResolver 객체는 Apache의 commons-fileupload 
+	      라이브러리를 사용하기 때문에 반드시 해당 라이브러리를 추가해야 한다.
+	-->
+	<bean id="multipartResolver" 
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+          <property name="maxUploadSize" value="3000000"/>
+          <property name="maxInMemorySize" value="1000000"/>
+    </bean>
+
+
 </beans>
 
 
