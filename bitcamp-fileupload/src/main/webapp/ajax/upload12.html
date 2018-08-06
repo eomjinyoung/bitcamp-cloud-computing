@@ -17,7 +17,10 @@
 나이: <input id='age' type='text'><br>
 사진: <input id="fileupload" type="file" name="files" multiple><br>
 <button id='upload-btn' type='button'>등록</button>
- 
+
+<hr>
+<div id="imgList"></div>
+
 <script src='node_modules/jquery/dist/jquery.js'></script>
 <script src="node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
@@ -26,7 +29,7 @@
 "use strict"
 
 $('#fileupload').fileupload({
-  url: '../mvc/exam11_2/upload03',        // 서버에 요청할 URL
+  url: '../mvc/ajax/upload01',        // 서버에 요청할 URL
   dataType: 'json',         // 서버가 보낸 응답이 JSON임을 지정하기
   sequentialUploads: true,  // 여러 개의 파일을 업로드 할 때 순서대로 요청하기.
   singleFileUploads: false, // 한 요청에 여러 개의 파일을 전송시키기.   
@@ -42,11 +45,19 @@ $('#fileupload').fileupload({
   done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
     console.log('done()...');
     console.log(data.result);
-    $('<p/>').text("name : " + data.result.name).appendTo(document.body);
-    $('<p/>').text("age : " + data.result.age).appendTo(document.body);
-    $.each(data.result.files, function(index, file) {
-      $('<p/>').text(file.filename + " : " + file.filesize).appendTo(document.body);
-    });
+    
+    setTimeout(()=>{
+        $('<p>').text(`name=${data.result.name}`)
+            .appendTo('#imgList');
+        $('<p>').text(`age=${data.result.age}`)
+            .appendTo('#imgList');
+        
+        for (var filename of data.result.filenames) {
+            $('<img>').attr('src', `../files/${filename}`)
+                .css('height', '60px')
+                .appendTo('#imgList');
+        }
+    }, 5000);  
   },
   submit: function (e, data) { // submit 이벤트가 발생했을 때 호출됨. 서버에 전송하기 전에 호출됨.
     console.log('submit()...');

@@ -40,7 +40,7 @@
 "use strict"
 
 $('#fileupload').fileupload({
-    url: '../mvc/exam11_2/upload01',        // 서버에 요청할 URL
+    url: '../mvc/ajax/upload01',        // 서버에 요청할 URL
     dataType: 'json', /* "서버가 보낸 데이터가 JSON 문자열이다. 자바스크립트 객체로 바꿔라." 라는 의미*/
     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
       console.log('done()...');
