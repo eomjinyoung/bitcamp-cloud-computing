@@ -6,7 +6,7 @@ var con = mysql.createConnection({
     host: '13.209.35.254', 
     //port: '3306',
     database: 'studydb',
-    user: 'study2',
+    user: 'study',
     password: '1111'
 });
 
