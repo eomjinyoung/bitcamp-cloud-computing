@@ -1,10 +1,7 @@
-// 주제: 코드를 모듈로 분리 - 요청 핸들러를 관리하는 코드 분리
+// 주제: 코드를 모듈로 분리 - 요청 핸들러를 호출하는 코드 분리
 
-
-const http = require('http')
-const url = require('url')
 const mysql = require('mysql')
-const express = require('./express01')
+const express = require('./express02')
 
 var pool = mysql.createPool({
     connectionLimit: 10,
@@ -15,39 +12,10 @@ var pool = mysql.createPool({
     password: '1111'
 });
 
-const server = http.createServer((req, res) => {
-    var urlInfo = url.parse(req.url, true);
-    
-    if (urlInfo.pathname === '/favicon.ico') {
-        res.end();
-        return;
-    }
-            
-    res.writeHead(200, {
-        'Content-Type': 'text/plain;charset=UTF-8'
-    });
-    
-    var handler = express.getHandler(urlInfo.pathname);
-    
-    if (handler) {
-        try {
-            handler(urlInfo, req, res);
-        } catch (err) {
-            res.end('실행 중 오류 발생!');
-        }
-    } else {
-        res.end('해당 URL을 지원하지 않습니다!');
-        return;
-    }
-    
-});
+const app = express();
 
 
-server.listen(8000, () => {
-    console.log('서버가 시작됨!')
-})
-
-express.add('/member/list', (urlInfo, req, res) => {
+app.add('/member/list', (urlInfo, req, res) => {
     var pageNo = 1;
     var pageSize = 3;
     
@@ -75,7 +43,7 @@ express.add('/member/list', (urlInfo, req, res) => {
     });
 });
 
-express.add('/member/add', (urlInfo, req, res) => {
+app.add('/member/add', (urlInfo, req, res) => {
     pool.query(
             'insert into pms2_member(mid,email,pwd)\
             values(?, ?, password(?))',
@@ -91,7 +59,7 @@ express.add('/member/add', (urlInfo, req, res) => {
     });
 });
 
-express.add('/member/update', (urlInfo, req, res) => {
+app.add('/member/update', (urlInfo, req, res) => {
     pool.query(
             'update pms2_member set\
              email=?,\
@@ -111,7 +79,7 @@ express.add('/member/update', (urlInfo, req, res) => {
     });
 });
 
-express.add('/member/delete', (urlInfo, req, res) => {
+app.add('/member/delete', (urlInfo, req, res) => {
     pool.query('delete from pms2_member where mid=?',
         [urlInfo.query.id],
         function(err, results) {
@@ -126,12 +94,14 @@ express.add('/member/delete', (urlInfo, req, res) => {
 });
 
 
-express.add('/hello', (urlInfo, req, res) => {
+app.add('/hello', (urlInfo, req, res) => {
     res.write(`${urlInfo.query.name}님 안녕하세요!`);
     res.end();
 });
 
-
+app.listen(8000, () => {
+    console.log('서버 실행 중...');
+});
 
 
 
