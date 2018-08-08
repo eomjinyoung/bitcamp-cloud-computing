@@ -27,14 +27,28 @@ const server = http.createServer((req, res) => {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
     
-    if (urlInfo.pathname === '/board/list') {
-        res.write('게시물 목록')
-    } else if (urlInfo.pathname === '/board/add') {
-        res.write('게시물 등록')
-    } else {
-        res.write('해당 URL을 지원하지 않습니다!')
+    if (urlInfo.pathname !== '/calc') {
+        res.end('해당 URL을 지원하지 않습니다!');
+        return;
+    }
+    
+    var a = parseInt(urlInfo.query.a)
+    var b = parseInt(urlInfo.query.b)
+    var op = urlInfo.query.op
+    var result = 0;
+    
+    switch (op) {
+    case '+': result = a + b; break;
+    case '-': result = a - b; break;
+    case '*': result = a * b; break;
+    case '/': result = a / b; break;
+    default:
+        res.write('${op} 연산자를 지원하지 않습니다.')
+        res.end();
+        return;
     }
 
+    res.write(`${a} ${op} ${b} = ${result}\n`)
     res.end()
 });
 
