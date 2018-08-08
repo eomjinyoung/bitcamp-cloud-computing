@@ -31,34 +31,22 @@ const server = http.createServer((req, res) => {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
     
-    if (urlInfo.pathname !== '/member/list') {
+    if (urlInfo.pathname !== '/member/add') {
         res.end('해당 URL을 지원하지 않습니다!');
         return;
     }
     
-    var pageNo = 1;
-    var pageSize = 3;
-    
-    if (urlInfo.query.pageNo) {
-        pageNo = parseInt(urlInfo.query.pageNo)
-    }
-    if (urlInfo.query.pageSize) {
-        pageSize = parseInt(urlInfo.query.pageSize)
-    }
-    
-    var startIndex = (pageNo - 1) * pageSize;
-    
-    pool.query('select mid, email from pms2_member limit ?, ?',
-        [startIndex, pageSize],
+    pool.query(
+            'insert into pms2_member(mid,email,pwd)\
+            values(?, ?, password(?))',
+        [urlInfo.query.id, urlInfo.query.email, urlInfo.query.password],
         function(err, results) {
             if (err) {
-                res.end('DB 조회 중 예외 발생!')
+                res.end('데이터 처리 중 예외 발생!')
                 return;
             }
             
-            for (var row of results) {
-                res.write(`${row.email}, ${row.mid}\n`);
-            }
+            res.write('등록성공!\n')
             res.end();
     });
 });

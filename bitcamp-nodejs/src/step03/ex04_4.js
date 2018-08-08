@@ -31,34 +31,20 @@ const server = http.createServer((req, res) => {
         'Content-Type': 'text/plain;charset=UTF-8'
     });
     
-    if (urlInfo.pathname !== '/member/list') {
+    if (urlInfo.pathname !== '/member/delete') {
         res.end('해당 URL을 지원하지 않습니다!');
         return;
     }
     
-    var pageNo = 1;
-    var pageSize = 3;
-    
-    if (urlInfo.query.pageNo) {
-        pageNo = parseInt(urlInfo.query.pageNo)
-    }
-    if (urlInfo.query.pageSize) {
-        pageSize = parseInt(urlInfo.query.pageSize)
-    }
-    
-    var startIndex = (pageNo - 1) * pageSize;
-    
-    pool.query('select mid, email from pms2_member limit ?, ?',
-        [startIndex, pageSize],
+    pool.query('delete from pms2_member where mid=?',
+        [urlInfo.query.id],
         function(err, results) {
             if (err) {
                 res.end('DB 조회 중 예외 발생!')
                 return;
             }
             
-            for (var row of results) {
-                res.write(`${row.email}, ${row.mid}\n`);
-            }
+            res.write('삭제 성공!')
             res.end();
     });
 });
