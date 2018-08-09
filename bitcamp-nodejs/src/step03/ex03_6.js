@@ -3,6 +3,7 @@
 
 const http = require('http')
 const url = require('url')
+const querystring = require('querystring')
 
 const server = http.createServer((req, res) => {
     var urlInfo = url.parse(req.url, true);
@@ -37,10 +38,19 @@ const server = http.createServer((req, res) => {
         data += chunk;
     });
     
+    // 데이터를 모두 읽었을 때 응답을 완료해야 한다.
     req.on('end', () => {
-        res.write(data)
+        // 읽은 데이터를 사용하기 좋게 key/value로 분리한다.
+        var params = querystring.parse(data);
+        
+        res.write(`name=${params.name}\n`)
+        res.write(`age=${params.age}\n`)
         res.end()
     });
+    
+    // 데이터에 대해 호출될 메서드를 등록한 후 
+    // 다음과 같이 바로 응답을 완료하면 안된다.
+    //res.end()
 
 });
 
