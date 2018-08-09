@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>POST 요청</title>
+</head>
+<body>
+<h1>POST 요청</h1>
+<h2>예제 테스트 방법</h2>
+<ul>
+  <li>HTML을 웹브라우저로 직접 읽는다.</li>
+  <li>값을 넣고 보내기 버튼을 누른다</li>
+  <li>서버에 받아온 HTML이 아니기 때문에 절대 경로로 URL을 지정해야 한다.</li>
+</ul> 
+<form action="http://localhost:8000/" method="post">
+이름: <input type="text" name="name"><br>
+나이: <input type="number" name="age"><br>
+<button>보내기</button>
+</form>
+
+</body>
+</html>
