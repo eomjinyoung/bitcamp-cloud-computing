@@ -1,16 +1,15 @@
-//주제: express 사용하기 - GET/POST 파라미터 처리
+//주제: express 사용하기 - 정적 HTML 파일을 서비스하기
 
 const express = require('express')
 const app = express();
 
-// POST 요청 데이터를 처리할 모듈 로딩
+
+// POST 요청 데이터 처리
 const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: false}))
 
-// POST 요청 데이터를 분석할 객체를 준비한다.
-const postParameterParser = bodyParser.urlencoded({extended: false})
-
-// POST 요청 파라미터 분석기를 Express 웹서버 객체에 등록한다.
-app.use(postParameterParser)
+// 정적 HTML 파일 처리
+app.use(express.static('public'))
 
 app.get('/test01', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/plain;charset=UTF-8'});
