@@ -1,9 +1,7 @@
-//주제: express 사용하기 - 템플릿 엔진 지정하기
+//과제 - 회원관리, 팀관리, 게시판, 강좌관리 웹 애플리케이션 만들기
 
 const express = require('express')
 const app = express();
-
-
 
 // POST 요청 데이터 처리
 const bodyParser = require('body-parser')
@@ -34,29 +32,15 @@ app.set('view engine', 'html')
 const path = require('path')
 app.set('views', path.join(__dirname, 'templates'))
 
-app.get('/test01', (req, res) => {
-    res.writeHead(200, {'Content-Type':'text/plain;charset=UTF-8'});
-    res.write(`name=${req.query.name}\n`);
-    res.write(`age=${req.query.age}\n`);
-    res.end();
-});
+// '/member/*' URL을 처리할 라우터와 '/team/*' URL을 처리할 라우터를 로딩한다. 
+//=> 라우터를 Express의 웹서버에 등록한다.
+app.use('/member', require('./member'))
 
-app.post('/test02', (req, res) => {
-    res.writeHead(200, {'Content-Type':'text/plain;charset=UTF-8'});
-    res.write(`name=${req.body.name}\n`);
-    res.write(`age=${req.body.age}\n`);
-    res.end();
-});
 
-app.post('/test02', (req, res) => {
+app.get('/hello', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/plain;charset=UTF-8'});
-    res.write(`name=${req.body.name}\n`);
-    res.write(`age=${req.body.age}\n`);
+    res.write('Hello!');
     res.end();
-});
-
-app.get('/test03', (req, res) => {
-    res.render('template01', req.query)
 });
 
 app.listen(8000, () => {

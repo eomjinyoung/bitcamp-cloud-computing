@@ -1,4 +1,4 @@
-//주제: express 사용하기 - 템플릿 엔진 지정하기
+//주제: express 사용하기 - 요청 핸들러를 모듈로 분리하기
 
 const express = require('express')
 const app = express();
@@ -33,6 +33,15 @@ app.set('view engine', 'html')
 // => 디렉토리가 여러 개일 때는 배열에 담아 지정한다.
 const path = require('path')
 app.set('views', path.join(__dirname, 'templates'))
+
+// '/member/*' URL을 처리할 라우터와 '/team/*' URL을 처리할 라우터를 로딩한다. 
+var memberRouter = require('./member')
+var teamRouter = require('./team')
+
+//=> 라우터를 Express의 웹서버에 등록한다.
+app.use('/member', memberRouter)
+app.use('/team', teamRouter)
+
 
 app.get('/test01', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/plain;charset=UTF-8'});
