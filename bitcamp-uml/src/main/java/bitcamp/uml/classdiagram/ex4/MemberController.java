@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex4;
+package bitcamp.uml.classdiagram.ex4;
 
 // Dependancy(의존)
 // => 특정 메서드에서 일시적으로 사용하는 객체와의 관계

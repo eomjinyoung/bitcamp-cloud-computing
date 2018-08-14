@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex4;
+package bitcamp.uml.classdiagram.ex4;
 
 public class HttpSession {
 

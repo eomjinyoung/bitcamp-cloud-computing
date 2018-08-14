@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex5;
+package bitcamp.uml.classdiagram.ex5;
 
 // Inheritance(상속)
 // => 다른 클래스를 상속할 때의 관계

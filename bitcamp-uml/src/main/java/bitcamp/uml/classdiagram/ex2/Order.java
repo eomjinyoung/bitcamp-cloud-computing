@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex2;
+package bitcamp.uml.classdiagram.ex2;
 
 import java.util.List;
 

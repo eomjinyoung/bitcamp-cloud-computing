@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex3;
+package bitcamp.uml.classdiagram.ex3;
 
 
 public class Address {

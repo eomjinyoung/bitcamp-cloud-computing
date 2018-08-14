@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex3;
+package bitcamp.uml.classdiagram.ex3;
 
 //Composition(합성)
 //=> 한 객체가 다른 객체를 포함하는 관계.

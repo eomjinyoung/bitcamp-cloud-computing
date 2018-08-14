@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex1;
+package bitcamp.uml.classdiagram.ex1;
 
 // 클래스 관계 - Association(연관)
 // => 한 클래스가 다른 클래스를 지속적으로 사용하는 관계

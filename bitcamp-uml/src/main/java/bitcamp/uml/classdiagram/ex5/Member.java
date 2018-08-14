@@ -1,4 +1,4 @@
-package bitcam.uml.classdiagram.ex5;
+package bitcamp.uml.classdiagram.ex5;
 
 public class Member {
     private String email;
