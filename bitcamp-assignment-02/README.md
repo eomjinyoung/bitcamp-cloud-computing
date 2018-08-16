@@ -38,7 +38,23 @@
 - DB 모델링
     - DB 모델 작성
     - Database에 테이블 생성
-
+        
+### 2단계 - 웹 프로젝트 준비
+- 웹 프로젝트 폴더 생성
+    - 'mkdir bitcamp-assignment-02' 실행
+- gradle 설정 파일 준비
+    - 'gradle init' 실행
+- 소스 디렉토리 준비
+    - src/main/java
+    - src/main/resources
+    - src/main/webapp
+    - src/test/java
+    - src/test/resources
+- 이클립스 설정 파일 준비
+    - 'build.gradle' 파일 편집
+        - 플러그인 추가: java, eclipse-wtp, war
+    - 'gradle eclipse' 실행
+    - 이클립스로 웹 프로젝트 임포트 
 
 
 

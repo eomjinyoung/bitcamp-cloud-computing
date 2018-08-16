@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+
+  <context:component-scan base-package="bitcamp.assignment">
+    <context:exclude-filter type="regex" 
+                            expression="bitcamp.assignment.web.*"/>
+  </context:component-scan>
+
+  <tx:annotation-driven transaction-manager="txManager"/>
+  
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+    <tx:attributes>
+       <tx:method name="get*" read-only="true"/>
+       <tx:method name="list*" read-only="true"/>
+       <tx:method name="find*" read-only="true"/>
+       <tx:method name="*"/>
+    </tx:attributes>
+  </tx:advice>
+  
+  <aop:config>
+      <aop:pointcut id="serviceOperation" 
+        expression="execution(* bitcamp.assignment.service.*.*(..))"/>
+      
+      <aop:advisor advice-ref="txAdvice" 
+        pointcut-ref="serviceOperation"/>
+  </aop:config>
+  
+  <bean id="sqlSessionFactory"
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>  
+    <property name="mapperLocations" 
+              value="classpath*:bitcamp/assignment/sql/**/*.xml" />  
+    <property name="typeAliasesPackage" 
+              value="bitcamp.assignment.domain"/>               
+  </bean>
+
+  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="${jdbc.driver}" />
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+  </bean>
+  
+  <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+  
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" 
+              value="bitcamp.assignment.dao" />
+  </bean>
+  
+  <context:property-placeholder 
+      location="classpath:bitcamp/assignment/config/jdbc.properties"/>
+
+</beans>
+
+
+
+
+
+
+
