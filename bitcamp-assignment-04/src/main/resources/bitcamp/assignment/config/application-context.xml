@@ -45,7 +45,7 @@
         class="org.mybatis.spring.SqlSessionFactoryBean">
     <property name="dataSource" ref="dataSource"/>  
     <property name="mapperLocations" 
-              value="classpath*:bitcamp/assignment/sql/**/*.xml" />  
+              value="classpath*:bitcamp/assignment/mapper/**/*.xml" />  
     <property name="typeAliasesPackage" 
               value="bitcamp.assignment.domain"/>               
   </bean>
@@ -63,7 +63,7 @@
   
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
     <property name="basePackage" 
-              value="bitcamp.assignment.dao" />
+              value="bitcamp.assignment.repository" />
   </bean>
   
   <context:property-placeholder 

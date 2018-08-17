@@ -77,11 +77,16 @@
 
 ### 4단계 - 기능구현
 - 회원 가입 구현
-    - 페이지 컨트롤러 작성(MemberController)
+    - 페이지 컨트롤러 작성(MemberController.java)
     - 회원 가입 폼 작성(signUp.html, signUp.js)
     - package.json 작성(외부 라이브러리 추가)
     - 'npm install' 실행하여 프론트엔드 라이브러리 가져온다.
-
+    - 공통 코드 작성(common.css, common.js, jquery.bit.js, footer.html)
+    - MemberService.java, MemberServiceImpl.java 작성
+    - MemberRepository.java, MemberMapper.xml 작성
+- 로그인 구현
+    - 로그인 폼 작성(signIn.html, signIn.js)
+     
 
 
 
