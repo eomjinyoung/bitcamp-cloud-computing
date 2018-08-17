@@ -1,3 +1,5 @@
+'use strict'
+
 $('#loginBtn').click(() => {
     $.post(`${serverApiAddr}/json/auth/signIn`, {
         'email': $('#fEmail').val(),

@@ -2,6 +2,8 @@ package bitcamp.assignment.web.json;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,11 @@ public class AuthController {
     @Autowired MemberService memberService;
     
     @PostMapping("signIn")
-    public Object signUp(
-            String email, String password, boolean saveEmail) {
+    public Object signIn(
+            String email, 
+            String password, 
+            boolean saveEmail,
+            HttpSession session) {
         
         HashMap<String,Object> result = new HashMap<>();
         try {
@@ -28,6 +33,7 @@ public class AuthController {
             if (loginUser == null)
                 throw new Exception("로그인 실패!");
             
+            session.setAttribute("loginUser", loginUser);
             result.put("status", "success");
             
         } catch (Exception e) {

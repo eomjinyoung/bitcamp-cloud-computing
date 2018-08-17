@@ -1,3 +1,5 @@
+'use strict'
+
 $.parseQuery = function(url) {
     var paramMap = {};
 

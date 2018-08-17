@@ -86,7 +86,12 @@
     - MemberRepository.java, MemberMapper.xml 작성
 - 로그인 구현
     - 로그인 폼 작성(signIn.html, signIn.js)
-     
+    - 페이지 컨트롤러 작성(AuthController.java)
+    - MemberService.java, MemberServiceImpl.java 에 메서드 추가
+    - MemberRepository.java 에 메서드 추가 
+    - MemberMapper.xml 에 SQL 문 추가 
+- 명함관리 메인화면
+    - 메인화면 작성(businesscard/index.html)
 
 
 
