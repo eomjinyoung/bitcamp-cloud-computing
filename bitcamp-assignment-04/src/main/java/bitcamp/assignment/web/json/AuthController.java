@@ -11,18 +11,25 @@ import bitcamp.assignment.domain.Member;
 import bitcamp.assignment.service.MemberService;
 
 @RestController
-@RequestMapping("/member")
-public class MemberController {
+@RequestMapping("/auth")
+public class AuthController {
     
     @Autowired MemberService memberService;
     
-    @PostMapping("signUp")
-    public Object signUp(Member member) {
+    @PostMapping("signIn")
+    public Object signUp(
+            String email, String password, boolean saveEmail) {
         
         HashMap<String,Object> result = new HashMap<>();
         try {
-            memberService.add(member);
+            Member loginUser = memberService.getMember(
+                    email, password);
+            
+            if (loginUser == null)
+                throw new Exception("로그인 실패!");
+            
             result.put("status", "success");
+            
         } catch (Exception e) {
             result.put("status", "fail");
             result.put("message", e.getMessage());

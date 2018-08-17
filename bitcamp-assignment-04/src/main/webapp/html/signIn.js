@@ -1,8 +1,8 @@
-$('#addBtn').click(() => {
-    $.post(`${serverApiAddr}/json/member/signUp`, {
+$('#loginBtn').click(() => {
+    $.post(`${serverApiAddr}/json/auth/signIn`, {
         'email': $('#fEmail').val(),
-        'name': $('#fName').val(),
-        'password': $('#fPassword').val()
+        'password': $('#fPassword').val(),
+        'saveEmail': $('#fSaveEmail').prop('checked')
     }, (result) => {
         console.log(result);
     }, 'json')
@@ -10,4 +10,3 @@ $('#addBtn').click(() => {
         alert('회원 가입 중에 오류 발생!')
     });
 });
-
