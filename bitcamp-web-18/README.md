@@ -3,15 +3,15 @@
 
 ## JSON 데이터 요청을 처리하는 프론트 컨트롤러 설정하기
 - web.xml에 /json/* URL 요청을 처리할 프론트 컨트롤러를 추가한다.
-- ContextLoaderListener에서 관리하는 객체 중에 웹 관련 컴포넌트들은 
+- ContextLoaderListener에서 관리하는 객체 중에 웹 관련 컴포넌트들은
   프론트 컨트롤러의 IoC 컨테이너가 관리하도록 이관한다.
 - app-servlet.xml, json-servlet.xml 파일 생성
-- web.xml에서 프로런트 컨트롤러에 IoC 컨테이너 설정 파일을 등록한다. 
+- web.xml에서 프로런트 컨트롤러에 IoC 컨테이너 설정 파일을 등록한다.
 
 ## 페이지 컨트롤러 추가
 - *.json.MemberController 추가
 - 페이지 컨트롤러를 @RestController로 선언
-- 리턴 값으로 JSP URL 대신 데이터를 객체를 리턴 
+- 리턴 값으로 JSP URL 대신 데이터를 객체를 리턴
 
 ### html 
 AJAX 기반 front-end 웹 페이지 작성
@@ -56,7 +56,7 @@ HTML과 JavaScript 분리하기
 
 Phonegap 준비
 - iOS/Android PhoneGap 앱 설치
-- 
+-
 
 Cross Domain 설정
 - @CrossOrigin 또는 <mvc-cors> 태그로 설정하기
