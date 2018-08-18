@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/common.css">
+<style>
+div.container {
+    width: 400px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>로그인</h1>
+
+<form>
+  <div class="form-group">
+    <label for="fEmail">이메일</label>
+    <input type="email" class="form-control" id="fEmail" placeholder="hong@test.com">
+  </div>
+  <div class="form-group">
+    <label for="fPassword">암호</label>
+    <input type="password" class="form-control" id="fPassword" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="fSaveEmail">
+    <label class="form-check-label" for="fSaveEmail">이메일 저장</label>
+  </div>
+  <button id="loginBtn" type="button" class="btn btn-primary">로그인</button>
+</form>
+
+<footer></footer>
+
+</div><!-- .container -->
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.bit.js"></script>
+<script src="js/common.js"></script>
+<script src="signIn.js"></script>
+</body>
+</html>

@@ -34,6 +34,9 @@ dependencies {
     // JSON 데이터를 다루는 라이브러리
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
     
+    // 썸네일 이미지 생성 라이브러리
+    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+    
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }

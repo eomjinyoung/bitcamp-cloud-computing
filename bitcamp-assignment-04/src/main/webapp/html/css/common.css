@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+body {
+    font-size: small;
+}
+
+div {
+    /* border: 1px solid red;
+    padding: 5px; */
+    box-sizing: border-box;
+}
+
+div.container {
+    width: 700px;
+}
+
+.container > footer {
+    position: relative;
+    font-size: 80%;
+}
+
+.container > footer #app-name {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.container > footer #copyright {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+

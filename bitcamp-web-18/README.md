@@ -60,3 +60,21 @@ Phonegap 준비
 
 Cross Domain 설정
 - @CrossOrigin 또는 <mvc-cors> 태그로 설정하기
+
+### html7
+템플릿 엔진 적용하여 HTML 태그를 생성한다.
+- handlebars 라이브러리 가져오기
+  - 'npm install handlebars --save'
+- HTML 페이지 라이브러리 삽입
+  - <script src='...'></script>
+- 자바스크립트에 적용하기
+  - <script> 태그를 사용하여 템플릿 정의
+
+
+
+
+
+
+
+
+

@@ -15,7 +15,7 @@
    - "gradle eclipse" 실행
    - 프로젝트 리프래시  
 2) 페이지 컨트롤러에 썸네일 이미지 파일 생성 코드 추가
-   - Controller25.java 
+   - FileUploadRestController02.java
 </pre>
 
 <span class="btn btn-success fileinput-button">
@@ -24,7 +24,8 @@
     <input id="fileupload" type="file" name="files" multiple>
 </span>
 
-<div id="imgBox"></div>
+<hr>
+<div id="imgList"></div>
 
 <script src='node_modules/jquery/dist/jquery.js'></script>
 <script src="node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
@@ -36,18 +37,27 @@
 var imgBox = $('#imgBox');
 
 $('#fileupload').fileupload({
-    url: '../mvc/exam11_2/upload04',        // 서버에 요청할 URL
+    url: '../mvc/ajax/upload02',        // 서버에 요청할 URL
     dataType: 'json', /* "서버가 보낸 데이터가 JSON 문자열이다. 자바스크립트 객체로 바꿔라." 라는 의미*/
     done: function (e, data) { // 서버에서 응답이 오면 호출된다. 각 파일 별로 호출된다.
       console.log('done()...');
       console.log(data.result);
       
-      $('<img>')
-        .attr('src', '../files/' + data.result.filename)
-        .appendTo(imgBox);
-      $('<img>')
-        .attr('src', '../files/' + data.result.filename + '_50x50.jpg')
-        .appendTo(imgBox);
+      setTimeout(()=>{
+          for (var filename of data.result.filenames) {
+              var pTag = $('<p>');
+              $('<img>').attr('src', `../files/${filename}_20x20.jpg`)
+                        .appendTo(pTag);
+              $('<img>').attr('src', `../files/${filename}_80x80.jpg`)
+                        .appendTo(pTag);
+              $('<img>').attr('src', `../files/${filename}_120x120.jpg`)
+                        .appendTo(pTag);
+              $('<img>').attr('src', `../files/${filename}`)
+                        .appendTo(pTag);
+              pTag.appendTo('#imgList');
+              
+          }
+      }, 5000);  
     }
 });
 

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+body {
+    font-size: small;
+}
+
+div {
+    /* border: 1px solid red;
+    padding: 5px; */
+    box-sizing: border-box;
+}
+
+div.container {
+    width: 700px;
+}
+
+.container > header {
+    border-bottom: 1px solid gray;
+    height: 60px;
+}
+
+.container > header #app-name {
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
+}
+
+.container > header a {
+    float: right;
+}
+
+
+.container > footer {
+    position: relative;
+    height: 20px;
+    font-size: 80%;
+}
+
+.container > footer a {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.container > footer #copyright {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+

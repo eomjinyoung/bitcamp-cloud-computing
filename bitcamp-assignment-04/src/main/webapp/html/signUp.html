@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/common.css">
+<style>
+div.container {
+    width: 400px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>회원 가입</h1>
+
+<form>
+  <div class="form-group">
+    <label for="fEmail">이메일</label>
+    <input type="email" class="form-control" id="fEmail" aria-describedby="emailHelp" placeholder="hong@test.com">
+    <small id="emailHelp" class="form-text text-muted">여러분의 이메일을 결코 다른 누구와 공유하지 않을 것입니다.</small>
+  </div>
+  <div class="form-group">
+    <label for="fName">이름</label>
+    <input type="text" class="form-control" id="fName" placeholder="홍길동">
+  </div>
+  <div class="form-group">
+    <label for="fPassword">암호</label>
+    <input type="password" class="form-control" id="fPassword" placeholder="Password">
+  </div>
+  <button id="addBtn" type="button" class="btn btn-primary">가입</button>
+</form>
+
+<footer></footer>
+
+</div><!-- .container -->
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/jquery.bit.js"></script>
+<script src="js/common.js"></script>
+<script src="signUp.js"></script>
+</body>
+</html>
