@@ -3,8 +3,14 @@
 </article>
 
 <article>
-<ul>
+<ul id="name-list">
     <li>김길동</li>
     <li>박길동</li>
 </ul>
 </article>
+<script id="li-template" type="text/x-handlebars-template">
+{{#each list}}
+<li><a href='#'>{{name}}</a></li>
+{{/each}}
+</script>
+<script src="list.js"></script>
