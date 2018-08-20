@@ -30,13 +30,12 @@ public class BusinessCardController {
         Member loginUser = 
                 (Member)session.getAttribute("loginUser");
         
-        System.out.println(loginUser);
-        //List<BusinessCard> list = 
-        //        bizcardService.list(loginUser.getNo());
+        List<BusinessCard> list = 
+                bizcardService.list(loginUser.getNo());
         
         HashMap<String,Object> result = new HashMap<>();
         result.put("status", "success");
-        
+        result.put("list", list);
         return result;
     }
 }

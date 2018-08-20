@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.assignment.repository.BusinessCardRepository">
+
+  <resultMap type="businesscard" id="businesscardMap">
+    <id column="BCNO" property="no"/>
+    <result column="MNO" property="memberNo"/>
+    <result column="NAME" property="name"/>
+    <result column="MTEL" property="mobileTel"/>
+    <result column="TEL" property="tel"/>
+    <result column="FAX" property="fax"/>
+    <result column="EMAIL" property="email"/>
+    <result column="MEMO" property="meno"/>
+  </resultMap>
+
+  <select id="findByMemberNo" 
+          parameterType="int"
+          resultMap="businesscardMap">
+    select 
+        BCNO,
+        MNO,
+        NAME
+    from P2_BIZCARD
+    where MNO=#{value}
+  </select>
+</mapper>
+
+
+
+
