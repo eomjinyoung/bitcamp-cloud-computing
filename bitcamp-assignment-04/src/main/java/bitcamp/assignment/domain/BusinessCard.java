@@ -14,11 +14,10 @@ public class BusinessCard implements Serializable {
     protected String email;
     protected String memo;
     
-    
     @Override
     public String toString() {
         return "BusinessCard [no=" + no + ", memberNo=" + memberNo + ", name=" + name + ", mobileTel=" + mobileTel
-                + ", tel=" + tel + ", fax=" + fax + ", email=" + email + "]";
+                + ", tel=" + tel + ", fax=" + fax + ", email=" + email + ", memo=" + memo + "]";
     }
     public int getNo() {
         return no;
