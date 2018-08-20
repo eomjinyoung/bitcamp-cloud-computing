@@ -25,6 +25,22 @@
     from P2_BIZCARD
     where MNO=#{value}
   </select>
+  
+  <select id="findByCardNoAndMemberNo" 
+          parameterType="map"
+          resultMap="businesscardMap">
+    select 
+        BCNO,
+        MNO,
+        NAME,
+        MTEL,
+        TEL,
+        FAX,
+        EMAIL,
+        MEMO
+    from P2_BIZCARD
+    where BCNO=#{cardNo} and MNO=#{memberNo}
+  </select>
 </mapper>
 
 

@@ -1,19 +1,53 @@
-<h1>명함 상세 정보</h1>
 <form>
-  <div class="form-group">
-    <label for="fEmail">이메일</label>
-    <input type="email" class="form-control" id="fEmail" aria-describedby="emailHelp" placeholder="hong@test.com">
-    <small id="emailHelp" class="form-text text-muted">여러분의 이메일을 결코 다른 누구와 공유하지 않을 것입니다.</small>
+  <div class="form-group row">
+    <label for="f-name" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+      <input type="text" 
+             class="form-control-plaintext form-control-lg" 
+             id="f-name">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="fName">이름</label>
-    <input type="text" class="form-control" id="fName" placeholder="홍길동">
+  <div class="form-group row">
+    <label for="f-mobile-tel" class="col-sm-2 col-form-label">휴대전화</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control-plaintext" 
+        id="f-mobile-tel">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="fPassword">암호</label>
-    <input type="password" class="form-control" id="fPassword" placeholder="Password">
+  <div class="form-group row">
+    <label for="f-tel" class="col-sm-2 col-form-label">일반전화</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control-plaintext" 
+        id="f-tel">
+    </div>
   </div>
-  <button id="addBtn" type="button" class="btn btn-primary">가입</button>
+  <div class="form-group row">
+    <label for="f-fax" class="col-sm-2 col-form-label">팩스</label>
+    <div class="col-sm-10">
+      <input type="tel" class="form-control-plaintext" 
+        id="f-fax">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="f-email" class="col-sm-2 col-form-label">이메일</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control-plaintext" 
+        id="f-email">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="f-memo" class="col-sm-2 col-form-label">메모</label>
+    <div class="col-sm-10">
+      <textarea class="form-control-plaintext" 
+        id="f-memo" rows="4"></textarea>
+    </div>
+  </div>
+  
+  <button id="add-btn" type="button" class="btn btn-sm btn-primary">추가</button>
+  <button id="delete-btn" type="button" class="btn btn-sm btn-primary">삭제</button>
+  <button id="ok-btn" type="button" class="btn btn-sm btn-primary">확인</button>
+  <button id="reset-btn" type="reset" class="btn btn-sm btn-primary">취소</button>
 </form>
 <script src="form.js"></script>
 

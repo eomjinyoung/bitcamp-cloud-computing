@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +37,22 @@ public class BusinessCardController {
         HashMap<String,Object> result = new HashMap<>();
         result.put("status", "success");
         result.put("list", list);
+        return result;
+    }
+    
+    @GetMapping("{no}")
+    public Object get(
+            @PathVariable int no, HttpSession session) {
+        
+        Member loginUser = 
+                (Member)session.getAttribute("loginUser");
+        
+        BusinessCard bizcard = 
+                bizcardService.get(no, loginUser.getNo());
+        
+        HashMap<String,Object> result = new HashMap<>();
+        result.put("status", "success");
+        result.put("data", bizcard);
         return result;
     }
 }
