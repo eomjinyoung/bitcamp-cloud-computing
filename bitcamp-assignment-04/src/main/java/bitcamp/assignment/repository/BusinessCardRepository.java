@@ -11,4 +11,10 @@ public interface BusinessCardRepository {
 
     BusinessCard findByCardNoAndMemberNo(HashMap<String, Object> params);
 
+    int insert(BusinessCard bizcard);
+
+    int update(BusinessCard bizcard);
+
+    int delete(HashMap<String, Object> params);
+
 }

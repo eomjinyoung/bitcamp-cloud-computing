@@ -38,6 +38,19 @@ public class BusinessCardServiceImpl
         return bizcardRepository.insert(bizcard);
     }
     
+    @Override
+    public int update(BusinessCard bizcard) {
+        return bizcardRepository.update(bizcard);
+    }
+    
+    @Override
+    public int delete(int cardNo, int memberNo) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("cardNo", cardNo);
+        params.put("memberNo", memberNo);
+        return bizcardRepository.delete(params);
+    }
+    
 }
 
 

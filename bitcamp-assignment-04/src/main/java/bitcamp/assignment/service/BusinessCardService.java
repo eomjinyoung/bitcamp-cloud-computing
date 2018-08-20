@@ -10,6 +10,10 @@ public interface BusinessCardService {
 
     BusinessCard get(int cardNo, int memberNo);
 
-    void add(BusinessCard bizcard);
+    int add(BusinessCard bizcard);
+
+    int update(BusinessCard bizcard);
+
+    int delete(int no, int no2);
     
 }

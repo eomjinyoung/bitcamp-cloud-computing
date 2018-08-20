@@ -3,11 +3,7 @@
 var liTemplateSrc = $('#li-template').text();
 var template = Handlebars.compile(liTemplateSrc);
 
-$.getJSON(`${serverApiAddr}/json/businesscard/list`, (result) => {
-    var html = template(result);
-    $('#name-list').html(html);
-    $('#name-list li:first-child').click();
-})
+loadList();
 
 $('#name-list').on('click', 'li', (e) => {
     $('#name-list li.list-group-item-secondary')
@@ -18,6 +14,15 @@ $('#name-list').on('click', 'li', (e) => {
     $(document.body).trigger('show.detail', [no]);
 });
 
+$(document.body).on('refresh.list', () => loadList());
+
+function loadList() {
+    $.getJSON(`${serverApiAddr}/json/businesscard/list`, (result) => {
+        var html = template(result);
+        $('#name-list').html(html);
+        $('#name-list li:first-child').click();
+    })
+}
 
 
 

@@ -12,7 +12,7 @@
     <result column="TEL" property="tel"/>
     <result column="FAX" property="fax"/>
     <result column="EMAIL" property="email"/>
-    <result column="MEMO" property="meno"/>
+    <result column="MEMO" property="memo"/>
   </resultMap>
 
   <select id="findByMemberNo" 
@@ -24,6 +24,7 @@
         NAME
     from P2_BIZCARD
     where MNO=#{value}
+    order by NAME asc
   </select>
   
   <select id="findByCardNoAndMemberNo" 
@@ -41,7 +42,44 @@
     from P2_BIZCARD
     where BCNO=#{cardNo} and MNO=#{memberNo}
   </select>
+  
+  <insert id="insert" parameterType="businesscard">
+    insert into P2_BIZCARD(
+        MNO,NAME,MTEL,TEL,FAX,EMAIL,MEMO)
+    values(
+        #{memberNo},
+        #{name},
+        #{mobileTel},
+        #{tel},
+        #{fax},
+        #{email},
+        #{memo})
+  </insert>
+  
+  <update id="update" parameterType="businesscard">
+    update P2_BIZCARD set
+        NAME = #{name},
+        MTEL = #{mobileTel},
+        TEL = #{tel},
+        FAX = #{fax},
+        EMAIL = #{email},
+        MEMO = #{memo}
+    where 
+        BCNO = #{no} and MNO = #{memberNo}
+  </update>
+  
+  <delete id="delete" parameterType="map">
+    delete from P2_BIZCARD
+    where BCNO=#{cardNo} and MNO=#{memberNo}
+  </delete>
 </mapper>
+
+
+
+
+
+
+
 
 
 
