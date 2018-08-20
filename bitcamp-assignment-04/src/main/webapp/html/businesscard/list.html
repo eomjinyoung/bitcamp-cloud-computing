@@ -3,14 +3,11 @@
 </article>
 
 <article>
-<ul id="name-list">
-    <li>김길동</li>
-    <li>박길동</li>
-</ul>
+<ul id="name-list" class="list-group list-group-flush"></ul>
 </article>
 <script id="li-template" type="text/x-handlebars-template">
 {{#each list}}
-<li><a href='#'>{{name}}</a></li>
+<li class="list-group-item list-group-item-action" data-no="{{no}}">{{name}}</li>
 {{/each}}
 </script>
 <script src="list.js"></script>
