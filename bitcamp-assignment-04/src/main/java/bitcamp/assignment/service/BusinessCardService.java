@@ -9,5 +9,7 @@ public interface BusinessCardService {
     List<BusinessCard> list(int no);
 
     BusinessCard get(int cardNo, int memberNo);
+
+    void add(BusinessCard bizcard);
     
 }

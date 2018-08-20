@@ -32,6 +32,12 @@ public class BusinessCardServiceImpl
         params.put("memberNo", memberNo);
         return bizcardRepository.findByCardNoAndMemberNo(params);
     }
+    
+    @Override
+    public int add(BusinessCard bizcard) {
+        return bizcardRepository.insert(bizcard);
+    }
+    
 }
 
 
