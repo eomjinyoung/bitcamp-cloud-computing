@@ -2,7 +2,7 @@
 package bitcamp.step01
 
 // 자바와 똑 같이 클래스를 만들 수 있다.
-// => 단 groovy.lang.GroovyObject를 상속 받는다.
+// => 단 groovy.lang.GroovyObject 인터페이스를 구현한다.
 class Ex05 {
     
     // 직접 클래스를 정의한다면 main() 메서드를 직접 만들어야 한다.
