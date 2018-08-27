@@ -1,4 +1,4 @@
-# Git 사용법
+# Git 기본 사용법
 
 ## **버전 관리 시스템**(VCS; Version Control System)이란? 
 
