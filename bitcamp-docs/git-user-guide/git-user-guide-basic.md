@@ -18,7 +18,7 @@
     - 예) CVS, Subversion, Perforce 등
   - 분산 버전 관리 시스템
     - 저장소 전부를 복제한다. 
-    - 변경 내역(history)까지 모두 복제한다.
+    - 변경 내력(history)까지 모두 복제한다.
     - 예) Git, Mercurial, Bazaar, Darcs 등
 
 ## Git
