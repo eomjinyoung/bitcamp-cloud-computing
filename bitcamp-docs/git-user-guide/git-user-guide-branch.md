@@ -39,17 +39,22 @@ Git에서 commit을 수행하면 다음의 절차에 따라 커밋 정보를 저
 
 - 현재 작업 중인 로컬 브랜치를 가리키는 특수한 포인터이다.
 
+### 토픽 브랜치 
+
+- 어떤 한가지 주제나 작업을 위해 만든 짧은 호흡의 브랜치이다. 
+
 
 ## 브랜치 명령
 
-### git branch [새 브랜치 이름]
+### git branch
 
-- 브랜치를 새로 만든다.
-- 새로 만든 브랜치도 지금 작업하고 있는 커밋을 가리킨다.
-- HEAD 포인터는 브랜치 생성과 상관없이 기존의 브랜치를 계속 가리킨다.
+- 브랜치를 관리한다.
 
 ```
-예1) b1 이라는 이름으로 브랜치를 새로 만든다.
+예1) b1 이라는 이름으로 브랜치를 새로 만들기
+        git branch [새 브랜치 이름]
+    - 새로 만든 브랜치도 지금 작업하고 있는 커밋을 가리킨다.
+    - HEAD 포인터는 브랜치 생성과 상관없이 기존의 브랜치를 계속 가리킨다.
 $ git branch b1
 $ git log --oneline                   <=== 커밋 정보를 한 줄 씩 출력한다.
 f559e21 (HEAD -> master, b1) v0.3
@@ -57,6 +62,37 @@ f559e21 (HEAD -> master, b1) v0.3
 8dd76bf v0.1
 5d8d97b (origin/master, origin/HEAD) Initial commit 
 ```
+
+```
+예2) 브랜치 목록을 조회하기 
+        git branch
+    - 아무런 옵션 없이 실행하면 브랜치의 목록을 출력한다.
+$ git branch
+  b1
+* master      <=== 현재 작업하는 브랜치에 * 가 붙는다.
+```
+
+```
+예3) 브랜치들 중에서 merge 한 브랜치를 조회하기
+$ git branch --merged
+```
+
+```
+예4) 브랜치들 중에서 merge 하지 않은 브랜치를 조회하기
+$ git branch --no-merged
+```
+
+```
+예5) 브랜치 삭제하기
+$ git branch -d b1    <=== merge 되지 않은 브랜치는 삭제되지 않는다.
+error: The branch 'b1' is not fully merged.    
+If you are sure you want to delete it, run 'git branch -D b1'.
+
+$ git branch -D b1    <=== -D 옵션으로 merge 되지 않은 브랜치를 강제 삭제하라.
+Deleted branch b1 (was 519ee27).
+```
+
+
 
 ### git checkout [브랜치 이름]
 
@@ -239,13 +275,283 @@ $ git branch -d b1
 * 5d8d97b (origin/master, origin/HEAD) Initial commit
 ```
 
+### git rebase [브랜치명]
 
+- 지정한 브랜치에 현재 브랜치의 변경 내력을 순서대로 합친다. 
+- 작업 원리
+    - 두 브랜치가 갈라지기 전인 공통 커밋으로 이동한다.
+    - 공통 커밋 부터 현재 브랜치까지의 diff(변경 사항)를 차례로 만들어 임시 보관해 둔다.
+    - 현재 브랜치가 지정한 브랜치를 가리키게 한다.
+    - 임시 보관된 diff(변경 사항)을 차례로 적용한다.
+- 특징
+    - merge 보다 좀 더 깔끔한 history를 만든다.
+    - history가 선형이다.
+    - 모든 작업이 순서대로 진행된 것 처럼 보인다.
+    - 보통 원격 브랜치에 커밋을 깔금하게 적용하고 싶을 때 사용한다.
+    - rebase 브랜치의 변경 사항을 다른 브랜치에 순서대로 적용하면서 합친다.
+    - merge는 두 브랜치의 최종 결과만을 가지고 합친다. 
+- merge vs rebase
+    - 로컬 저장소에서 브랜치를 정리할 때 rebase를 사용한다.
+    - push로 공개한 커밋에 대해서는 rebase를 하지 말라!
+    - 되도록 merge를 사용하여 역사를 기록하고 후세에 남겨 교훈이 되게 하라.
 
+```
+예1) b1 브랜치를 master 브랜치에 합치기 
 
+현재 브랜치 내력을 조회한다.
+$ git log --oneline --graph --all
+* f9e2727 (HEAD -> master) C1
 
+b1 브랜치를 만든다.
+$ git branch b1
+$ git log --oneline --graph --all
+* f9e2727 (HEAD -> b1, master) C1
 
+파일을 변경한 후 커밋한다.
+$ git add .
+$ git commit -m 'C2'
+$ git log --oneline --graph --all
+* 0ebbfb2 (HEAD -> b1) C2
+* f9e2727 (master) C1
 
+master 브랜치로 옮긴 후 파일을 변경한 후 커밋한다.
+$ git checkout master
+$ git add .
+$ git commit -m 'C3'
+$ git log --oneline --graph --all
+* 1df28eb (HEAD -> master) C3
+| * 0ebbfb2 (b1) C2
+|/  
+* f9e2727 C1
 
+b1 브랜치로 옮긴 후 master 브랜치를 b1 브랜치쪽으로 rebase 한다.
+$ git checkout b1
+$ git rebase master
+$ git log --oneline --graph --all
+* 211448b (HEAD -> b1) C2
+* 1df28eb (master) C3
+* f9e2727 C1
+
+master를 'fast-forward'로 merge 한다.
+$ git checkout master
+$ git merge b1
+$ git log --oneline --graph --all
+* 211448b (HEAD -> master, b1) C2
+* 1df28eb C3
+* f9e2727 C1
+```
+
+```
+브랜치 history가 다음과 같다면,
+
+C1 --- C2 --- C3   master
+        \
+         C4 --- C5 --- C6    b1
+          \
+           C7 --- C8 --- C9    b2
+
+예2) b2 브랜치를 master 브랜치와 연결하기
+        git rebase -onto [기준브랜치] [토픽 브랜치1] [토픽 브랜치2]
+    - '-onto' 옵션을 사용하면 b2 브랜치로 체크아웃 할 필요없다.
+    - '토픽 브랜치1'과 '토픽 브랜치2'의 공통 커밋 이후부터 '토픽 브랜치2'까지의 모든 변경 사항을 patch로 만들어서 '기준 브랜치'에 적용한다.
+$ git rebase -onto master b1 b2
+
+위 명령을 수행한 후 브랜치의 history
+C1 --- C2 --- C3   master
+        \      \
+         \      C7' --- C8' --- C9'    b2
+          \
+           C4 --- C5 --- C6    b1
+
+b2를 master에 합쳤으면 master에 대해 'fast-forward'를 수행한다.
+$ git checkout master
+$ git merge b2
+
+위 명령을 수행한 후 브랜치의 history
+C1 --- C2 --- C3 --- C7' --- C8' --- C9' master, b2
+        \      
+         C4 --- C5 --- C6    b1
+```
+
+```
+예3) 위의 상황에서 b1 브랜치를 master에 합치기
+        git rebase [기준 브랜치] [토픽 브랜치]
+$ git rebase master b1
+
+위 명령을 수행한 후 브랜치의 history
+C1 --- C2 --- C3 --- C7' --- C8' --- C9' --- C4' --- C5' --- C6'
+                                      |                       |
+                                    master, b2               b1
+
+b1을 master에 합쳤으면 master에 대해 'fast-forward'를 수행한다.
+$ git checkout master
+$ git merge b1
+$ git branch -d b1    <=== 필요없는 b1 브랜치 삭제
+$ git branch -d b2    <=== 필요없는 b2 브랜치 삭제
+
+C1 --- C2 --- C3 --- C7' --- C8' --- C9' --- C4' --- C5' --- C6' 
+                                                              |
+                                                            master
+```
+
+## 원격 브랜치 
+
+- 원격 브랜치는 원격 저장소에 있는 브랜치를 가리키는 레퍼런스(포인터) 이다.
+- 원격 브랜치를 가리키는 형식
+    - (remote)/(branch)
+    - 예) origin/master
+- 'git clone' 명령을 수행하면 원격 저장소를 가리키는 이름으로 'origin'이 자동 부여된다.
+
+### git clone -o [원격저장소이름]
+
+- '-o' 옵션을 이용하여 원격 저장소 이름을 지정하면 'origin' 대신 지정한 이름이 부여된다.
+
+```
+예1) 원격 저장소의 이름을 'orgin' 대신 'ohora'라 짓기
+$ git clone -o ohora https://github.com/eomjinyoung/git-test
+$ git remote
+origin
+```
+
+### git ls-remote
+
+- 원격 레퍼런스(Refs)를 조회한다.
+
+```
+예1) 원격 저장소의 레퍼런스를 모두 출력하기
+        git ls-remote [원격 저장소 이름]
+$ git ls-remote    <=== 원격 저장소 이름을 생략하면 전체 출력
+From https://github.com/eomjinyoung/git-test.git
+9babde9de3ff3f9c979a8da0c9d65e008a13af31	HEAD
+9babde9de3ff3f9c979a8da0c9d65e008a13af31	refs/heads/master
+
+$ git ls-remote origin    <=== origin에 대한 것만 출력
+9babde9de3ff3f9c979a8da0c9d65e008a13af31	HEAD
+9babde9de3ff3f9c979a8da0c9d65e008a13af31	refs/heads/master
+```
+
+### git remote show [원격 저장소 이름]
+
+- 원격 저장소에 대한 모든 브랜치와 정보를 조회한다.
+
+```
+예1) 원격 저장소의 브랜치 정보를 출력하기
+        git remote show [원격 저장소 이름]
+$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/eomjinyoung/git-test.git
+  Push  URL: https://github.com/eomjinyoung/git-test.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (local out of date)
+```
+
+### git fetch [원격 저장소 이름]
+
+- 원격 저장소가 로컬 저장소에 없는 정보를 가지고 있다면 모두 가져온다.
+- 그리고 origin/master 포인터를 최신 커밋으로 이동시킨다.
+
+```
+현재 로컬 저장소의 브랜치 및 커밋 역사가 다음과 같다고 가정하자.
+C1 --- C2 --- C3 --- C4 --- C5 --- C6 --- X1 --- X2
+                                    |             |
+                              origin/master     master
+
+현재 원격 저장소의 브랜치 및 커밋 역사가 다음과 같다고 가정하자.
+C1 --- C2 --- C3 --- C4 --- C5 --- C6 --- Y1 --- Y2
+                                                  |
+                                                master
+
+예1) 원격 저장소의 내용을 로컬 저장소로 가져온다.
+$ git fetch origin
+$ git log --oneline --graph --all
+* 9babde9 (origin/master, origin/HEAD) Y2
+* 440c0c1 Y1
+| * 82efd10 (HEAD -> master) X2
+| * 4039833 X1
+|/  
+* b4dec77 C6
+* 66d6384 C5
+* 401d39d C4
+* 4859dd1 C3
+* 241b657 C2
+* 046ea07 C1
+
+즉 다음 그래프와 같이 커밋이 구성된다.
+C1 --- C2 --- C3 --- C4 --- C5 --- C6 --- X1 --- X2 
+                                     \            |
+                                      \     HEAD -> master
+                                       Y1 --- Y2
+                                               |
+                                         origin/master
+
+예2) 원격에서 가져온 정보를 로컬 저장소에 merge하기 
+$ git merge 9babde9
+$ git log --oneline --graph --all
+*   f5d2046 (HEAD -> master) X3
+|\  
+| * 9babde9 (origin/master, origin/HEAD) Y2
+| * 440c0c1 Y1
+* | 82efd10 X2
+* | 4039833 X1
+|/  
+* b4dec77 C6
+* 66d6384 C5
+* 401d39d C4
+* 4859dd1 C3
+* 241b657 C2
+* 046ea07 C1
+
+즉 다음 그래프와 같이 커밋이 구성된다.
+C1 --- C2 --- C3 --- C4 --- C5 --- C6 --- X1 --- X2 --- X3    HEAD -> master
+                                    \                 /
+                                     --- Y1 --- Y2 ---
+                                                 |
+                                           origin/master
+```
+
+```
+예3) 원격 저장소의 정보를 가져와서 로컬 저장소와 합치기
+        git pull = git fetch + get merge
+    - 'git pull' 명령을 사용하면 더 간단히 처리할 수 있다.
+$ git pull
+```
+
+### git push
+
+- 로컬 저장소의 정보를 원격 저장소에 올린다.
+- 로컬에서 생성한 브랜치를 원격 저장소에 올릴 수 있다.
+- 원격 저장소의 브랜치를 삭제할 수 있다.
+
+```
+예1) push를 사용하여 로컬 저장소의 정보를 원격 저장소에 올리기
+$ git push    <=== master를 origin/master로 올린다.
+$ git log --oneline --graph --all
+*   f5d2046 (HEAD -> master, origin/master, origin/HEAD) X3
+|\  
+| * 9babde9 Y2
+| * 440c0c1 Y1
+* | 82efd10 X2
+* | 4039833 X1
+|/  
+* b4dec77 C6
+```
+
+```
+예2) 로컬 저장소에 있는 'b1' 브랜치를 원격 저장소에 올리기 
+        git push [원격 저장소 이름] [브랜치 이름]
+$ git push origin b1
+```
+
+```
+예3) 원격 저장소의 'b1' 브랜치를 삭제하기
+        git push [원격 저장소 이름] --delete [브랜치 이름]
+$ git push origin --delete b1
+```
 
 
 
