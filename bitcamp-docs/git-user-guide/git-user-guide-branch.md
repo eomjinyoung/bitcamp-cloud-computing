@@ -43,6 +43,10 @@ Git에서 commit을 수행하면 다음의 절차에 따라 커밋 정보를 저
 
 - 어떤 한가지 주제나 작업을 위해 만든 짧은 호흡의 브랜치이다. 
 
+### 트래킹 브랜치 = upstream 브랜치
+
+- 원격 브랜치를 체크아웃 하여 만든 로컬 브랜치이다.
+- 트래킹 브랜치에서 `git pull` 을 실행하면 이 로컬 브랜치와 연결된 원격 브랜치에서 데이터를 받아 로컬 브랜치로 자동 merge 한다. 
 
 ## 브랜치 명령
 
@@ -521,6 +525,11 @@ C1 --- C2 --- C3 --- C4 --- C5 --- C6 --- X1 --- X2 --- X3    HEAD -> master
 $ git pull
 ```
 
+```
+예4) 모든 원격 저장소에서 데이터를 받아오기
+$ git fetch --all
+```
+
 ### git push
 
 - 로컬 저장소의 정보를 원격 저장소에 올린다.
@@ -543,8 +552,17 @@ $ git log --oneline --graph --all
 
 ```
 예2) 로컬 저장소에 있는 'b1' 브랜치를 원격 저장소에 올리기 
-        git push [원격 저장소 이름] [브랜치 이름]
+        git push [원격 저장소 이름] [로컬 브랜치 이름]
+    - 로컬 브랜치 이름과 같은 원격 브랜치가 없으면 새로 만든다.
+    - 로컬 브랜치 정보를 원격 브랜치에 올린다.
 $ git push origin b1
+```
+
+```
+예3) 로컬 저장소에 있는 'b1' 브랜치를 원격 저장소의 'other' 브랜치로 올리기
+        git push [원격 저장소 이름] [로컬 브랜치 이름]:[원격 브랜치 이름]
+    - 로컬 브랜치 이름과 원격 브랜치 이름을 다를 때 유용하다.
+$ git push origin b1:other
 ```
 
 ```
@@ -553,8 +571,38 @@ $ git push origin b1
 $ git push origin --delete b1
 ```
 
+### git checkout -b [로컬 브랜치] [원격 저장소]/[원격 브랜치]
 
+- 원격 저장소의 브랜치를 받아서 로컬 브랜치를 만든다.
+  
+```
+예1) 원격 저장소의 origin/other 브랜치를 체그아웃 하여 other2 로컬 브랜치 만들기
+$ git checkout -b other2 origin/other
+Branch 'other2' set up to track remote branch 'other' from 'origin'.
+Switched to a new branch 'other2'
+```
 
+```
+예2) 원격 저장소의 origin/other 브랜치를 체크아웃 하여 같은 이름으로 로컬 브랜치 만들기
+    - 같은 이름으로 만들 때는 --track 옵션을 사용한다.
+$ git checkout --track origin/other
+```
+
+### git branch -vv
+
+- 트래킹 브랜치의 설정 정보를 조회한다.
+- 출력 결과
+    - ahead n : 로컬 브랜치가 커밋을 n 개 앞서 있다. 즉 로컬 브랜치에 커밋이 2개 더 있다는 의미.
+    - behind n : 원격 브랜치에서 로컬 브랜치로 merge 하지 않은 커밋이 n 개 있다는 의미.
+
+```
+$ git branch -vv
+  b1     c2be10d [origin/b1] v1.3
+* b2     664dbb5 v3.1
+  master 09fb339 [origin/master: ahead 2] v3.0   <=== 로컬 브랜치가 커밋을 2개 앞서 있다는 의미
+  other  ed485e2 [origin/other] v1.2
+  other2 ed485e2 [origin/other] v1.2
+```
 
 
 
