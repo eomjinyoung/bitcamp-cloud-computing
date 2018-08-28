@@ -303,8 +303,9 @@ AM src/main/webapp/test06.html
 - 파일의 변경 내용을 비교한다.
 
 ```
-예1) 저장소에 있는 파일이나 Staging Area에 있는 파일 중에서 
-    작업 디렉토리에서 변경한 파일의 변경 전/후를 비교하기
+예1) 작업 디렉토리에서 변경한 파일과 Staging Area에 등록된 파일과 비교하여
+     변경경 전/후를 출력하기
+    
 $ git diff
 diff --git a/src/main/webapp/test01.html b/src/main/webapp/test01.html
 index 80ba906..3322e11 100644
@@ -679,7 +680,7 @@ v0.2
 ```
 예6) 로컬 저장소에 있는 태그를 서버에 공유하기
 $ git push [원격저장소 단출이름] [태그 이름]
-$ git push oring v0.1
+$ git push origin v0.1
 Counting objects: 1, done.
 Writing objects: 100% (1/1), 166 bytes | 166.00 KiB/s, done.
 Total 1 (delta 0), reused 0 (delta 0)
@@ -724,7 +725,8 @@ Date:   Sun Aug 26 23:29:24 2018 +0900
 
 ```
 예2) Lightweight 태그의 정보를 확인하기
-$ git show v0.2
+    - 태그를 저장할 때 메시지를 지정하지 않았으면 태그 정보가 출력되지 않는다.
+$ git show v0.2-lw
       <=== 태그를 붙인 사람의 정보가 없다.
 commit 75ff5353c41f3a33de4a7da91887d0ecbc2cbca6 (HEAD -> master, tag: v0.2)
 Author: Jinyoung Eom <jinyoung.eom@gmail.com>
