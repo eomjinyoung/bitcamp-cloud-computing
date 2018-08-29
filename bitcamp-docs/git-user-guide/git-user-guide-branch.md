@@ -414,7 +414,7 @@ C1 --- C2 --- C3 --- C7' --- C8' --- C9' --- C4' --- C5' --- C6'
 예1) 원격 저장소의 이름을 'orgin' 대신 'ohora'라 짓기
 $ git clone -o ohora https://github.com/eomjinyoung/git-test
 $ git remote
-origin
+ohora
 ```
 
 ### git ls-remote
@@ -603,7 +603,3 @@ $ git branch -vv
   other  ed485e2 [origin/other] v1.2
   other2 ed485e2 [origin/other] v1.2
 ```
-
-
-
-끝
