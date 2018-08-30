@@ -22,3 +22,7 @@ hello()
 // 파라미터가 있으면 파라미터 선언부를 작성하면 된다.
 hello2 = {name -> println name + "님 안녕하세요!"}
 hello2 "홍길동"
+hello2("홍길동")
+
+// call()을 이용하여 클로저 호출하기
+hello2.call("홍길동")
