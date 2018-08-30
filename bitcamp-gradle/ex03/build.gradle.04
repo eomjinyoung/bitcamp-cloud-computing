@@ -1,0 +1,16 @@
+// 확장 프로퍼티 - Task 확장 프로퍼티
+//
+
+// 태스크를 생성한 후 설정할 때 확장 속성을 추가한다.
+task t1 {
+    ext.myName = "임꺽정"
+
+    doLast {
+        println ext.myName
+    }
+}
+
+
+// 실행:
+// $ gradle t1
+//

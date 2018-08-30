@@ -1,0 +1,22 @@
+// 확장 프로퍼티 - Project 확장 프로퍼티 III
+//
+// set()/get()을 직접 호출하는 대신에 Groovy accessor 문법을 사용할 수 있다. 
+// 
+
+// Gradle을 실행 결과를 간결하게 출력하기 위해 임시 태스크를 생성한다.
+task t1
+
+// 1) 프로젝트 객체에 속성 추가
+project.ext.myName = "홍길동"
+
+// 2) 프로젝트 객체에 저장된 값 꺼내기
+println project.ext.myName
+println project.myName
+
+// => 이전 예제와 마찬가지로 다음과 같이 원래 객체에 없는 프로퍼티를 임의로 추가할 수 없다.
+//project.myAge = 20 // 실행 오류!
+
+
+// 실행:
+// $ gradle t1
+//

@@ -1,12 +1,28 @@
-// 태스크 - 태스크 프로퍼티 설정하기 II
+// 태스크 - 태스크 프로퍼티의 값 설정 과 사용  II
 // => 태스크를 생성할 때 congifure closure 등록과 함께 프로퍼티를 설정할 수 있다.
 // => 문법
-//    task 태스크명 (프로퍼티: 값, 프로퍼티: 값) {configure closure}
+//    task 태스크명(프로퍼티: 값, 프로퍼티: 값) {configure closure}
 
-task t1 (description: "태스크 t1") {
+task t1(description: "태스크 t1") {
     println "설정 클로저 => description=" + description
 
     doLast { 
         println "액션 클로저 => description=" + description
     }
 }
+
+// 실행:
+// $ gradle t1
+//
+
+// Task 객체에 대해 사용할 수 있는 프로퍼티  
+/*
+name : 태스크 이름 (기본값: 없음)
+type : 생성할 태스크의 타입 (기본값: DefaultTask)
+action : 태스크를 실행할 때 수행할 액션 (기본값: 없음)
+overwrite : 존재하는 태스크가 있다면 대체할 것인지 여부 (기본값: false)
+dependsOn : 태스크가 의존하는 객체 (기본값: [])
+group : 태스크가 소속된 그룹 (기본값: 없음)
+description : 태스크에 대한 설명 (기본값: 없음)
+constructorArgs : 생성자가 호출될 때 전달할 아규먼트들 (기본값: 없음)
+*/

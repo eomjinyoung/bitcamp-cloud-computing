@@ -1,0 +1,17 @@
+// 확장 프로퍼티 - 다른 Task의 확장 프로퍼티 사용하기
+//
+
+// 태스크를 생성한 후 설정할 때 확장 속성을 추가한다.
+task t1 {
+    ext.myName = "임꺽정"
+    ext.myAge = 20
+}
+
+task t2 {
+    println t1.ext.myName // 다른 태스크의 객체명을 지정한다.
+    println t1.myAge  // ext는 빼도 된다.
+}
+
+// 실행:
+// $ gradle t1
+//

@@ -1,0 +1,29 @@
+// 동적으로 태스크 만들기
+// => 데이터를 이용하여 임의의 태스크를 동적으로 만들 수 있다.
+
+// 데이터 준비
+def commandMap = [
+    "list": "localhost:8080/json/list",
+    "view": "localhost:8080/json/view",
+    "add": "localhost:8080/json/add",
+    "update": "localhost:8080/json/update",
+    "delete": "localhost:8080/json/delete",
+]
+
+commandMap.each {key, value -> 
+    // key로 태스크를 생성한다.
+    task "$key" {
+        doLast {
+            println value + "에 요청합니다."
+        }
+    }
+}
+
+// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// $ gradle [태스크명]
+//
+// 예:
+// $ gradle list
+// $ gradle add
+// $ gradle add list
+//

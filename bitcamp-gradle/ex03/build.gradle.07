@@ -1,0 +1,18 @@
+// 확장 프로퍼티 - 태스크에서 프로젝트 확장 속성 사용하기
+//
+
+// Project 객체에 속성 추가
+project.ext.myName = "홍길동"
+
+
+task t1 {
+    ext.myName = "임꺽정"
+
+    println myName  // 태스크의 확장 속성
+    println project.myName // 프로젝트의 확장 속성
+}
+
+
+// 실행:
+// $ gradle t1
+//

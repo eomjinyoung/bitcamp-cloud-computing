@@ -1,0 +1,41 @@
+// 확장 프로퍼티 - Project 확장 프로퍼티 
+//
+// 확장 프로퍼티란? 
+// => 원래의 객체에는 없는 프로퍼티를 말한다. 개발자가 임의로 추가하는 프로퍼티이다.
+// 
+// 추가하는 방법?
+// => 'ext' 라는 이름의 객체를 통해 추가 삭제한다.
+// => ExtensionAware 인터페이스를 구현한 모든 Gradle 도메인 객체는 'ext' 라는 이름의 객체를 가진다. 
+//    
+// ExtensionAware 구현체
+// => projects, tasks, configurations, dependencies 등의 객체이다. 
+// => 확장 프로퍼티를 관리하는 ExtraPropertiesExtension 객체가 정의되어 있다. 
+// => ExtraPropertiesExtension 객체의 이름이 'ext' 이다.
+// 
+// ExtraPropertiesExtension 구현체
+// => 프로퍼티를 추가하고 꺼내고, 삭제하는 기능이 있다.
+// 
+
+// Gradle을 실행 결과를 간결하게 출력하기 위해 임시 태스크를 생성한다.
+task t1
+
+// Gradle을 실행하면 프로젝트의 빌드 정보를 다루기 위해 Project 구현체가 생성된다.
+// 빌드 스크립트(build.script) 파일에서는 'project' 라는 빌트인 변수를 통해 이 객체를 사용할 수 있다.
+
+// 1) 프로젝트 객체에 속성 추가
+project.ext.set("myName", "홍길동")
+
+// 2) 프로젝트 객체에 저장된 값 꺼내기
+println project.ext.get("myName")
+
+// => set()으로 추가한 프로퍼티는 "객체.프로퍼티명" 문법으로 값을 꺼낼 수 있다.
+// => 객체에 해당 프로퍼티가 없으면, 확장 프로퍼티 관리 객체인 ext에서 찾는다.
+println project.myName // OK!
+
+// => 그러나 다음과 같이 원래 객체에 없는 프로퍼티를 임의로 추가할 수 없다.
+//project.myAge = 20 // 실행 오류!
+
+
+// 실행:
+// $ gradle t1
+//
