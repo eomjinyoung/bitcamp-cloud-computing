@@ -1,12 +1,12 @@
 // 동적으로 태스크 만들기
 // => 데이터를 이용하여 임의의 태스크를 동적으로 만들 수 있다.
 
+task t1(description: "okok")
 
-// 실행: 태스크 이름을 지정하지 않고 실행하라!
-// $ gradle [태스크명]
-//
-// 예:
-// $ gradle list
-// $ gradle add
-// $ gradle add list
+t1 {
+    println description
+}
+
+// 실행: 
+// $ gradle t1
 //
