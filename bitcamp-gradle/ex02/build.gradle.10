@@ -1,0 +1,31 @@
+// 태스크 - 태스크 프로퍼티 설정하기
+// => 태스크에서 참조할 프로퍼티의 값을 지정하기
+// => 문법
+//    태스크객체.프로퍼티 = 값
+
+task t1 {
+    println "설정 클로저 => description=" + description
+
+    // 이 태스크에 액션을 등록한다.
+    doLast { 
+        // 이 액션 closure는 태스크를 실행할 때 호출되기 때문에
+        // 아래 쪽에서 설정한 description 값을 사용할 수 있다.
+        println "액션 클로저 => description=" + description
+    }
+}
+
+// 태스크를 생성할 때 configure closure가 먼저 실행되기 때문에
+// configure closure 에서는 아래에 설정한 정보를 사용할 수 없다. 
+t1.description = "태스크 t1"
+
+// Task 객체의 주요 프로퍼티  
+/*
+name : 태스크 이름 (기본값: 없음)
+type : 생성할 태스크의 타입 (기본값: DefaultTask)
+action : 태스크를 실행할 때 수행할 액션 (기본값: 없음)
+overwrite : 존재하는 태스크가 있다면 대체할 것인지 여부 (기본값: false)
+dependsOn : 태스크가 의존하는 객체 (기본값: [])
+group : 태스크가 소속된 그룹 (기본값: 없음)
+description : 태스크에 대한 설명 (기본값: 없음)
+constructorArgs : 생성자가 호출될 때 전달할 아규먼트들 (기본값: 없음)
+*/
