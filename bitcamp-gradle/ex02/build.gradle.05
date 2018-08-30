@@ -1,0 +1,24 @@
+// 태스크 - 여러 개의 액션 추가하기 II
+// => doFirst()를 사용하면 액션을 맨 앞에 등록할 수 있다.
+//
+
+def taskContainer = project.getTasks()
+def t = taskContainer.create("t1")
+
+t.doLast {
+    println "1111"
+}
+
+t.doLast {
+    println "2222"
+}
+
+// 태스크의 액션 목록 맨 앞에 액션 추가
+t.doFirst {
+    println "3333"
+}
+
+
+// 실행:
+// $ gradle t1
+//

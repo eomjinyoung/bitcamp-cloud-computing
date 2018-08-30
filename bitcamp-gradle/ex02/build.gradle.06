@@ -1,0 +1,20 @@
+// 태스크 - task 키워드
+// => task 키워드를 사용하면 더 간단히 태스크를 생성할 수 있다.
+// => 문법
+//    task [태스크명]
+
+/*
+def taskContainer = project.getTasks()
+def t = taskContainer.create("t1")
+*/
+
+// 빈 태스크를 생성한 후 프로젝트에 등록한다.
+task t1
+
+t1.doLast {
+    println "t1...ok!"
+}
+
+// 실행:
+// $ gradle t1
+//

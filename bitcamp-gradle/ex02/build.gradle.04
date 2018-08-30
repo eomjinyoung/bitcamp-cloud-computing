@@ -1,0 +1,26 @@
+// 태스크 - 여러 개의 액션 추가하기
+// => 액션은 태스크를 실행할 때 호출되는 클로저이다.
+//
+
+def taskContainer = project.getTasks()
+def t = taskContainer.create("t1")
+
+// 태스크의 액션 목록 맨 끝에 액션을 추가하기 
+t.doLast {
+    println "1111"
+}
+
+// 태스크의 액션 목록 맨 끝에 액션을 추가하기
+t.doLast {
+    println "2222"
+}
+
+// 태스크의 액션 목록 맨 끝에 액션을 추가하기
+t.doLast {
+    println "3333"
+}
+
+
+// 실행:
+// $ gradle t1
+//

@@ -1,0 +1,17 @@
+// 태스크 - task 키워드와 configure closure
+// => 태스크가 생성될 때 자동으로 호출되는 클로저를 등록할 수 있다.
+// => 보통 이 클로저에는 초기 설정을 수행하는 스크립트를 둔다.
+// => 문법
+//    task [태스크명] {configure closure}
+
+task t1 {
+    println "태스크를 실행하기 전에 필요한 것들을 설정하기"
+}
+
+t1.doLast {
+    println "액션 실행!"
+}
+
+// 실행:
+// $ gradle t1
+//

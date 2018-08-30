@@ -1,0 +1,39 @@
+// 태스크 - 태스크 생성 옵션
+// => 태스크를 생성에 참조할 옵션 값을 지정하기
+// => 문법
+//    task 태스크명 (옵션명: 값, 옵션명: 값) [{configure closure}]
+
+// 예1) configure closure 설정 없이 옵션 값 넘기기
+task t1 (description: "태스크 t1")
+
+t1.doLast {
+    println "액션 실행!"
+    println "description=" + description
+}
+
+// 예2) 옵션 값 + configure closure
+task t2 (description: "태스크 t2") {
+
+    println "설정준비"
+
+    doLast {
+        println "액션 실행!"
+        println "description=" + description
+    }
+}
+
+// 실행:
+// $ gradle t2
+//
+
+// 설정 가능한 옵션들 
+/*
+name : 태스크 이름 (기본값: 없음)
+type : 생성할 태스크의 타입 (기본값: DefaultTask)
+action : 태스크를 실행할 때 수행할 액션 (기본값: 없음)
+overwrite : 존재하는 태스크가 있다면 대체할 것인지 여부 (기본값: false)
+dependsOn : 태스크가 의존하는 객체 (기본값: [])
+group : 태스크가 소속된 그룹 (기본값: 없음)
+description : 태스크에 대한 설명 (기본값: 없음)
+constructorArgs : 생성자가 호출될 때 전달할 아규먼트들 (기본값: 없음)
+*/

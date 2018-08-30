@@ -1,5 +1,46 @@
-task hello {
-    doLast {
-        println "Hello, Gradle!"
-    }
-}
+// build.gradle 실행
+// => Gradle을 실행하면 build.gradle을 찾아 스크립트를 실행한다.
+
+println "Hello, Gradle!"
+
+// Gradle을 실행하기 위한 임의의 태스크.
+task hello {}
+
+// 실행 방법
+//      $ gradle [태스크명]
+// 예1:
+/*
+$ gradle hello
+ 
+> Configure project :
+Hello, Gradle!
+
+BUILD SUCCESSFUL in 1s
+*/
+
+// 예2: 태스크를 지정하지 않아도 된다.
+//      하지만 출력 결과에 Gradle 사용법을 함께 출력하기 때문에 
+//      가능한 '예1'과 같이 태스크 이름을 지정하여 실행하라!
+/*
+$ gradle
+
+> Configure project :
+Hello, Gradle!
+
+> Task :help
+
+Welcome to Gradle 4.9.
+
+To run a build, run gradle <task> ...
+
+To see a list of available tasks, run gradle tasks
+
+To see a list of command-line options, run gradle --help
+
+To see more detail about a task, run gradle help --task <task>
+
+For troubleshooting, visit https://help.gradle.org
+
+BUILD SUCCESSFUL in 1s
+*/
+ 

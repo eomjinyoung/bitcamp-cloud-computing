@@ -6,8 +6,17 @@
 // => gradle.properties 파일이 있으면 그 파일에서 찾아 꺼낸다.
 //    systemProp.name=HongKildong
 //
-task hello {
-    doLast {
-        println "Hello, " + System.properties['name']
-    }
-}
+
+println "Hello, " + System.properties['name']
+
+task hello {}
+
+// 실행1: gradle.properties 파일에 저장된 값 사용하기
+// $ gradle hello
+// 
+// 실행2: 명령어 옵션 -D 로 지정한 값 사용하기
+// $ gradle -Dname=Kim hello 
+//
+// 실행3: 명령어 옵션 --system-prop 로 저장한 값 사용하기
+// $ gradle --system-prop name=Park hello
+//

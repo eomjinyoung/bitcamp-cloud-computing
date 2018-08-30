@@ -1,0 +1,22 @@
+// 태스크 - 액션 추가하기 II
+// => 액션은 태스크를 실행할 때 호출되는 클로저이다.
+//
+
+def taskContainer = project.getTasks()
+def t = taskContainer.create("t1")
+
+// 액션을 등록할 때 클로저를 바로 정의하기
+/*
+t.doLast({
+    println "t1...ok"
+})
+*/
+
+// 물론 메서드를 호출할 때 괄호를 생략할 수 있다.
+t.doLast {
+    println "t1...ok"
+}
+
+// 실행:
+// $ gradle t1
+//

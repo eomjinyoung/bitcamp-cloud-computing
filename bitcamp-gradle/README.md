@@ -64,5 +64,12 @@ $ gradle -Pname=HongKilDong hello
 - 결과 출력
     - 빌드 수행과 관련된 결과 및 결과와 관련된 정보 출력
 
+## Gradle 명령
+
+### 사용 가능한 태스크 조회하기
+
+```
+$ gradle tasks --all
+```
 
 
