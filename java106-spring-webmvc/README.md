@@ -1,8 +1,7 @@
-0.# 버전 별 주제
+# 버전 별 주제
 
 ## src09 - JSON 응답하기
 - JSP에서 만든 HTML을 응답하는 대신에 JSON 데이터를 출력해보자!
--  
 
 ## src08 - view resolver 다루기
 - Spring WebMVC에 설정된 뷰 리졸버 대신에 다른 종류의 뷰 리졸버로 대체할 수 있다.
