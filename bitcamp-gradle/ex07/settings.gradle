@@ -1,0 +1,7 @@
+println "settings.gradle 실행"
+rootProject.name = 'ex07'
+
+println "rootDir=$settings.rootDir"
+println "rootProject=$settings.rootProject"
+println "settingsDir=$settings.settingsDir"
+println "startParameter=$settings.startParameter"

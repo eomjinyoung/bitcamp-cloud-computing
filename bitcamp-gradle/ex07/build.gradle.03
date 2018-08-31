@@ -1,0 +1,13 @@
+// Gradle 도메인 객체 - Settings 객체의 프로퍼티
+// => 멀티 프로젝트를 정의하기 위한 용도로 사용되는 객체이다.
+// => Gradle은 프로젝트를 빌드하기 전에 Settings 객체를 먼저 생성하고 실행한다.
+
+// 다음은 내부적으로 project.defaultTasks()를 호출한다.
+defaultTasks 't1'
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름 없이 실행
+// $ gradle
+//

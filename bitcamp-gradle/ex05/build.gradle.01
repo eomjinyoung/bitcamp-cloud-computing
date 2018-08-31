@@ -18,6 +18,6 @@ println "parent=$project.parent"
 // 임의의 태스크
 task t1
 
-// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// 실행: 
 // $ gradle t1
 //

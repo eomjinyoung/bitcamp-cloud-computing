@@ -1,0 +1,19 @@
+// Gradle 도메인 객체 - Task 객체의 프로퍼티
+//
+
+task t1 {
+    description = "t1 태스크"
+
+    doLast {
+        println "name=$name"
+        println "description=$description"
+        println "group=$group"
+        println "path=$path"
+        println "enabled=$enabled"
+    }
+}
+
+
+// 실행: 
+// $ gradle t1
+//

@@ -1,0 +1,28 @@
+// Gradle 도메인 객체 - Gradle 객체에 TaskExecutionListener 등록하기
+// => 태스크 실행, 종료 상태에 대해 뭔가를 처리하고 싶을 때 등록한다.
+
+defaultTasks 't1'
+task t1 {
+    println "태스크 설정 처리"
+
+    doLast {
+        println "태스크 액션 수행"
+    }
+}
+
+gradle.addListener(new TaskExecutionListener() {
+    void beforeExecute(Task task) {
+        println "$task.name 실행 시작!"
+    }
+
+    void afterExecute(Task task, TaskState state) {
+        println "$task.name 실행 종료!"
+        println "실행 상태: $state.executed"
+    }
+})
+
+
+
+// 실행: 태스크 이름 없이 실행
+// $ gradle
+//

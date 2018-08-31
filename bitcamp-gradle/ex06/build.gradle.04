@@ -1,0 +1,52 @@
+// Gradle 도메인 객체 - 태스크 실행 중 예외 발생
+// => 예외가 발생하면 즉시 Gradle 실행을 멈춘다.
+
+defaultTasks = ['t1', 't2', 't3']
+
+task t1 {
+    description = "t1 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        def r = 10 / 0;
+        println "$name: 실행....2"
+
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+task t2 {
+    description = "t2 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        println "$name: 실행....2"
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+task t3 {
+    description = "t3 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        println "$name: 실행....2"
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+// 실행: 태스크 이름 없이 실행
+// $ gradle
+//

@@ -1,0 +1,51 @@
+// Gradle 도메인 객체 - 기본 실행 태스크를 지정한다.
+//
+
+// 생성한 태스크 중에서 기본으로 실행될 태스크의 이름을 지정
+defaultTasks = ['t1', 't3']
+
+task t1 {
+    description = "t1 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        println "$name: 실행....2"
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+task t2 {
+    description = "t2 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        println "$name: 실행....2"
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+task t3 {
+    description = "t3 태스크"
+
+    doLast {
+        println "$name: 실행....1"
+    }
+    doLast {
+        println "$name: 실행....2"
+    }
+    doLast {
+        println "$name: 실행....3"
+    }
+}
+
+// 실행: 태스크 이름 없이 실행
+// $ gradle
+//

@@ -1,0 +1,26 @@
+// Gradle 도메인 객체 - Task 객체에 액션 추가하기
+//
+
+task t1 {
+    description = "t1 태스크"
+
+    // 태스크를 실행할 때 맨 마지막에 호출될 클로저를 등록한다.
+    doLast {
+        println "$name: 실행....1"
+    }
+
+    // 태스크를 실행할 때 호출될 클로저를 맨 마지막에 등록한다.
+    doLast {
+        println "$name: 실행....2"
+    }
+
+    // 태스크를 실행할 때 호출될 클로저를 맨 앞에 등록한다.
+    doFirst {
+        println "$name: 실행....3"
+    }
+}
+
+
+// 실행: 
+// $ gradle t1
+//

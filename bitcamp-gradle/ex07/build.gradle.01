@@ -1,0 +1,21 @@
+// Gradle 도메인 객체 - Gradle 객체의 프로퍼티
+// => Gradle 객체는 Gradle 자체의 실행 환경 정보 관리한다.
+// => 프로젝트와 관련된 모든 스크립트 파일에 접근할 수 있다.
+// => Project 객체나 Settings 객체를 통해서도 Gradle 객체를 얻을 수 있다.
+
+// 다음은 내부적으로 project.defaultTasks()를 호출한다.
+defaultTasks 't1'
+
+println "gradleHomeDir=$gradle.gradleHomeDir"
+println "gradleUserHomeDir=$gradle.gradleUserHomeDir"
+println "gradleVersion=$gradle.gradleVersion"
+println "rootProject=$gradle.rootProject"
+println "plugins=$gradle.plugins"
+println "startParameter=$gradle.startParameter"
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름 없이 실행
+// $ gradle
+//
