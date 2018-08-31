@@ -64,12 +64,85 @@ $ gradle -Pname=HongKilDong hello
 - 결과 출력
     - 빌드 수행과 관련된 결과 및 결과와 관련된 정보 출력
 
+## Gradle 도메인 객체
+
+### Project 객체
+
+- 생명주기
+    - 빌드를 수행하기 위한 Settings 객체 생성
+    - settings.gradle 스크립트에 따라 Settings 객체 설정
+    - Settings 정보에 따라 Project 객체의 계층 구조 생성
+        - 부모 Project 객체부터 생성한 다음 자식 Project 객체를 생성
+- 관련 객체
+    - TaskContainer
+        - 클래스 컴파일, 단위 테스트 실행, WAR 배포 파일 생성 등을 수행하여 프로젝트에 추가
+        - 태스크를 생성, 조회 등 관리
+    - ConfigurationContainer
+        - 프로젝트 구성을 관리
+    - DependencyHandler
+        - 의존 관계를 관리
+    - ArtifactHandler
+        - 프로젝트를 결과물을 관리
+    - RepositoryHandler
+        - 프로젝트 저장 공간을 관리
+    - Gradle
+        - Gradle 정보 참조
+- 주요 속성
+    - version - 프로젝트나 결과물의 버전
+    - description - 프로젝트 설정
+    - name - 프로젝트 이름 
+    - state - 프로젝트 빌드 상태
+    - status - 프로젝트 결과물의 상태
+    - path - 프로젝트 path(':'으로 경로 구분). 예) pms:web
+    - projectDir - 프로젝트 기준 디렉토리
+    - group - 프로젝트가 속한 그룹
+    - buildDir - 프로젝트 빌드 디렉토리(기본값: projectDir/build)
+    - plugins - Project 객체에 적용된 플러그인의 컨테이너
+    - project - 현재 프로젝트 레퍼런스
+    - rootProject - 루트 프로젝트 레퍼런스
+    - parent - 상위 프로젝트 레퍼런스
+    - childProjects - 바로 밑 하위 프로젝트 레퍼런스들(Map 타입). 하위의 하위 프로젝트들은 포함하지 않음.
+    - allprojects - 현재 프로젝트 및 모든 하위 프로젝트 레퍼런스(Map 타입)
+    - subprojects - 현재 프로젝트를 제외한 하위 프로젝트 레퍼런스(Map 타입)
+
+### single-project
+
+```
+프로젝트 디렉토리 구조
+projectDir/ 
+    |--- gradle.properties
+    |--- build.gradle
+```
+
+### multi-project
+
+```
+프로젝트 디렉토리 구조
+projectDir/ 
+    |--- settings.gradle
+    |--- build.gradle
+    |--- Child Project
+            |--- Grandchild Project
+```
+
 ## Gradle 명령
 
 ### 사용 가능한 태스크 조회하기
 
 ```
 $ gradle tasks --all
+```
+
+### 태스크 실행할 때 프로퍼티 설정하기
+
+```
+$ gradle -Pname=value 태스크명
+```
+
+### 태스크 실행할 때 시스템 속성 설정하기
+
+```
+$ gradle -Dname=value 태스크명
 ```
 
 

@@ -1,0 +1,24 @@
+// Gradle 도메인 객체 - 하위 프로젝트 정보 조회하기
+//
+println "rootProject 스크립트 실행"
+project.description = "루트 프로젝트"
+
+// 1) 하위 프로젝트 정보를 가져온다.
+// => 하위 프로젝트를 지정할 때는 path로 지정해야 한다.
+// => path의 기본 식별자는 : 이다.
+//    :    <--- 루트 프로젝트
+//    :subproject2
+//    :subproject1/p1 
+def subproject = project(':subproject1:p1')
+
+// 2) 하위 프로젝트 스크립트를 모두 실행한 후 description 값을 출력한다.
+subproject.afterEvaluate { project -> 
+    println project.description
+}
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// $ gradle t1
+//

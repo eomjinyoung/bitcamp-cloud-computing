@@ -1,0 +1,4 @@
+// 서브프로젝트
+//
+project.description = "subproject2 프로젝트"
+println "$project.name 스크립트 실행"

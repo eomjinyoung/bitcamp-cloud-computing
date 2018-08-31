@@ -1,0 +1,31 @@
+// 태스크 사이에 의존 관계 설정하기 I
+// => 태스크들 사이에 의존 관계를 설정하여 실행 그래프를 설정할 수 있다.
+
+task t1 {
+    doLast {
+        println "t1...ok!"
+    }
+}
+
+task t2 {
+    doLast {
+        println "t2...ok!"
+    }
+}
+
+task t3 {
+    doLast {
+        println "t3...ok!"
+    }
+}
+
+// dependsOn을 사용하여 의존하는 태스크들을 지정하면 된다.
+// => 태스크의 이름을 문자열로 배열에 담아 지정한다.
+// => 따옴표를 사용하지 않고 그냥 태스크 이름을 배열에 담아도 된다.
+t2.dependsOn = [t1]
+t3.dependsOn = [t2]
+
+// 실행: 
+// $ gradle t1
+// $ gradle t2  <=== t1이 먼저 실행될 것이다.
+// $ gradle t3  <=== t2가 먼저 실행될 것이다.

@@ -1,0 +1,32 @@
+// 태스크 실행 조건 설정하기
+// => 조건에 따라 실행 여부를 지정할 수 있다.
+
+task t1 {
+    doLast {
+        println "t1...ok!"
+        println buildType
+        println System.properties.myProp
+    }
+
+    // onlyIf({closure})
+    // => 클로저의 리턴 값이 true 일 때만 태스크의 액션을 실행한다. 
+    onlyIf { 
+        buildType == 'web'
+    }
+}
+
+// Gradle 명령을 실행할 때 태스크에 프로퍼티를 전달하려면 -P 옵션을 사용해야 한다.
+// 문법: -P이름=값
+// 예:   -PbuildType=web
+//
+// 주의!
+// -D 옵션은 시스템 프로퍼티를 지정하는 것이다.
+//      예) $ gradle -DbuildType=web t1
+// 꺼낼 때도 'System.properties.이름' 으로 꺼내야 한다.
+//      예) println System.properties.buildType 
+
+// 실행: 
+// $ gradle -PbuildType=web -DmyProp=okok t1
+// 
+// 다음과 같이 프로퍼티를 지정하지 않고 실행하면 빌드 오류가 발생한다.
+// $ gradle t1 

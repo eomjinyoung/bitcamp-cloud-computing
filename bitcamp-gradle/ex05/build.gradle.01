@@ -1,0 +1,23 @@
+// Gradle 도메인 객체 - Project 객체의 프로퍼티
+//
+
+println "version=$project.version"
+println "name=$project.name"
+println "description=$project.description"
+println "state=$project.state"
+println "status=$project.status"
+println "path=$project.path"
+println "projectDir=$project.projectDir"
+println "group=$project.group"
+println "buildDir=$project.buildDir"
+println "project=$project"
+println "rootProject=$project.rootProject"
+println "parent=$project.parent"
+
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// $ gradle t1
+//

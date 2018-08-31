@@ -1,0 +1,16 @@
+// Gradle 도메인 객체 - 모든 프로젝트 정보 확인
+//
+println "rootProject 스크립트 실행"
+
+// 현재 프로젝트 및 그 하위 프로젝트 각각에 대해 호출될 클로저를 등록한다.
+// => 내부적으로는 project.allprojects() 을 호출한다.
+allprojects { project ->
+    println "$project.name"
+}
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// $ gradle t1
+//

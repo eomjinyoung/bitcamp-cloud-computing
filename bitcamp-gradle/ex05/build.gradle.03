@@ -1,0 +1,28 @@
+// Gradle 도메인 객체 - 하위 프로젝트의 스크립트 실행 확인
+//
+println "rootProject 스크립트 실행"
+
+// 현재 프로젝트를 제외한 하위 프로젝트만 참조할 때는 
+// subprojects {}를 사용하라!
+// => 내부적으로는 project.subprojects() 를 호출한다. 
+subprojects { project ->
+
+    // 스크립트를 실행하기 전에 호출될 클로저를 등록한다.
+    // => 일종의 이벤트 리스너를 등록하는 것과 같다.
+    project.beforeEvaluate {
+        println "$project.name 스크립트 실행 시작"
+    }
+
+    // 스크립트를 실행한 후에 호출될 클로저를 등록한다.
+    // => 마찬가지로 이벤트 리스너를 등록하는 것과 같다.
+    project.afterEvaluate {
+        println "$project.name 스크립트 실행 종료"
+    }
+}
+
+// 임의의 태스크
+task t1
+
+// 실행: 태스크 이름을 지정하지 않고 실행하라!
+// $ gradle t1
+//

@@ -1,0 +1,11 @@
+println "settings.gradle 실행"
+
+// 서브 프로젝트 경로를 추가한다. 
+// => 프로젝트 경로는 / 가 아닌 :으로 지정해야 한다.
+include "subproject1"
+include "subproject1:p1"
+include "subproject1:p2"
+include "subproject2"
+include "subproject3"
+
+rootProject.name = 'ex05'

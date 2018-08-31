@@ -1,0 +1,40 @@
+// 태스크 사이에 의존 관계 설정하기 III
+// => 특정 태스크를 마지막에 반드시 실행하도록 설정할 수 있다.
+
+task t1 {
+    doLast {
+        println "t1...ok!"
+    }
+}
+
+task t2 {
+    doLast {
+        println "t2...ok!"
+    }
+}
+
+task t3 {
+    doLast {
+        println "t3...ok!"
+    }
+}
+
+task okok {
+    doLast {
+        println "okok!!!"
+    }
+}
+
+t3.dependsOn = [t2, t1]
+
+// finalizedBy 는 아직 인큐베이팅 기능이다. 
+// t1 태스크의 실행을 마친 후에는 okok를 실행하도록 설정한다.
+t1.finalizedBy = [okok]
+
+// t3 태스크의 실행을 마친 후에는 okok를 실행하도록 설정한다.
+t3.finalizedBy = [okok]
+
+// 실행: 
+// $ gradle t1  <=== t1, okok 실행
+// $ gradle t2  <=== t2 실행
+// $ gradle t3  <=== t1, t2, t3, okok 실행

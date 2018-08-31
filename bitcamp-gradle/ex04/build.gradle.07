@@ -1,0 +1,26 @@
+// 태스크 사이에 의존 관계 설정하기 IV
+// => 태스크를 생성할 때 프로퍼티를 통해 의존 관계를 설정할 수 있다.
+
+task t1 {
+    doLast {
+        println "t1...ok!"
+    }
+}
+
+task t2 {
+    doLast {
+        println "t2...ok!"
+    }
+}
+
+// 다음과 같이 태스크 생성 구문에서 dependsOn 프로퍼티를 설정한다.
+task t3(dependsOn: [t1, t2]) {
+    doLast {
+        println "t3...ok!"
+    }
+}
+
+// 실행: 
+// $ gradle t1  <=== t1 실행
+// $ gradle t2  <=== t2 실행
+// $ gradle t3  <=== t1, t2, t3 실행

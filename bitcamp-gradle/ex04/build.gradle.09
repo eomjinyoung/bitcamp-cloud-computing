@@ -1,0 +1,30 @@
+// 객체 필드와 프로퍼티 사용법
+// => 프로퍼티 vs 메서드
+
+class Member {
+    def name;
+    def age;
+
+    def setName(name) {this.name = name}
+    def getName() {return this.name}
+    def setAge(age) {this.age = age}
+    def getAge() {return this.age}
+}
+
+// 객체 필드에 값을 넣고 꺼내기
+def member = new Member()
+member.name = "홍길동"
+member.age = 20
+println "name=" + member.name + ",age=" + member.age
+
+// 객체 프로퍼티(setter/getter=accessor)에 값을 넣고 꺼내기
+def member2 = new Member()
+member2.setName "홍길동2"
+member2.setAge 21
+println "name=" + member2.getName() + ",age=" + member2.getAge()
+
+// 임의의 태스크
+task t1
+
+// 실행: 
+// $ gradle t1
