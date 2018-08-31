@@ -7,7 +7,7 @@ def commandMap = [
     "view": "localhost:8080/json/view",
     "add": "localhost:8080/json/add",
     "update": "localhost:8080/json/update",
-    "delete": "localhost:8080/json/delete",
+    "delete": "localhost:8080/json/delete"
 ]
 
 commandMap.each {key, value -> 
