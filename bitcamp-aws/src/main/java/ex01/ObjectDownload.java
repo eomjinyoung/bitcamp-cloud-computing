@@ -55,8 +55,6 @@ public class ObjectDownload {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-02";
-        String key = "a";
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
@@ -75,10 +73,16 @@ public class ObjectDownload {
              * conditional downloading of objects based on modification times,
              * ETags, and selectively downloading a range of an object.
              */
+            String bucketName = "t1-01.newdeal.bitcamp.net";
             System.out.println("Downloading an object");
-            S3Object object = s3.getObject(new GetObjectRequest(bucketName, key));
-            System.out.println("Content-Type: "  + object.getObjectMetadata().getContentType());
-            object.getObjectContent().transferTo(new FileOutputStream("temp/" + object.getKey()));
+            S3Object object = s3.getObject(
+                    new GetObjectRequest(bucketName, "file2"));
+            
+            System.out.println("Content-Type: "  + 
+                    object.getObjectMetadata().getContentType());
+            
+            object.getObjectContent().transferTo(
+                    new FileOutputStream("temp/" + object.getKey()));
             
         } catch (AmazonServiceException ase) {
             System.out.println("Caught an AmazonServiceException, which means your request made it "

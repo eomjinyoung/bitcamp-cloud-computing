@@ -55,8 +55,6 @@ public class ObjectList {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-02";
-
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
         System.out.println("===========================================\n");
@@ -71,14 +69,19 @@ public class ObjectList {
              * use the AmazonS3.listNextBatchOfObjects(...) operation to retrieve
              * additional results.
              */
+            String bucketName = "t1-01.newdeal.bitcamp.net";
+
             System.out.println("Listing objects");
-            ObjectListing objectListing = s3.listObjects(new ListObjectsRequest()
-                    .withBucketName(bucketName)
-                    //.withPrefix("My")
+            ObjectListing objectListing = 
+                    s3.listObjects(new ListObjectsRequest()
+                                .withBucketName(bucketName)
+                                //.withPrefix("My")
                     );
-            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
-                System.out.println(" - " + objectSummary.getKey() + "  " +
-                                   "(size = " + objectSummary.getSize() + ")");
+            for (S3ObjectSummary objectSummary : 
+                        objectListing.getObjectSummaries()) {
+                System.out.println(
+                        " - " + objectSummary.getKey() + "  " +
+                        "(size = " + objectSummary.getSize() + ")");
             }
             System.out.println();
 

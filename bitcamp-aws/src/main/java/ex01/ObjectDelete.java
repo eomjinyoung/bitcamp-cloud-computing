@@ -52,9 +52,6 @@ public class ObjectDelete {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-02";
-        String key = "a";
-
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
         System.out.println("===========================================\n");
@@ -64,8 +61,11 @@ public class ObjectDelete {
              * Delete an object - Unless versioning has been turned on for your bucket,
              * there is no way to undelete an object, so use caution when deleting objects.
              */
+            String bucketName = "t1-01.newdeal.bitcamp.net";
             System.out.println("Deleting an object\n");
-            s3.deleteObject(bucketName, key);
+            s3.deleteObject(bucketName, "file3");
+            
+            System.out.println("삭제되었다!");
 
         } catch (AmazonServiceException ase) {
             System.out.println("Caught an AmazonServiceException, which means your request made it "

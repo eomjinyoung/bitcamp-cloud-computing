@@ -57,9 +57,6 @@ public class ObjectUpload {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-02";
-        String key = "e";
-
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
         System.out.println("===========================================\n");
@@ -74,14 +71,19 @@ public class ObjectUpload {
              * like content-type and content-encoding, plus additional metadata
              * specific to your applications.
              */
+            String bucketName = "t1-01.newdeal.bitcamp.net";
+            
             AccessControlList acl = new AccessControlList();
             acl.grantPermission(GroupGrantee.AllUsers, Permission.Read);
             
-            PutObjectRequest objRequest = new PutObjectRequest(bucketName, key, new File("sample/e.jpg"));
+            PutObjectRequest objRequest = new PutObjectRequest(
+                    bucketName, "file5", new File("sample/e.jpg"));
             objRequest.setAccessControlList(acl);
             
             System.out.println("Uploading a new object to S3 from a file\n");
             s3.putObject(objRequest);
+            
+            System.out.println("업로드 완료!");
 
         } catch (AmazonServiceException ase) {
             System.out.println("Caught an AmazonServiceException, which means your request made it "

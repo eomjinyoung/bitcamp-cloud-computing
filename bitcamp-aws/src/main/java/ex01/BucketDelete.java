@@ -52,13 +52,12 @@ public class BucketDelete {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-14afa2b6-09e1-45b7-9947-032f39f0040a";
-
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
         System.out.println("===========================================\n");
 
         try {
+            String bucketName = "t1-01.newdeal.bitcamp.net";
             System.out.println("Deleting bucket " + bucketName + "\n");
             s3.deleteBucket(bucketName);
             

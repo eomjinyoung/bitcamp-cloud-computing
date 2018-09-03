@@ -52,13 +52,12 @@ public class BucketAdd {
             .withRegion("us-west-2")
             .build();
 
-        String bucketName = "my-bucket-02";
-
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
         System.out.println("===========================================\n");
 
         try {
+            String bucketName = "t1-01.newdeal.bitcamp.net";
             /*
              * Create a new S3 bucket - Amazon S3 bucket names are globally unique,
              * so once a bucket name has been taken by any user, you can't create
