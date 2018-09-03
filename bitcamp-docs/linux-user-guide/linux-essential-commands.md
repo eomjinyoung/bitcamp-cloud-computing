@@ -86,7 +86,7 @@
 
 ### man 명령
 
-- 온라인 매뉴얼 페이지나 해당 프로그램의 manpage를 출력
+- 온라인 매뉴얼 페이지나 해당 프로그램의 manpage를 출력한다.
 
 ```
 예1) 명령어 사용법 보기
@@ -102,8 +102,8 @@ $ man -k database | less
 
 ### info
 
-- 하이퍼텍스트 기반 도움말 보기
-- 즉 텍스트 모드 웹 브라우저로 도움말을 볼 수 있다.
+- 하이퍼텍스트 기반 도움말을 출력한다.
+- 즉 텍스트 모드 웹 브라우저로 도움말을 보고 링크를 따라 페이지를 이동할 수 있다.
 - 사용법
     - h 키 : 도움말
     - q 키 : 종료
@@ -120,7 +120,7 @@ $ info ls
 
 ### --help 옵션
 
-- 해당 명령에서 준비한 간단한 도움말 보기
+- 해당 명령에서 준비한 간단한 도움말을 출력한다.
 - 대부분의 명령어는 간단한 도움을 출력하는 이 옵션을 제공한다.
 
 ```
@@ -149,7 +149,7 @@ drwxr-xr-x 2 root root  4096  7월  9 05:38 apr-util-1.5.4
 
 ### type 명령
 
-- 명령어가 리눅스 프로그램인지 셸 내장 명령어 인지 알아보기
+- 명령어가 리눅스 프로그램인지 셸 내장 명령어 인지 알려준다.
 
 ```
 예1) ls와 who 명령어의 타입을 알아본다.
@@ -158,4 +158,193 @@ who is /usr/bin/who
 $ type cd
 cd is a shell builtin
 ```
+
+### * (와일드카드)
+
+- 와일드카드는 명령어를 실행하기 전에 셸에 의해 실제 파일명과 일치하는 형태로 확장된다.
+- 즉 명령어에서 와일드카드를 처리하는 것이 아니라 명령어를 실행하기 전에 셸이 먼저 와일드카드를 처리한다.
+- 와일드카드
+    - `*` : 0개 이상의 문자
+    - `?` : 어떤 한 문자
+    - `[문자집합]` : 문자집합에 선언된 문자 중에 한 문자
+    - `[^문자집합]` 또는 `[!문자집합]`: 문자집합에 없는 어떤 문자 
+    - 
+
+```
+예1) 현재 디렉토리에서 파일명이 a로 시작하는 목록을 출력하기
+$ ls a*
+
+=> 위의 명령은 셸에 의해 다음으로 바뀐 다음에 ls 명령을 실행한다.
+$ ls aardvark adamantium apple
+``` 
+
+```
+예2) 파일 이름이 'file'로 시작하고, 뒤의 한 자는 A 또는 B인 파일
+$ ls file[AB]
+fileA  fileB
+```
+
+### {값1, 값2, ...} 중괄호 확장
+
+- 와일드카드처럼 주어진 값으로 확장된다. 
+
+```
+예1) echo file{01,02,03}.txt
+$ echo file{-01,-02,-03}.txt
+file-01.txt file-02.txt file-03.txt
+```
+
+### dot file (마침표 파일)
+
+- 마침표로 시작하는 파일은 특정 프로그램에 노출되지 않는다.
+- `ls` 명령은 `-a` 옵션을 입력하지 않으면 출력 내용에서 마침표 파일을 제외한다.
+- 셸 와일드카드는 마침표로 시작하는 파일을 처리하지 않는다.
+- 보통 *숨김 파일(hidden file)* 이라고 부른다.
+
+ 
+
+```
+예1) dot file도 출력에 포함하기
+$ ls
+aardvark     fileA               myfile.zip    quadratic.txt  script-if
+adamantium   fileB               myfile2       randomlines    script-seq
+...
+
+$ ls -a
+.             emptyfile           myfile        quadratic.txt  script-seq
+..            examplelink         myfile.zip    randomlines    script-until
+.hidden_file  fileA               myfile2       reset-lpg      script-while
+aardvark      fileB               myfile3       sample.pdf     somefile
+adamantium    findfile1           newnames      sample.ps      spacefile
+...
+```
+
+### 셸 변수
+
+- 값을 가진 변수를 정의할 수 있다. 
+- 보통 변수명은 대문자로 정의한다.
+
+```
+예1) MYVAR 이라는 변수를 만들고 100을 저장하기
+$ MYVAR=100
+$ echo $MYVAR
+100
+```
+
+```
+예2) 셸에 미리 정의되어 있는 변수 보기 
+$ echo $HOME   <=== 사용자 홈 디렉토리
+/home/ec2-user
+$ echo $LOGNAME   <=== 로그인명
+ec2-user
+$ echo $PATH   <=== 셸이 명령어를 찾을 때 뒤져보는 디렉토리. 콜론으로 디렉토리 구분한다.
+/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/aws/bin: ...
+$ echo $PWD   <=== 현재 작업 디렉토리
+/home/ec2-user/linuxpocketguide
+$ echo $SHELL   <=== 사용하는 셸의 경로
+/bin/bash
+$ echo $USER   <=== 로그인명
+ec2-user
+```
+
+```
+예3) 다른 프로그램이 사용할 수 있도록 변수를 공개하기
+$ export MYVAR=200   <=== 공개된 셸 변수를 '환경변수' 라고 부른다.
+```
+
+### printevn 
+
+- 셸의 환경변수를 출력한다.
+  
+```
+예1) 셸의 전체 환경변수를 출력하기
+$ printenv
+VERIFY_TOKEN=abcde12345
+LESS_TERMCAP_mb=
+HOSTNAME=ip-172-31-16-175
+LESS_TERMCAP_md=
+LESS_TERMCAP_me=
+TERM=xterm-256color
+SHELL=/bin/bash
+HISTSIZE=1000
+...
+```
+
+```
+예2) 셸의 특정 환경변수 출력하기
+$ printenv JAVA_HOME
+/usr/lib/jvm/java
+```
+
+### `$PATH` 환경변수
+
+- 셸이 프로그램을 찾기 위해 뒤지는 디렉토리의 정보를 저장한 변수이다.
+- 변수의 값을 영구적으로 저장하고 싶다면, `~/.bash_profile` 파일에 등록해야 한다.
+
+```
+예1) PATH 환경 변수에 디렉토리 설정하기
+$ export PATH=/usr/sbin
+$ who
+-bash: who: command not found   <=== /usr/sbin 디렉토리에서 못 찾아서 실행 오류!
+$ PATH=$PATH:/usr/bin   <=== 기존 값에서 디렉토리 추가하기
+$ who
+ec2-user pts/0        2018-09-03 11:19 (49.170.162.242)   <=== 정상적으로 실행!
+```
+
+```
+예2) .bash_profile 을 변경한 후 바로 적용하기
+$ . $HOME/.bash_profile
+```
+
+### alias 
+
+- 긴 명령어에 별명을 붙인다. 
+- `~/.bash_aliases` 또는 `~/.bashrc`파일에 별명을 등록하면 영구적으로 사용할 수 있다. 
+
+```
+예1) 'ls -al' 명령에 대해 'la' 별명을 붙이기
+$ alias la='ls -al'
+$ la
+합계 3960
+drwx------ 12 ec2-user ec2-user    4096  9월  2 13:25 .
+drwxr-xr-x  3 root     root        4096  7월  9 05:25 ..
+-rw-------  1 ec2-user ec2-user   21544  9월  3 12:33 .bash_history
+-rw-r--r--  1 ec2-user ec2-user      18  8월 30  2017 .bash_logout
+...
+```
+
+```
+예2) 모든 별명을 출력하기
+$ alias
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+...
+```
+
+### 입출력 리다이렉션
+
+- 표준 입력/출력/오류를 파일로 보낼 수 있다.
+- 파일의 내용을 프로그램으로 전달할 수 있다.
+
+```
+예1) 파일의 내용을 명령어로 보내기
+$ 명령어 < 파일
+```
+
+```
+예2) 명령어의 실행 결과를 파일로 출력하기
+$ 명령어 > 파일
+```
+
+```
+예3) 명령어의 실행 결과를 기존 파일에 덧 붙이기
+$ 명령어 >> 파일
+```
+
+```
+예4) 명령어의 실행 결과를 화면으로 출력하는 동시에 파일로도 출력하기
+$ ls -al 2> 파일
+```
+
+
 

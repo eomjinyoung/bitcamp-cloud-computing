@@ -5,7 +5,11 @@ plugins {
 
 dependencies {
     compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.401'
-
+    
+    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.4.0-b180725.0644'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+    
+    
     compile 'com.google.guava:guava:23.0'
     //testCompile group: 'software.amazon.awssdk', name: 's3', version: '2.0.0-preview-11'
     testCompile 'junit:junit:4.12'
