@@ -53,7 +53,7 @@ public class ObjectDelete {
             .build();
 
         String bucketName = "my-bucket-02";
-        String key = "MyObjectKey2";
+        String key = "a";
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");

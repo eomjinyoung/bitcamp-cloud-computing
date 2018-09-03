@@ -56,7 +56,7 @@ public class ObjectDownload {
             .build();
 
         String bucketName = "my-bucket-02";
-        String key = "MyObjectKey";
+        String key = "a";
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");

@@ -74,7 +74,8 @@ public class ObjectList {
             System.out.println("Listing objects");
             ObjectListing objectListing = s3.listObjects(new ListObjectsRequest()
                     .withBucketName(bucketName)
-                    .withPrefix("My"));
+                    //.withPrefix("My")
+                    );
             for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
                 System.out.println(" - " + objectSummary.getKey() + "  " +
                                    "(size = " + objectSummary.getSize() + ")");

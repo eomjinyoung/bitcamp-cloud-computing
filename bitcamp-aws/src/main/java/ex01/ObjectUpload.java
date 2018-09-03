@@ -11,7 +11,7 @@ import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AccessControlList;
-import com.amazonaws.services.s3.model.EmailAddressGrantee;
+import com.amazonaws.services.s3.model.GroupGrantee;
 import com.amazonaws.services.s3.model.Permission;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -54,11 +54,11 @@ public class ObjectUpload {
 
         AmazonS3 s3 = AmazonS3ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion("us-west-3")
+            .withRegion("us-west-2")
             .build();
 
         String bucketName = "my-bucket-02";
-        String key = "MyObjectKey1";
+        String key = "e";
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon S3");
@@ -74,13 +74,11 @@ public class ObjectUpload {
              * like content-type and content-encoding, plus additional metadata
              * specific to your applications.
              */
-            EmailAddressGrantee owner = new EmailAddressGrantee("jinyoung.eom@gmail.com");
             AccessControlList acl = new AccessControlList();
-            acl.grantPermission(owner, Permission.FullControl);
-            //acl.grantPermission(GroupGrantee.AllUsers, Permission.Read);
+            acl.grantPermission(GroupGrantee.AllUsers, Permission.Read);
             
-            PutObjectRequest objRequest = new PutObjectRequest(bucketName, key, new File("sample/x.jpg"));
-            //objRequest.setAccessControlList(acl);
+            PutObjectRequest objRequest = new PutObjectRequest(bucketName, key, new File("sample/e.jpg"));
+            objRequest.setAccessControlList(acl);
             
             System.out.println("Uploading a new object to S3 from a file\n");
             s3.putObject(objRequest);
@@ -98,6 +96,7 @@ public class ObjectUpload {
                     + "a serious internal problem while trying to communicate with S3, "
                     + "such as not being able to access the network.");
             System.out.println("Error Message: " + ace.getMessage());
+            ace.printStackTrace();
         }
     }
 
