@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
+
+dependencies {
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.401'
+
+    compile 'com.google.guava:guava:23.0'
+    //testCompile group: 'software.amazon.awssdk', name: 's3', version: '2.0.0-preview-11'
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral()
+}
